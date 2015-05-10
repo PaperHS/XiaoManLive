@@ -1,6 +1,7 @@
 package com.insthub.ecmobile.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -8,12 +9,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
+import com.external.androidquery.callback.AjaxStatus;
 import com.external.viewpagerindicator.PageIndicator;
+import com.insthub.BeeFramework.model.BusinessResponse;
 import com.insthub.BeeFramework.view.MyListView;
+import com.insthub.ecmobile.EcmobileApp;
 import com.insthub.ecmobile.R;
-import com.insthub.ecmobile.adapter.B0_IndexAdapter;
+import com.insthub.ecmobile.activity.B1_ProductListActivity;
+import com.insthub.ecmobile.activity.B2_ProductDetailActivity;
+import com.insthub.ecmobile.activity.BannerWebActivity;
+import com.insthub.ecmobile.adapter.B0_IndexAdapterNew;
 import com.insthub.ecmobile.adapter.Bee_PageAdapter;
+import com.insthub.ecmobile.model.ADModel;
+import com.insthub.ecmobile.model.HomeModel;
+import com.insthub.ecmobile.model.SearchModel;
+import com.insthub.ecmobile.protocol.AD;
+import com.insthub.ecmobile.protocol.ApiInterface;
+import com.insthub.ecmobile.protocol.FILTER;
+import com.insthub.ecmobile.protocol.PLAYER;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -25,7 +44,7 @@ import butterknife.InjectView;
  * Use the {@link ShopFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ShopFragment extends Fragment {
+public class ShopFragment extends Fragment implements BusinessResponse{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -39,13 +58,15 @@ public class ShopFragment extends Fragment {
     FrameLayout bannerView;//广告栏
     private ViewPager bannerViewPager;
     private PageIndicator mIndicator;
-    private MyListView mListView;
-    private B0_IndexAdapter listAdapter;
+
+    private B0_IndexAdapterNew listAdapter;
 
     private ArrayList<View> bannerListView;
     private Bee_PageAdapter bannerPageAdapter;
     private View mTouchTarget;
 
+    private ADModel adModel;
+protected ImageLoader imageLoader = ImageLoader.getInstance();
     public String getTitle() {
         return getArguments().getString(ARG_PARAM1);
     }
@@ -88,6 +109,8 @@ public class ShopFragment extends Fragment {
             mTitle = getArguments().getString(ARG_PARAM1);
             mIcon = getArguments().getInt(ARG_PARAM2);
         }
+        adModel = new ADModel(getActivity());
+
     }
 
     @Override
@@ -155,8 +178,112 @@ public class ShopFragment extends Fragment {
 
         fragmentListView.addHeaderView(bannerView);
         if (mTitle.equals("微商优选")){
-//            listAdapter = new B0_IndexAdapterNew(this,)
+            listAdapter = new B0_IndexAdapterNew(getActivity(),new HomeModel(getActivity()),new SearchModel(getActivity()));
         }
+        fragmentListView.setAdapter(listAdapter);
+    }
+
+     public void addBannerView()
+    {
+        bannerListView.clear();
+        for (int i = 0; i < adModel.ads.size(); i++)
+        {
+            AD player = adModel.ads.get(i);
+            ImageView viewOne =  (ImageView)LayoutInflater.from(getActivity()).inflate(R.layout.b0_index_banner_cell,null);
+
+//            shared = getActivity().getSharedPreferences("userInfo", 0);
+//    		editor = shared.edit();
+//    		String imageType = shared.getString("imageType", "mind");
+//
+//    		if(imageType.equals("high")) {
+//                imageLoader.displayImage(player.photo.thumb,viewOne, EcmobileApp.options);
+//    		} else if(imageType.equals("low")) {
+//                imageLoader.displayImage(player.photo.small,viewOne, EcmobileApp.options);
+//    		} else {
+//    			String netType = shared.getString("netType", "wifi");
+//    			if(netType.equals("wifi")) {
+//                    imageLoader.displayImage(player.photo.thumb,viewOne, EcmobileApp.options);
+//    			} else {
+//                    imageLoader.displayImage(player.photo.small,viewOne, EcmobileApp.options);
+//    			}
+//    		}
+            imageLoader.displayImage(player.ad_code,viewOne, EcmobileApp.options);
+            try
+            {
+                viewOne.setTag(player.toJson().toString());
+            }
+            catch (JSONException e)
+            {
+
+            }
+
+            bannerListView.add(viewOne);
+
+            viewOne.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+
+                    String playerJSONString = (String) v.getTag();
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(playerJSONString);
+                        PLAYER player1 = new PLAYER();
+                         player1.fromJson(jsonObject);
+                        if (null == player1.action)
+                        {
+                            if (null != player1.url) {
+                                Intent intent = new Intent(getActivity(), BannerWebActivity.class);
+                                intent.putExtra("url", player1.url);
+                                startActivity(intent);
+                                getActivity().overridePendingTransition(R.anim.push_right_in,
+                                        R.anim.push_right_out);
+                            }
+                        }
+                        else
+                        {
+                            if (player1.action.equals("goods"))
+                            {
+                                Intent intent = new Intent(getActivity(), B2_ProductDetailActivity.class);
+                                intent.putExtra("good_id", player1.action_id+"");
+                                getActivity().startActivity(intent);
+                                getActivity().overridePendingTransition(R.anim.push_right_in,
+                                        R.anim.push_right_out);
+                            }
+                            else if (player1.action.equals("category"))
+                            {
+                                Intent intent = new Intent(getActivity(), B1_ProductListActivity.class);
+                                FILTER filter = new FILTER();
+                                filter.category_id = String.valueOf(player1.action_id);
+                                intent.putExtra(B1_ProductListActivity.FILTER,filter.toJson().toString());
+                                startActivity(intent);
+                                getActivity().overridePendingTransition(R.anim.push_right_in,
+                                        R.anim.push_right_out);
+                            }
+                            else if (null != player1.url)
+                            {
+                                Intent intent = new Intent(getActivity(), BannerWebActivity.class);
+                                intent.putExtra("url", player1.url);
+                                startActivity(intent);
+                                getActivity().overridePendingTransition(R.anim.push_right_in,
+                                        R.anim.push_right_out);
+                            }
+                        }
+
+                    } catch (JSONException e) {
+
+                    }
+
+                }
+            });
+
+        }
+
+        mIndicator.notifyDataSetChanged();
+        mIndicator.setCurrentItem(0);
+        bannerPageAdapter.mListViews = bannerListView;
+        bannerViewPager.setAdapter(bannerPageAdapter);
+
     }
 
 	//获取屏幕宽度
@@ -170,5 +297,12 @@ public class ShopFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.reset(this);
+    }
+
+    @Override
+    public void OnMessageResponse(String url, JSONObject jo, AjaxStatus status) throws JSONException {
+        if (url.startsWith(ApiInterface.HOME_AD)){
+            addBannerView();
+        }
     }
 }

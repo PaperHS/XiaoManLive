@@ -115,18 +115,19 @@ public class B0_IndexAdapterNew extends BeeBaseAdapter
 
     @Override
     public long getItemId(int position) {
-        if (position < 3)
-        {
-            return position;
-        }
-        else  if (position < 3 + dataModel.categorygoodsList.size())
-        {
-            return position - 3;
-        }
-        else
-        {
-            return position - (int)Math.ceil(dataModel.simplegoodsList.size()*1.0/2)- dataModel.categorygoodsList.size();
-        }
+        return position;
+//        if (position < 3)
+//        {
+//            return position;
+//        }
+//        else  if (position < 3 + dataModel.categorygoodsList.size())
+//        {
+//            return position - 3;
+//        }
+//        else
+//        {
+//            return position - (int)Math.ceil(dataModel.simplegoodsList.size()*1.0/2)- dataModel.categorygoodsList.size();
+//        }
     }
 
     @Override
