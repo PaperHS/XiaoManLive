@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.insthub.ecmobile.component.FunctionCell 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:paddingTop="5dp"
+              android:paddingBottom="5dp"
+              android:orientation="horizontal">
+
+        <com.insthub.ecmobile.component.DrawableCenterTextView
+                android:id="@+id/funtion_freshbirdguaid"
+                android:layout_height="30dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="left|center_vertical"
+                android:text="新手帮助"
+                android:drawablePadding="5dp"
+                android:drawableLeft="@drawable/b0_index_freshbird"
+                />
+
+
+           <com.insthub.ecmobile.component.DrawableCenterTextView
+                   android:id="@+id/funtion_freshbirdguaid2"
+                   android:layout_height="30dp"
+                   android:layout_width="0dp"
+                   android:layout_weight="1"
+                   android:gravity="left|center_vertical"
+                   android:text="充值"
+                   android:drawablePadding="5dp"
+                   android:drawableLeft="@drawable/b0_index_charge"
+                   />
+
+           <com.insthub.ecmobile.component.DrawableCenterTextView
+                   android:id="@+id/funtion_freshbirdguaid3"
+                   android:layout_height="30dp"
+                   android:layout_width="0dp"
+                   android:layout_weight="1"
+                   android:gravity="left|center_vertical"
+                   android:text="热卖榜单"
+                   android:drawablePadding="5dp"
+                   android:drawableLeft="@drawable/b0_index_hotsell"
+                   />
+
+
+
+
+
+
+
+</com.insthub.ecmobile.component.FunctionCell>

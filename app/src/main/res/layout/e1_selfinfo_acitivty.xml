@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="@color/common_bg"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:layout_height="@dimen/item_height">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  style="@style/tvStyle.Common.mid"
+                  android:textColor="@color/TextColorGray"
+                  android:text="手机号"
+                />
+        <TextView
+                android:id="@+id/e1_self_phone_num"
+                android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  style="@style/tvStyle.Common.mid"
+                  android:textColor="@color/TextColorGray"
+                  android:text="15123358198"
+                  android:layout_marginLeft="100dp"
+                />
+    </RelativeLayout>
+    <RelativeLayout
+            android:id="@+id/e1_self_name"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:layout_height="@dimen/item_height">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  style="@style/tvStyle.Common.mid"
+                  android:textColor="@color/TextColorGray"
+                  android:text="姓名"
+                />
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  style="@style/tvStyle.Common.mid"
+                  android:textColor="@color/TextColorGray"
+                  android:text="15123358198"
+                  android:layout_marginLeft="100dp"
+                />
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_arrow_right"
+                />
+    </RelativeLayout>
+    <RelativeLayout
+            android:id="@+id/e1_self_gender"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:layout_height="@dimen/item_height">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  style="@style/tvStyle.Common.mid"
+                  android:textColor="@color/TextColorGray"
+                  android:text="称谓"
+                />
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  style="@style/tvStyle.Common.mid"
+                  android:textColor="@color/TextColorGray"
+                  android:text="先生"
+                  android:layout_marginLeft="100dp"
+                />
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="match_parent"
+                   android:layout_alignParentRight="true"
+                   android:src="@drawable/ic_arrow_right"
+                />
+    </RelativeLayout>
+    <RelativeLayout
+            android:id="@+id/e1_self_exit"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:layout_height="@dimen/item_height">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  style="@style/tvStyle.Common.mid"
+                  android:textColor="@color/TextColorGray"
+                  android:text="退出"
+                />
+
+    </RelativeLayout>
+</LinearLayout>

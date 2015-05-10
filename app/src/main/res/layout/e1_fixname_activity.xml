@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <EditText
+            android:id="@+id/fixname_name"
+            android:layout_width="match_parent" android:layout_height="match_parent"
+            android:background="@color/white"
+            android:hint="请输入您的姓名，最多12个字符"
+            android:gravity="top"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:maxLength="12"
+            />
+</LinearLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ship_day">
+        <item>今天</item>
+        <item>明天</item>
+    </string-array>
+    <string-array name="ship_time">
+        <item>8:00-9:00</item>
+        <item>9:00-10:00</item>
+        <item>10:00-11:00</item>
+        <item>11:00-12:00</item>
+        <item>12:00-13:00</item>
+        <item>13:00-14:00</item>
+        <item>14:00-15:00</item>
+        <item>15:00-16:00</item>
+        <item>16:00-17:00</item>
+        <item>17:00-18:00</item>
+    </string-array>
+</resources>

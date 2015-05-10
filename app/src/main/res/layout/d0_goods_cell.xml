@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_marginTop="3dp"
+              android:background="@color/white"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content">
+            <ImageView
+            android:layout_gravity="center_horizontal"
+            android:layout_width="100dp" android:layout_height="150dp"
+            android:id="@+id/d0_goods_pic"
+            />
+            <ImageView
+                android:id="@+id/d0_googs_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                />
+    </RelativeLayout>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="5dp"
+            android:id="@+id/d0_goods_name"
+            android:singleLine="true"
+            android:maxLength="10"
+            tools:text="wqwrerwre"
+            />
+    <RelativeLayout
+        android:layout_width="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/d0_goods_price"
+            android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="5dp"
+            android:textColor="@color/text_red"
+            tools:text="123123"
+            />
+        <TextView
+            android:id="@+id/d0_goods_price_ever"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="5dp"
+            android:textColor="@color/grey"
+            tools:text="123123"
+            />
+    </RelativeLayout>
+
+
+</LinearLayout>

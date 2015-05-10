@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+	<color name="filter_text_color">#666666</color>
+    <color name="spec_text_color">#999999</color>
+    <color name="spec_select_text_color">#ff0000</color>
+    <color name="red_black">#ff3333</color>
+    <color name="red_dark">#aa0000</color>
+    <color name="grey">#99999999</color>
+
+    <drawable name="color_b">#44aaaaaa</drawable>
+	<drawable name="color_a">#00000000</drawable>
+
+    <color name="main_color">#ff5512</color>
+    <color name="divider">#eeeeee</color>
+	<color name="white">#ffffff</color>
+	<color name="text_red">#ff3333</color>
+	<color name="common_bg">#F6F7F9</color>
+
+    <color name="translate">#00ffffff</color>
+    <color name="halftranslate">#77ffffff</color>
+    <color name="TextColorGray">#99999999</color>
+    <color name="cyan">#1AA3A1</color>
+</resources>

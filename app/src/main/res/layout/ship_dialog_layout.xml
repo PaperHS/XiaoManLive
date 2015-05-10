@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/dialog_title"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_vertical"
+            android:text="@string/dialog_title"
+            android:textColor="#333333"
+            android:textSize="20dp" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#c4cccccc" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:minHeight="60dp"
+            android:orientation="horizontal" >
+            <Spinner
+                    android:id="@+id/ship_dialog_day"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentLeft="true"
+                    android:prompt="@array/ship_day"
+                    style="@android:style/Widget.Holo.Spinner"
+                    >
+
+
+            </Spinner>
+            <Spinner
+                    android:id="@+id/ship_dialog_time"
+                    android:layout_width="160dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentRight="true"
+                    android:prompt="@array/ship_time"
+                    style="@android:style/Widget.Holo.Spinner"
+
+                    >
+
+            </Spinner>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#c4cccccc" />
+
+        <LinearLayout
+            android:id="@+id/update_cancel"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="1dp" >
+
+            <TextView
+                android:id="@+id/yes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/textbg_select"
+                android:gravity="center"
+                android:text="@string/dialog_ensure"
+                android:textColor="#333333"
+                android:textSize="16dp" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#c4cccccc" />
+
+            <TextView
+                android:id="@+id/no"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/textbg_select"
+                android:gravity="center"
+                android:text="@string/dialog_cancel"
+                android:textColor="#333333"
+                android:textSize="16dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

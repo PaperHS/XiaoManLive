@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+            android:id="@+id/e1_comfirm"
+            android:title="comfirm"
+            android:icon="@drawable/ic_allright"
+            android:showAsAction="always"
+
+            ></item>
+</menu>

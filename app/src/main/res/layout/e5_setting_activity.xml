@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="@color/common_bg"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout
+            android:id="@+id/e5_setting_about"
+
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:layout_height="@dimen/item_height">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  style="@style/tvStyle.Common.mid"
+                  android:textColor="@color/TextColorGray"
+                  android:text="关于我们"
+                />
+
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="match_parent"
+                   android:layout_alignParentRight="true"
+                   android:src="@drawable/ic_arrow_right"
+                />
+    </RelativeLayout>
+    <RelativeLayout
+            android:id="@+id/e5_setting_help"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:layout_height="@dimen/item_height">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  style="@style/tvStyle.Common.mid"
+                  android:textColor="@color/TextColorGray"
+                  android:text="帮助"
+                />
+
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="match_parent"
+                   android:layout_alignParentRight="true"
+                   android:src="@drawable/ic_arrow_right"
+                />
+    </RelativeLayout>
+    <RelativeLayout
+            android:id="@+id/e5_setting_opption"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:layout_height="@dimen/item_height">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  style="@style/tvStyle.Common.mid"
+                  android:textColor="@color/TextColorGray"
+                  android:text="意见反馈"
+                />
+
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="match_parent"
+                   android:layout_alignParentRight="true"
+                   android:src="@drawable/ic_arrow_right"
+                />
+    </RelativeLayout>
+    <RelativeLayout
+            android:id="@+id/e5_setting_update"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:layout_height="@dimen/item_height">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  style="@style/tvStyle.Common.mid"
+                  android:textColor="@color/TextColorGray"
+                  android:text="更新检查"
+                />
+
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="match_parent"
+                   android:layout_alignParentRight="true"
+                   android:src="@drawable/ic_arrow_right"
+                />
+    </RelativeLayout>
+</LinearLayout>

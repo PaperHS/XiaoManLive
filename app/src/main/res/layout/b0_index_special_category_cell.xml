@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.insthub.ecmobile.component.SepcialCagegoryCell
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical" >
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+        <TextView
+                style="@style/tvStyle.Common.mid"
+                android:id="@+id/good_cell_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:text="所有商品"
+                android:layout_marginLeft="10dp"
+                />
+        <TextView
+                style="@style/tvStyle.Common.mid"
+                android:id="@+id/category1_choice"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:text="更多产品"
+                android:layout_marginRight="10dp"
+                />
+    </RelativeLayout>
+    <View android:layout_width="match_parent" android:layout_height="0.5dp"
+            android:background="@color/divider"
+            ></View>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="360dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        
+        android:baselineAligned="false"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+            <LinearLayout
+                    android:id="@+id/good_cell_one"
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2.5dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal" >
+                <ImageView
+                        android:id="@+id/good_cell_photo_one"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/default_image" />
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                    <TextView
+                            android:id="@+id/good_cell_name_one"
+                            android:maxLength="5"
+                            android:singleLine="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:maxLines="4"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:textColor="#555555"
+                            tools:text="新鲜肉类"
+                            android:textSize="16dp"
+                            />
+
+                    <TextView
+                            android:id="@+id/good_cell_price_one"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/grey"
+                            android:textSize="12dp"
+                            android:text="白菜 萝卜 黄瓜"
+                        />
+                </LinearLayout>
+
+
+            </LinearLayout>
+             <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#eeeeee" />
+            <LinearLayout
+                    android:id="@+id/good_cell_two"
+
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2.5dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal" >
+                <ImageView
+                        android:id="@+id/good_cell_photo_two"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/default_image" />
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                    <TextView
+                            android:id="@+id/good_cell_name_two"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:maxLines="4"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:textColor="#555555"
+                            tools:text="新鲜肉类"
+                            android:textSize="16dp"
+                            android:maxLength="5"
+                            android:singleLine="true"
+
+                            />
+
+                    <TextView
+                            android:id="@+id/good_cell_price_two"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/grey"
+                            android:textSize="12dp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+             <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#eeeeee" />
+            <LinearLayout
+                    android:id="@+id/good_cell_three"
+
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2.5dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal" >
+                <ImageView
+                        android:id="@+id/good_cell_photo_three"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/default_image" />
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                    <TextView
+                            android:id="@+id/good_cell_name_three"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:maxLines="4"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:textColor="#555555"
+                            tools:text="新鲜肉类"
+                            android:textSize="16dp"
+                            android:maxLength="5"
+                            android:singleLine="true"
+
+                            />
+
+                    <TextView
+                            android:id="@+id/good_cell_price_three"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/grey"
+                            android:textSize="12dp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+             <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#eeeeee" />
+            <LinearLayout
+                    android:id="@+id/good_cell_four"
+
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2.5dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal" >
+                <ImageView
+                        android:id="@+id/good_cell_photo_four"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/default_image" />
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical" >
+
+                    <TextView
+                            android:id="@+id/good_cell_name_four"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:maxLines="4"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:textColor="#555555"
+                            tools:text="新鲜肉类"
+                            android:textSize="16dp"
+                            android:maxLength="5"
+                            android:singleLine="true"
+
+                            />
+
+                    <TextView
+                            android:id="@+id/good_cell_price_four"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/grey"
+                            android:textSize="12dp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="22dp"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:textAlignment="center"-->
+                <!--android:textColor="#000000"-->
+                <!--android:textSize="15dp"-->
+                <!--android:textStyle="bold" />-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/good_cell_photo_one"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:src="@drawable/default_image" />-->
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#eeeeee" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/good_cell_five"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="2.5dp"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+                <ImageView
+                        android:id="@+id/good_cell_photo_five"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/default_image" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <TextView
+                            android:id="@+id/good_cell_name_five"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:maxLines="4"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:textColor="#555555"
+                            tools:text="新鲜肉类"
+                            android:textSize="16dp"
+                            android:maxLength="5"
+                            android:singleLine="true"
+
+                            />
+
+                    <TextView
+                        android:id="@+id/good_cell_price_five"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/grey"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#eeeeee" />
+            <LinearLayout
+                android:id="@+id/good_cell_six"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2.5dp"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+                <ImageView
+                        android:id="@+id/good_cell_photo_six"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/default_image" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/good_cell_name_six"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:maxLines="4"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textColor="#555555"
+                        tools:text="新鲜肉类"
+                        android:textSize="16dp"
+                        android:maxLength="5"
+                        android:singleLine="true"
+
+                            />
+
+                    <TextView
+                        android:id="@+id/good_cell_price_six"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/grey"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#eeeeee" />
+            <LinearLayout
+                android:id="@+id/good_cell_seven"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2.5dp"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+                <ImageView
+                        android:id="@+id/good_cell_photo_seven"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/default_image" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/good_cell_name_seven"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:maxLines="4"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textColor="#555555"
+                        tools:text="新鲜肉类"
+                        android:textSize="16dp"
+                        android:maxLength="5"
+                        android:singleLine="true"
+
+                            />
+
+                    <TextView
+                        android:id="@+id/good_cell_price_seven"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/grey"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#eeeeee" />
+            <LinearLayout
+                android:id="@+id/good_cell_eight"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="2.5dp"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+                <ImageView
+                        android:id="@+id/good_cell_photo_eight"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@drawable/default_image" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/good_cell_name_eight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:maxLines="4"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textColor="#555555"
+                        tools:text="新鲜肉类"
+                        android:maxLength="5"
+                        android:singleLine="true"
+
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/good_cell_price_eight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/grey"
+                        android:layout_gravity="center"
+                        tools:text="测试 测试 测试"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+<View android:layout_width="match_parent" android:layout_height="0.5dp"
+            android:background="@color/divider"
+            ></View>
+</com.insthub.ecmobile.component.SepcialCagegoryCell>

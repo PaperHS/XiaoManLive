@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00000000"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-5dp"
+            android:layout_marginRight="-5dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+                >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/item_height"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:orientation="horizontal" >
+
+                <TextView
+                        android:id="@+id/trade_item_sno_label"
+                        style="@style/tvStyle.Common.mid"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:text="订单编号:"
+                        />
+                <TextView
+                        android:id="@+id/trade_item_sno"
+                        android:layout_toRightOf="@id/trade_item_sno_label"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/tvStyle.Common.mid"
+                        tools:text="123123123"
+                         />
+
+                <ImageView
+                        android:layout_marginRight="@dimen/common_margin_leftright"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_arrow_right"
+                        />
+            </RelativeLayout>
+            <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/line" />
+            <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/item_height_min"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:orientation="horizontal" >
+
+                <TextView
+                        style="@style/tvStyle.Common.mid"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/TextColorBlack"
+                        android:text="订单状态："
+                        />
+                <TextView
+                        android:id="@+id/trade_item_status"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/TextColorBlack"
+                        style="@style/tvStyle.Common.mid"
+
+                        android:text="等待确认"
+                        />
+
+            </RelativeLayout>
+            <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/item_height_min"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:orientation="horizontal" >
+
+                <TextView
+                        style="@style/tvStyle.Common.mid"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/TextColorBlack"
+                        android:text="建立时间："
+                        />
+                <TextView
+                        android:id="@+id/trade_item_time"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/TextColorBlack"
+                        style="@style/tvStyle.Common.mid"
+
+                         tools:text="等待确认"
+                        />
+
+            </RelativeLayout>
+            <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/item_height_min"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:orientation="horizontal" >
+
+                <TextView
+                        style="@style/tvStyle.Common.mid"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/TextColorBlack"
+                        android:text="订单数量："
+                        />
+                <TextView
+                        android:id="@+id/trade_item_count"
+
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        style="@style/tvStyle.Common.mid"
+
+                        android:textColor="@color/text_red"
+                        />
+
+            </RelativeLayout>
+            <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/item_height_min"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:orientation="horizontal" >
+
+                <TextView
+                        style="@style/tvStyle.Common.mid"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/TextColorBlack"
+                        android:text="订单金额："
+                        />
+                <TextView
+                        android:id="@+id/trade_item_total"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        style="@style/tvStyle.Common.mid"
+
+                        android:textColor="@color/text_red"
+                        />
+
+            </RelativeLayout>
+            <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/item_height_min"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:orientation="horizontal" >
+
+                <TextView
+                        style="@style/tvStyle.Common.mid"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/TextColorBlack"
+                        android:text="优惠金额："
+                        />
+                <TextView
+                        android:id="@+id/trade_item_redPaper"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/text_red"
+                        style="@style/tvStyle.Common.mid"
+
+                        tools:text="等待确认"
+                        />
+
+            </RelativeLayout>
+
+
+
+
+        </LinearLayout>
+
+        <!--<FrameLayout-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="80dp"-->
+            <!--android:layout_marginLeft="-5dp"-->
+            <!--android:layout_marginRight="-5dp"-->
+            <!--android:background="@color/white"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:paddingBottom="10dp"-->
+            <!--android:paddingLeft="20dp"-->
+            <!--android:paddingRight="20dp" >-->
+
+            <!--<View-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:background="@drawable/line" />-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="left|center_vertical"-->
+                <!--android:text="@string/tradeitem_rental"-->
+                <!--android:textColor="#a3a3a3"-->
+                <!--android:textSize="15dp" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/trade_item_total"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="left|center_vertical"-->
+                <!--android:layout_marginLeft="35dp"-->
+                <!--android:textColor="#ff0000"-->
+                <!--android:textSize="15dp" />-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="right|center_vertical"-->
+                <!--android:orientation="horizontal" >-->
+
+                <!--<Button-->
+                    <!--android:id="@+id/trade_item_check"-->
+                    <!--android:layout_width="70dp"-->
+                    <!--android:layout_height="30dp"-->
+                    <!--android:layout_gravity="right|center_vertical"-->
+                    <!--android:background="@drawable/button_narrow_gray"-->
+                    <!--android:text="@string/tradeitem_logistics"-->
+                    <!--android:textColor="#333333"-->
+                    <!--android:textSize="13dp" />-->
+
+                <!--<Button-->
+                    <!--android:id="@+id/trade_item_ok"-->
+                    <!--android:layout_width="70dp"-->
+                    <!--android:layout_height="30dp"-->
+                    <!--android:layout_gravity="right|center_vertical"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:background="@drawable/button_narrow_blue"-->
+                    <!--android:text="@string/tradeitem_receive"-->
+                    <!--android:textColor="#ffffff"-->
+                    <!--android:textSize="13dp" />-->
+            <!--</LinearLayout>-->
+        <!--</FrameLayout>-->
+    </LinearLayout>
+
+</LinearLayout>

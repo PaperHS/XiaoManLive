@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@color/white"
+    android:orientation="vertical" >
+    <View android:layout_width="match_parent" android:layout_height="1px"
+            android:background="@color/TextColorGray"
+            />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center" >
+
+        <LinearLayout
+                android:id="@+id/toolbar_tabone_layout"
+
+                android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.25" >
+
+
+
+            <ImageView
+                android:id="@+id/toolbar_tabone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:paddingTop="7dp"
+                android:paddingBottom="3dp"
+                android:src="@drawable/footer_home_icon" />
+            <TextView
+                    android:id="@+id/toolbar_tabone_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/tvStyle.Common.mid"
+                    android:textColor="@color/TextColorBlack"
+                    android:text="首页"
+                    />
+        </LinearLayout>
+        <LinearLayout
+                android:id="@+id/toolbar_tabone_layout2"
+
+                android:orientation="vertical"
+                android:layout_weight="0.25"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+            <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                     >
+
+
+
+                <ImageView
+                        android:id="@+id/toolbar_tabtwo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:background="#00000000"
+                        android:paddingTop="7dp"
+                        android:paddingBottom="3dp"
+                        android:src="@drawable/footer_shopping_cart_icon" />
+
+                <LinearLayout
+                        android:id="@+id/shopping_cart_num_bg"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="3dp"
+                        android:background="@drawable/search_new_shopping_cart_num_bg"
+                        android:gravity="center"
+                        android:orientation="vertical" >
+
+                    <TextView
+                            android:id="@+id/shopping_cart_num"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_marginBottom="2dp"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="#ffffff"
+                            android:textSize="10dp" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/tvStyle.Common.mid"
+                    android:textColor="@color/TextColorBlack"
+                    android:text="购物车"
+                    />
+        </LinearLayout>
+        <LinearLayout
+                android:id="@+id/toolbar_tabone_layout3"
+
+                android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.25" >
+
+ 
+
+            <ImageView
+                android:id="@+id/toolbar_tabthree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:paddingTop="7dp"
+                android:paddingBottom="3dp"
+                android:src="@drawable/footer_wallet" />
+            <TextView
+                    android:id="@+id/toolbar_tabthree_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/tvStyle.Common.mid"
+                    android:textColor="@color/TextColorBlack"
+                    android:text="订单"
+                    />
+        </LinearLayout>
+        <LinearLayout
+                android:id="@+id/toolbar_tabone_layout4"
+
+                android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.25" >
+
+
+
+            <ImageView
+                android:id="@+id/toolbar_tabfour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:paddingTop="7dp"
+                android:paddingBottom="3dp"
+                android:src="@drawable/footer_order" />
+            <TextView
+                    android:id="@+id/toolbar_tabfour_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/tvStyle.Common.mid"
+                    android:textColor="@color/TextColorBlack"
+                    android:text="钱包"
+                    />
+        </LinearLayout>
+
+       
+
+        <LinearLayout
+                android:id="@+id/toolbar_tabone_layout5"
+
+                android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25" >
+
+
+
+            <ImageView
+                android:id="@+id/toolbar_tabfive"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:paddingTop="7dp"
+                android:paddingBottom="3dp"
+                android:src="@drawable/footer_user_icon" />
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/tvStyle.Common.mid"
+                    android:textColor="@color/TextColorBlack"
+                    android:text="个人"
+                    />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

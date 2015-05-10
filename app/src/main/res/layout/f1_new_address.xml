@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/body"
+    android:orientation="vertical" >
+
+    <include layout="@layout/top_view" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:background="@color/white"
+                android:orientation="vertical" >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="50dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:text="收货人"
+                        android:gravity="center_vertical"
+                        android:textSize="16sp"
+                        />
+                    <EditText
+                    android:id="@+id/add_address_name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:background="#ffffff"
+                    android:gravity="center_vertical"
+                    android:hint="@string/address_consignee"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:singleLine="true"
+                    android:textColor="#000000"
+                    android:textSize="16dp" />
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#c4c4c4" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:text="手机号"
+                        android:gravity="center_vertical"
+                        android:textSize="16sp"
+                        />
+                    <EditText
+                    android:id="@+id/add_address_telNum"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:background="#ffffff"
+                    android:gravity="center_vertical"
+                    android:hint="@string/address_tel"
+                    android:inputType="number"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:singleLine="true"
+                    android:textColor="#000000"
+                    android:textSize="16dp" />
+
+                </LinearLayout>
+
+                <View
+                    android:visibility="gone"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#c4c4c4" />
+
+                <EditText
+                    android:visibility="gone"
+                    android:id="@+id/add_address_email"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:background="#ffffff"
+                    android:gravity="center_vertical"
+                    android:hint="@string/address_email"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:singleLine="true"
+                    android:textColor="#000000"
+                    android:textSize="16dp" />
+                <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.1dp"
+                        android:background="#c4c4c4" />
+                <EditText
+                    android:id="@+id/add_address_zipCode"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:background="#ffffff"
+                    android:gravity="center_vertical"
+                    android:hint="@string/address_zip"
+                    android:inputType="number"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:singleLine="true"
+                    android:textColor="#000000"
+                    android:textSize="16dp"
+                        android:visibility="gone"
+                        />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#c4c4c4" />
+
+                <RelativeLayout
+                    android:id="@+id/add_address_area"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/add_address_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/address_area"
+                        android:textColor="#000000"
+                        android:textSize="16dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_toRightOf="@id/add_address_address"
+                    android:layout_height="50dp"
+                    android:background="#ffffff"
+                    android:gravity="center_vertical"
+                    android:hint="请选择收货人地址"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:singleLine="true"
+                    android:textColor="#000000"
+                    android:textSize="16dp"
+                        />
+
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/accsessory_arrow_right" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.1dp"
+                    android:background="#c4c4c4" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:text="门牌号"
+                        android:gravity="center_vertical"
+                        android:textSize="16sp"
+                        />
+                <EditText
+                    android:id="@+id/add_address_detail"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+
+                    android:background="#ffffff"
+                    android:gravity="center_vertical"
+                    android:hint="@string/address_address"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:singleLine="true"
+                    android:maxLines="200"
+                    android:textColor="#000000"
+                    android:textSize="16dp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/add_address_add"
+                android:visibility="gone"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_red"
+                android:layout_marginBottom="20dp">
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="40dp"
+                    android:text="@string/address_add"
+                    android:textColor="#ffffff"
+                    android:textSize="20dp" />
+            </FrameLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

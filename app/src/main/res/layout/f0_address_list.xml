@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg"
+    android:orientation="vertical" >
+
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <ListView
+            android:id="@+id/address_manage_list"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
+            android:background="@color/white"
+            android:divider="@color/common_bg"
+            android:dividerHeight="1dp"
+            android:footerDividersEnabled="true"
+            android:headerDividersEnabled="false"
+            android:visibility="gone"
+             >
+        </ListView>
+
+        <RelativeLayout
+            android:id="@+id/address_list_bg"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#ffffff"
+            android:visibility="visible" >
+            <ImageView
+                android:id="@+id/address_null"
+                android:layout_marginTop="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_address_null"
+                />
+            <Button
+                android:id="@+id/address_null_add"
+                style="@style/tvStyle.Common.large"
+                android:text="添加地址"
+                android:textColor="@color/white"
+                android:background="@drawable/btn_cyan"
+                android:layout_below="@id/address_null"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="30dp"
+                />
+        </RelativeLayout>
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.insthub.ecmobile.component.ProductsCell
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <TextView
+        android:id="@+id/cell_products_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_index_discount_title"
+        android:text="我爱打折"
+        android:textColor="@color/white"
+        style="@style/tvStyle.Common.max"
+        android:gravity="left|center_vertical"
+        android:drawableLeft="@drawable/ic_index_discount_left"
+        />
+    <com.insthub.ecmobile.component.CustomGridView
+        android:id="@+id/cell_products_gv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ></com.insthub.ecmobile.component.CustomGridView>
+
+</com.insthub.ecmobile.component.ProductsCell>

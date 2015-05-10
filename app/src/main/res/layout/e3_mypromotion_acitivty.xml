@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="@color/common_bg"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout
+            android:id="@+id/e3_promotion_scan"
+            android:layout_marginTop="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            android:background="@color/white"
+            >
+        <ImageView
+                android:layout_marginLeft="@dimen/common_margin_leftright"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/ic_scan_code"
+                />
+        <TextView
+                android:layout_marginLeft="40dp"
+                style="@style/tvStyle.Common.mid"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:textColor="@color/TextColorGray"
+                android:text="扫描优惠卷"
+                />
+        <ImageView
+                android:layout_marginRight="@dimen/common_margin_leftright"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_arrow_right"
+                />
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+    <ListView
+            android:id="@+id/e3_promotion_listview"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:divider="@color/common_bg"
+            android:dividerHeight="5dp"
+            android:scrollbars="none"
+            android:layout_width="match_parent" android:layout_height="match_parent"></ListView>
+        <LinearLayout
+                android:id="@+id/e3_promotion_none"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerInParent="true"
+                android:gravity="center_horizontal"
+                        android:layout_height="wrap_content">
+            <ImageView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="center"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_no_promotion"
+                    android:layout_marginBottom="40dp"
+                    />
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+
+                    android:text="目前您没有优惠卷"
+                    />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:background="@drawable/ic_promotion_bg"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:orientation="vertical"
+            android:layout_centerVertical="true"
+                  android:layout_marginLeft="20dp"
+                  android:gravity="center_horizontal"
+            >
+        <TextView
+                android:id="@+id/e3_promotion_item_price"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="10元"
+                android:textColor="@color/white"
+                />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:textColor="@color/white"
+                  android:text="优惠卷"/>
+    </LinearLayout>
+    <LinearLayout
+            android:layout_marginLeft="100dp"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:layout_width="match_parent"
+                  android:layout_height="wrap_content">
+        <TextView
+                android:id="@+id/e3_promotion_item_type"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                style="@style/tvStyle.Common.large"
+                android:textColor="@color/TextColorBlack"
+                android:text="购买任意商品均可以使用"
+                />
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:id="@+id/e3_promotion_item_start"
+                      style="@style/tvStyle.Common.mid"
+                      android:textColor="@color/TextColorGray"
+                      android:text="有效期 2015.1.1 10:00"
+                    />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:id="@+id/e3_promotion_item_end"
+                      android:layout_below="@id/e3_promotion_item_start"
+                      android:layout_alignRight="@id/e3_promotion_item_start"
+                      style="@style/tvStyle.Common.mid"
+                      android:textColor="@color/TextColorGray"
+                      android:text="至 2015.2.1 12:00"
+                    />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</RelativeLayout>

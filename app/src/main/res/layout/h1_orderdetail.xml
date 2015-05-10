@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/common_bg"
+
+        >
+
+<LinearLayout
+
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <LinearLayout
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/item_height_min"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:orientation="horizontal" >
+
+            <TextView
+                    style="@style/tvStyle.Common.mid"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/TextColorBlack"
+                    android:text="订单状态："
+                    />
+            <TextView
+                    android:id="@+id/trade_item_status"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/TextColorBlack"
+                    style="@style/tvStyle.Common.mid"
+
+                    android:text="等待确认"
+                    />
+
+        </RelativeLayout>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/item_height_min"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:orientation="horizontal" >
+
+            <TextView
+                    style="@style/tvStyle.Common.mid"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/TextColorBlack"
+                    android:text="建立时间："
+                    />
+            <TextView
+                    android:id="@+id/trade_item_time"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/TextColorBlack"
+                    style="@style/tvStyle.Common.mid"
+
+                    tools:text="等待确认"
+                    />
+
+        </RelativeLayout>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/item_height_min"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:orientation="horizontal" >
+
+            <TextView
+                    style="@style/tvStyle.Common.mid"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/TextColorBlack"
+                    android:text="订单数量："
+                    />
+            <TextView
+                    android:id="@+id/trade_item_count"
+
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    style="@style/tvStyle.Common.mid"
+
+                    android:textColor="@color/text_red"
+                    />
+
+        </RelativeLayout>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/item_height_min"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:orientation="horizontal" >
+
+            <TextView
+                    style="@style/tvStyle.Common.mid"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/TextColorBlack"
+                    android:text="订单金额："
+                    />
+            <TextView
+                    android:id="@+id/trade_item_total"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    style="@style/tvStyle.Common.mid"
+
+                    android:textColor="@color/text_red"
+                    />
+
+        </RelativeLayout>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/item_height_min"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:orientation="horizontal" >
+
+            <TextView
+                    style="@style/tvStyle.Common.mid"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/TextColorBlack"
+                    android:text="优惠金额："
+                    />
+            <TextView
+                    android:id="@+id/trade_item_redPaper"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/text_red"
+                    style="@style/tvStyle.Common.mid"
+
+                    tools:text="等待确认"
+                    />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+            style="@style/tvStyle.Common.large"
+            android:text="已购商品"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height"
+            />
+    <View android:layout_width="match_parent" android:layout_height="1px"
+            android:background="@color/grey"
+            ></View>
+    <ListView
+            android:id="@+id/h1_orderdetail_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:dividerHeight="1px"
+            android:divider="@color/grey"
+            ></ListView>
+
+</LinearLayout>
+    <Button
+            android:id="@+id/h1_orderdetail_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_height_min"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:background="@drawable/btn_red"
+            android:text="取消订单"
+            android:layout_alignParentBottom="true"
+            android:enabled="false"
+            android:textColor="@color/white"
+            />
+</RelativeLayout>

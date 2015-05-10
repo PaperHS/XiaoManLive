@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.insthub.ecmobile.activity.Main2Activity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:background="@color/main_color"
+        >
+    </android.support.v7.widget.Toolbar>
+    <com.insthub.ecmobile.component.PagerSlidingTabStrip
+        android:id="@+id/main_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        >
+    </com.insthub.ecmobile.component.PagerSlidingTabStrip>
+   <android.support.v4.view.ViewPager
+       android:id="@+id/main_vierpager"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       ></android.support.v4.view.ViewPager>
+</LinearLayout>

@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.insthub.ecmobile"
+    android:versionCode="5"
+    android:versionName="3.1" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="21" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <!-- 【必须】 信鸽SDK所需权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 【可选】 信鸽SDK所需权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BATTERY_STATS" />
+
+    <android:uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+
+    <application
+        android:name=".EcmobileApp"
+        android:allowBackup="false"
+        android:icon="@drawable/ic_luncher"
+        android:label="@string/app_name"
+        android:logo="@drawable/icon"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme.Main" >
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="ecmobile.db" />
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="4" />
+
+        <activity
+            android:name=".activity.EcmobileMainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" >
+        </activity>
+        <activity
+            android:name="com.insthub.BeeFramework.activity.StartActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustPan" >
+
+        </activity>
+        <activity
+            android:name=".activity.A0_SigninActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.A1_SignupActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+        <activity
+            android:name=".activity.B1_ProductListActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activity.B2_ProductDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activity.B3_ProductPhotoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.B4_ProductParamActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.B5_ProductCommentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.B6_ProductDescActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.C0_ShoppingCartActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.C1_CheckOutActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ContentOverlay" />
+        <activity
+            android:name=".activity.C1_CheckOutActivity1"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.C2_PaymentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.C3_DistributionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.C4_InvoiceActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".activity.C5_BonusActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.C6_RedEnvelopeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.D1_CategoryActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity android:name=".activity.D2_FilterActivity" >
+        </activity>
+        <activity
+            android:name=".activity.E4_HistoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.E5_CollectionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.E6_ShippingStatusActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.F0_AddressListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.F1_NewAddressActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activity.F2_EditAddressActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activity.F3_RegionPickActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/dialog" />
+        <activity
+            android:name=".activity.G0_SettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.G1_HelpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.G2_InfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.GalleryImageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AppOutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AppExpiredAcitivty"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ShareActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/dialog" >
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.PayWebActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.HelpWebActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BannerWebActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.NoActionBar" />
+        <activity
+            android:name=".activity.ShareWebActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SpecificationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/dialog" />
+        <activity
+            android:name="com.insthub.BeeFramework.activity.FullScreenPhotoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.insthub.BeeFramework.activity.WebViewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ShareTencentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.insthub.BeeFramework.activity.ActivityLifeCycleActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.insthub.BeeFramework.activity.MemoryMessageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.insthub.BeeFramework.activity.DebugMessageListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.insthub.BeeFramework.activity.CrashLogActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.insthub.BeeFramework.activity.CrashLogDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.insthub.BeeFramework.activity.DebugCancelDialogActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/dialog" />
+        <activity
+            android:name="com.insthub.BeeFramework.activity.DebugDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.insthub.BeeFramework.activity.DebugTabActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.insthub.BeeFramework.activity.FloatViewSettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AlixPayActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity
+            android:name=".activity.OtherPayWebActivity"
+            android:screenOrientation="portrait" />
+
+        <service android:name="com.insthub.BeeFramework.service.MemoryService" >
+            <intent-filter android:priority="1000" >
+                <action android:name="com.insthub.BeeFramework.service.MemoryService" />
+            </intent-filter>
+        </service>
+        <service android:name="com.insthub.BeeFramework.service.NetworkStateService" >
+            <intent-filter android:priority="1000" >
+                <action android:name="com.BeeFramework.NetworkStateService" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name="com.tencent.weibo.sdk.android.component.PublishActivity"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.tencent.weibo.sdk.android.component.GeneralInterfaceActivity"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.tencent.weibo.sdk.android.component.ConversationActivity"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.tencent.weibo.sdk.android.component.FriendActivity"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity android:name="com.tencent.weibo.sdk.android.component.Authorize" >
+        </activity>
+        <activity android:name="com.tencent.weibo.sdk.android.component.GeneralDataShowActivity" >
+        </activity>
+        <activity android:name="com.tencent.weibo.sdk.android.component.ReAddActivity" >
+        </activity>
+        <activity
+            android:name="com.alipay.android.app.sdk.WapPayActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.unionpay.uppay.PayActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:excludeFromRecents="true"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.UPPay" >
+        </activity>
+        <activity
+            android:name="com.unionpay.uppay.PayActivityEx"
+            android:configChanges="orientation|keyboardHidden"
+            android:excludeFromRecents="true"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.UPPay"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <activity
+            android:name=".activity.D0_Category1Activity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.D1_CategoryAllAcitivty"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.D0_Category2Activity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.ShopCartActivity" />
+        <activity
+            android:name=".activity.D1_CategoryAll2Activity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.E1_SelfInfoAcitvity" />
+        <activity android:name=".activity.E1_FixNameAcitivty" />
+        <activity android:name=".activity.E4_ShareAcitivty" />
+        <activity android:name=".activity.E3_MyPromotionAcitivity" />
+        <activity android:name=".activity.E5_SettingAcitivity" />
+        <activity android:name=".activity.H1_OrderDetailActivity" />
+        <activity
+            android:name=".activity.SearchActivity"
+            android:theme="@style/Theme.NoActionBar" />
+        <!-- push service client -->
+        <receiver android:name="com.insthub.BeeFramework.service.PushMessageReceiver" >
+            <intent-filter>
+
+                <!-- 接收push消息 -->
+                <action android:name="com.baidu.android.pushservice.action.MESSAGE" />
+                <!-- 接收bind,unbind,fetch,delete等反馈消息 -->
+                <action android:name="com.baidu.android.pushservice.action.RECEIVE" />
+                <action android:name="com.baidu.android.pushservice.action.notification.CLICK" />
+            </intent-filter>
+        </receiver>
+
+        <!-- push service -->
+        <receiver
+            android:name="com.baidu.android.pushservice.PushServiceReceiver"
+            android:process=":bdservice_v1" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="com.baidu.android.pushservice.action.notification.SHOW" />
+                <action android:name="com.baidu.android.pushservice.action.media.CLICK" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.baidu.android.pushservice.RegistrationReceiver"
+            android:process=":bdservice_v1" >
+            <intent-filter>
+                <action android:name="com.baidu.android.pushservice.action.METHOD" />
+                <action android:name="com.baidu.android.pushservice.action.BIND_SYNC" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.baidu.android.pushservice.PushService"
+            android:exported="true"
+            android:process=":bdservice_v1" />
+
+        <!-- 【必须】 信鸽receiver广播接收 -->
+        <receiver
+            android:name="com.tencent.android.tpush.XGPushReceiver"
+            android:process=":xg_service_v2" >
+            <intent-filter android:priority="0x7fffffff" >
+
+                <!-- 【必须】 信鸽SDK的内部广播 -->
+                <action android:name="com.tencent.android.tpush.action.SDK" />
+                <action android:name="com.tencent.android.tpush.action.INTERNAL_PUSH_MESSAGE" />
+                <!-- 【必须】 系统广播：开屏和网络切换 -->
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+
+                <!-- 【可选】 一些常用的系统广播，增强信鸽service的复活机会，请根据需要选择。当然，你也可以添加APP自定义的一些广播让启动service -->
+                <action android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 【必须】 (2.30及以上版新增)展示通知的activity -->
+        <!-- 【注意】 如果被打开的activity是启动模式为SingleTop，SingleTask或SingleInstance，请根据通知的异常自查列表第8点处理 -->
+        <activity
+            android:name="com.tencent.android.tpush.XGPushActivity"
+            android:exported="true" >
+            <intent-filter>
+
+                <!-- 若使用AndroidStudio，请设置android:name="android.intent.action" -->
+                <action android:name="android.intent.action" />
+            </intent-filter>
+        </activity>
+
+        <!-- 【必须】 信鸽service -->
+        <service
+            android:name="com.tencent.android.tpush.service.XGPushService"
+            android:exported="true"
+            android:persistent="true"
+            android:process=":xg_service_v2" />
+
+        <!-- 【必须】 通知service，此选项有助于提高抵达率 -->
+        <service
+            android:name="com.tencent.android.tpush.rpc.XGRemoteService"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.insthub.ecmobile.PUSH_ACTION" />
+            </intent-filter>
+        </service>
+
+        <!-- 【必须】 请将YOUR_ACCESS_ID修改为APP的AccessId，“21”开头的10位数字，中间没空格 -->
+        <meta-data
+            android:name="XG_V2_ACCESS_ID"
+            android:value="2100103039" />
+        <!-- 【必须】 请将YOUR_ACCESS_KEY修改为APP的AccessKey，“A”开头的12位字符串，中间没空格 -->
+        <meta-data
+            android:name="XG_V2_ACCESS_KEY"
+            android:value="A6SEENQ2455I" />
+
+        <activity
+            android:name=".activity.Main2Activity"
+            android:label="@string/app_name" >
+<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>        </activity>
+    </application>
+
+</manifest>

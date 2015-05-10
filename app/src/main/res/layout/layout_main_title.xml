@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <TextView
+        android:id="@+id/title_address"
+        style="@style/ActionBar.title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text=" 送至 重庆市 "
+        android:drawableLeft="@drawable/ic_action_circle"
+        android:drawableRight="@drawable/ic_action_down"
+        />
+    <ImageView
+        android:id="@+id/title_person"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_icon_person"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        />
+</RelativeLayout>
