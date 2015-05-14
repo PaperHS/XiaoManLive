@@ -22,6 +22,7 @@ import com.insthub.ecmobile.activity.B2_ProductDetailActivity;
 import com.insthub.ecmobile.activity.BannerWebActivity;
 import com.insthub.ecmobile.adapter.B0_IndexAdapterNew;
 import com.insthub.ecmobile.adapter.Bee_PageAdapter;
+import com.insthub.ecmobile.adapter.ShopAdapter2;
 import com.insthub.ecmobile.model.ADModel;
 import com.insthub.ecmobile.model.FirstLvModel;
 import com.insthub.ecmobile.model.SearchModel;
@@ -181,13 +182,28 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
         mIndicator.setViewPager(bannerViewPager);
 
         fragmentListView.addHeaderView(bannerView);
-        if (mTitle.equals("微商优选")){
+        if (mTitle.equals("富国超市")){
             listAdapter = new B0_IndexAdapterNew(getActivity(),firstLvModel,new SearchModel(getActivity()));
+            adModel.fetchADs(1);
+            firstLvModel.fetchFirstRecom(1, 10, 0);
+            firstLvModel.fetchLvCategory(14);
+        }else if (mTitle.equals("新马路菜市场")){
+            listAdapter = new ShopAdapter2(getActivity(),firstLvModel,new SearchModel(getActivity()));
+            adModel.fetchADs(2);
+            firstLvModel.fetchFirstRecom(2,10,0);
+        }else if (mTitle.equals("鲜果园")){
+            adModel.fetchADs(3);
+        }else if (mTitle.equals("微商优选")){
+            adModel.fetchADs(4);
+        }else if (mTitle.equals("福田及时送")){
+            adModel.fetchADs(5);
         }
         fragmentListView.setAdapter(listAdapter);
-        adModel.fetchADs(1);
-        firstLvModel.fetchFirstRecom(1, 10, 0);
-        firstLvModel.fetchLvCategory(14);
+        fragmentListView.setPullRefreshEnable(false);
+        fragmentListView.setPullLoadEnable(false);
+
+
+
     }
 
      public void addBannerView()

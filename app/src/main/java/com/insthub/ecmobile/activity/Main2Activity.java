@@ -13,6 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.insthub.ecmobile.R;
 import com.insthub.ecmobile.adapter.MainPageAdapter;
@@ -33,25 +35,36 @@ public class Main2Activity extends ActionBarActivity {
     PagerSlidingTabStrip mainIndicator;
     @InjectView(R.id.main_vierpager)
     ViewPager mainVierpager;
+    TextView titleAddress;
+    ImageView titlePerson;
     private List<ShopFragment> mShopFragments;
     private MainPageAdapter mainPageAdapter;
-private SharedPreferences shared;
+    private SharedPreferences shared;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-         shared = getSharedPreferences("userInfo", 0);
+        shared = getSharedPreferences("userInfo", 0);
         String uid = shared.getString("uid", "");
 
-         if (TextUtils.isEmpty(uid)){
-            startActivity(new Intent(this,A0_SigninActivity.class));
+        if (TextUtils.isEmpty(uid)) {
+            startActivity(new Intent(this, A0_SigninActivity.class));
             this.finish();
-             return;
+            return;
         }
         ButterKnife.inject(this);
 
-        View tv= LayoutInflater.from(this).inflate(R.layout.layout_main_title,null);
-
+        View tv = LayoutInflater.from(this).inflate(R.layout.layout_main_title, null);
+        titleAddress = (TextView)tv.findViewById(R.id.title_address);
+        titlePerson = (ImageView)tv.findViewById(R.id.title_person);
+        titlePerson.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(Main2Activity.this,S1_SelfInfoAcitivity.class);
+                startActivity(it);
+            }
+        });
         Toolbar.LayoutParams params = new Toolbar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         params.gravity = Gravity.CENTER_VERTICAL;
         toolbar.addView(tv, params);
@@ -65,14 +78,15 @@ private SharedPreferences shared;
 
     private void init() {
         mShopFragments = new ArrayList<>();
-        mShopFragments.add(ShopFragment.newInstance("乐购超市",R.drawable.ic_shop1));
-        mShopFragments.add(ShopFragment.newInstance("新马路菜市场",R.drawable.ic_shop2));
-        mShopFragments.add(ShopFragment.newInstance("鲜果园",R.drawable.ic_shop3));
-        mShopFragments.add(ShopFragment.newInstance("微商优选",R.drawable.ic_shop4));
-        mainPageAdapter = new MainPageAdapter(getSupportFragmentManager(),mShopFragments);
+        mShopFragments.add(ShopFragment.newInstance("富国超市", R.drawable.ic_shop1));
+        mShopFragments.add(ShopFragment.newInstance("新马路菜市场", R.drawable.ic_shop2));
+        mShopFragments.add(ShopFragment.newInstance("鲜果园", R.drawable.ic_shop3));
+        mShopFragments.add(ShopFragment.newInstance("微商优选", R.drawable.ic_shop4));
+        mShopFragments.add(ShopFragment.newInstance("福田及时送", R.drawable.ic_shop4));
+        mainPageAdapter = new MainPageAdapter(getSupportFragmentManager(), mShopFragments);
         mainVierpager.setAdapter(mainPageAdapter);
         mainIndicator.setIndicatorColorResource(R.color.main_color);
-        mainIndicator.setTextSize(18);
+        mainIndicator.setTextSize(14);
         mainIndicator.setViewPager(mainVierpager);
 
     }

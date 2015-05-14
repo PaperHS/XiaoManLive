@@ -31,27 +31,26 @@ package com.insthub.BeeFramework.model;
  *	IN THE SOFTWARE.
  */
 
-import java.util.ArrayList;
-
-import android.content.res.Resources;
-import android.util.Log;
-import com.insthub.ecmobile.ErrorCodeConst;
-import com.insthub.ecmobile.fragment.E0_ProfileFragment;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.util.Log;
 import android.view.Gravity;
-import android.widget.Toast;
 
 import com.external.androidquery.callback.AjaxStatus;
 import com.insthub.BeeFramework.view.ToastView;
+import com.insthub.ecmobile.ErrorCodeConst;
 import com.insthub.ecmobile.R;
 import com.insthub.ecmobile.activity.A0_SigninActivity;
+import com.insthub.ecmobile.fragment.E0_ProfileFragment;
 import com.insthub.ecmobile.protocol.SESSION;
 import com.insthub.ecmobile.protocol.STATUS;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class BaseModel implements BusinessResponse{
 
@@ -98,7 +97,7 @@ public class BaseModel implements BusinessResponse{
     //公共的错误处理
     public void callback(String url, JSONObject jo, AjaxStatus status)
     {
-        Log.e("hshs","httpRe:"+jo);
+        Log.d("http","httpRe:"+jo);
         if (null == jo)
         {
             ToastView toast = new ToastView(mContext,"网络错误，请检查网络设置");
