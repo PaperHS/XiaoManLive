@@ -127,6 +127,7 @@
         <item name="android:selectableItemBackground">@null</item>
 
     </style>
+
     <style name="Theme.UPPay" parent="android:style/Theme.Light">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowContentOverlay">@null</item>
@@ -140,11 +141,16 @@
     </style>
     <style name="ActionBar.XM" parent="android:Widget.ActionBar">
 
+        <item name="theme">@style/ThemeOverlay.MyApp.ActionBar</item>
+
         <item name="android:colorBackground">@color/main_color</item>
         <item name="android:background">@color/main_color</item>
         <item name="android:titleTextStyle">@style/ActionBar.title</item>
         <item name="android:displayOptions">homeAsUp|disableHome|showTitle</item>
         <item name="android:homeAsUpIndicator">@drawable/ic_arraw_left</item>
+    </style>
+    <style name="ThemeOverlay.MyApp.ActionBar" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:textColorPrimary">@color/white</item>
     </style>
     <style name="ActionBar.title" parent="android:Widget.ActionBar.TabText">
         <item name="android:textColor">@color/white</item>

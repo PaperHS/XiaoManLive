@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:background="@color/white"
+    android:padding="10dp"
+    >
+    <ImageView
+        android:id="@+id/category_name"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        tools:src="@drawable/ic_shop1"
+        />
+    <TextView
+        android:id="@+id/category_title"
+        style="@style/tvStyle.Common.large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/category_name"
+        android:layout_alignTop="@id/category_name"
+        tools:text="田园时光"
+        />
+    <TextView
+        android:id="@+id/category_desc"
+        style="@style/tvStyle.Common.min"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/category_name"
+        android:layout_alignBottom="@id/category_name"
+        tools:text="苹果 句子 例子"
+        />
+</RelativeLayout>

@@ -13,12 +13,12 @@ package com.insthub.ecmobile;
 //  Powered by BeeFramework
 //
 
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+
 import com.insthub.BeeFramework.BeeFrameworkApp;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 public class EcmobileApp extends BeeFrameworkApp
 {
@@ -47,5 +47,7 @@ public class EcmobileApp extends BeeFrameworkApp
                 .cacheOnDisc(true)							// 设置下载的图片是否缓存在SD卡中
                         //.displayer(new RoundedBitmapDisplayer(30))	// 设置成圆角图片
                 .build();
+        ImageLoaderConfiguration configuration = ImageLoaderConfiguration.createDefault(this);
+        ImageLoader.getInstance().init(configuration);
     }
 }

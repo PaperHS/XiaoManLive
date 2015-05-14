@@ -21,10 +21,12 @@ import com.insthub.BeeFramework.model.BeeCallback;
 import com.insthub.BeeFramework.view.MyProgressDialog;
 import com.insthub.ecmobile.R;
 import com.insthub.ecmobile.protocol.ApiInterface;
+import com.insthub.ecmobile.protocol.CATEGORYNEW;
 import com.insthub.ecmobile.protocol.FILTER;
 import com.insthub.ecmobile.protocol.PAGINATED;
 import com.insthub.ecmobile.protocol.PAGINATION;
 import com.insthub.ecmobile.protocol.SIMPLEGOODS;
+import com.insthub.ecmobile.protocol.categoryResponseNew;
 import com.insthub.ecmobile.protocol.firstLvRecomRequest;
 import com.insthub.ecmobile.protocol.firstLvRecomResponse;
 import com.insthub.ecmobile.protocol.searchRequest;
@@ -40,7 +42,7 @@ import java.util.Map;
 public class FirstLvModel extends BaseModel {
 
     public ArrayList<SIMPLEGOODS> simplegoodsList = new ArrayList<SIMPLEGOODS>();
-
+    public ArrayList<CATEGORYNEW> categoryList = new ArrayList<CATEGORYNEW>();
     public static String PRICE_DESC = "price_desc";
     public static String PRICE_ASC = "price_asc";
     public static String IS_HOT = "is_hot";
@@ -102,6 +104,54 @@ public class FirstLvModel extends BaseModel {
     }
 
     public void fetchBuyRecord(){
+
+    }
+
+    public void fetchLvCategory(int cat_id){
+        BeeCallback<JSONObject> cb = new BeeCallback<JSONObject>() {
+
+            @Override
+            public void callback(String url, JSONObject jo, AjaxStatus status) {
+                FirstLvModel.this.callback(url, jo, status);
+                try {
+                    categoryResponseNew response = new categoryResponseNew();
+                    response.fromJson(jo);
+                    if (jo != null) {
+
+                        if (response.status.succeed == 1) {
+                            ArrayList<CATEGORYNEW> data = response.data;
+
+                            categoryList.clear();
+                            if (null != data && data.size() > 0) {
+                                categoryList.clear();
+                                categoryList.addAll(data);
+
+                            }
+
+                            FirstLvModel.this.OnMessageResponse(url, jo, status);
+                        }
+                    }
+
+                } catch (JSONException e) {
+                    // TODO: handle exception
+                }
+
+            }
+        };
+
+
+      Map<String, String> params = new HashMap<String, String>();
+        try {
+            JSONObject object = new JSONObject();
+            object.put("cat_id",cat_id);
+            params.put("json", object.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        cb.url(ApiInterface.PRODUCT_CATEGORY).type(JSONObject.class).params(params);
+        MyProgressDialog pd = new MyProgressDialog(mContext, mContext.getResources().getString(R.string.hold_on));
+        aq.ajax(cb);
+
 
     }
 

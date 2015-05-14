@@ -46,6 +46,7 @@ public class ApiInterface
      public static final String CATEGORY  ="/category";
      public static final String FLOW_CHECKORDER  ="/flow/checkOrder";
      public static final String PRODUCT_CATBESTLIST  ="/product/cat_best_list";
+     public static final String PRODUCT_CATEGORY  ="/category/cat_child";
      public static final String HOME_AD  ="/ad/ad_list";
 
 }

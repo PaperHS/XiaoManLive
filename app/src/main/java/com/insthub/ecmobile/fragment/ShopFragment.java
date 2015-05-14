@@ -23,7 +23,7 @@ import com.insthub.ecmobile.activity.BannerWebActivity;
 import com.insthub.ecmobile.adapter.B0_IndexAdapterNew;
 import com.insthub.ecmobile.adapter.Bee_PageAdapter;
 import com.insthub.ecmobile.model.ADModel;
-import com.insthub.ecmobile.model.HomeModel;
+import com.insthub.ecmobile.model.FirstLvModel;
 import com.insthub.ecmobile.model.SearchModel;
 import com.insthub.ecmobile.protocol.AD;
 import com.insthub.ecmobile.protocol.ApiInterface;
@@ -66,6 +66,7 @@ public class ShopFragment extends Fragment implements BusinessResponse{
     private View mTouchTarget;
 
     private ADModel adModel;
+    private FirstLvModel firstLvModel;
 protected ImageLoader imageLoader = ImageLoader.getInstance();
     public String getTitle() {
         return getArguments().getString(ARG_PARAM1);
@@ -110,6 +111,9 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
             mIcon = getArguments().getInt(ARG_PARAM2);
         }
         adModel = new ADModel(getActivity());
+        adModel.addResponseListener(this);
+        firstLvModel = new FirstLvModel(getActivity());
+        firstLvModel.addResponseListener(this);
 
     }
 
@@ -178,9 +182,12 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
 
         fragmentListView.addHeaderView(bannerView);
         if (mTitle.equals("微商优选")){
-            listAdapter = new B0_IndexAdapterNew(getActivity(),new HomeModel(getActivity()),new SearchModel(getActivity()));
+            listAdapter = new B0_IndexAdapterNew(getActivity(),firstLvModel,new SearchModel(getActivity()));
         }
         fragmentListView.setAdapter(listAdapter);
+        adModel.fetchADs(1);
+        firstLvModel.fetchFirstRecom(1, 10, 0);
+        firstLvModel.fetchLvCategory(14);
     }
 
      public void addBannerView()
@@ -280,7 +287,7 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
         }
 
         mIndicator.notifyDataSetChanged();
-        mIndicator.setCurrentItem(0);
+//        mIndicator.setCurrentItem(0);
         bannerPageAdapter.mListViews = bannerListView;
         bannerViewPager.setAdapter(bannerPageAdapter);
 
@@ -301,8 +308,12 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
 
     @Override
     public void OnMessageResponse(String url, JSONObject jo, AjaxStatus status) throws JSONException {
-        if (url.startsWith(ApiInterface.HOME_AD)){
+        if (url.endsWith(ApiInterface.HOME_AD)){
             addBannerView();
+        }else if (url.endsWith(ApiInterface.PRODUCT_CATBESTLIST)){
+            listAdapter.notifyDataSetChanged();
+        }else if(url.endsWith(ApiInterface.PRODUCT_CATEGORY)){
+            listAdapter.notifyDataSetChanged();
         }
     }
 }

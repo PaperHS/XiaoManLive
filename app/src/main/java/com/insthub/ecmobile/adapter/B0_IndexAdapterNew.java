@@ -25,17 +25,14 @@ import com.insthub.ecmobile.component.CategorySellingCell;
 import com.insthub.ecmobile.component.FeatureSellCell;
 import com.insthub.ecmobile.component.FunctionCell;
 import com.insthub.ecmobile.component.HotSellingCell;
+import com.insthub.ecmobile.component.NewCategoryCell;
 import com.insthub.ecmobile.component.ProductsCell;
 import com.insthub.ecmobile.component.SearchCell;
 import com.insthub.ecmobile.component.SepcialCagegoryCell;
-import com.insthub.ecmobile.model.HomeModel;
+import com.insthub.ecmobile.model.FirstLvModel;
 import com.insthub.ecmobile.model.SearchModel;
-import com.insthub.ecmobile.protocol.CATEGORY;
-import com.insthub.ecmobile.protocol.CATEGORYGOODS;
-import com.insthub.ecmobile.protocol.SIMPLEGOODS;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class B0_IndexAdapterNew extends BeeBaseAdapter
 {
@@ -48,16 +45,16 @@ public class B0_IndexAdapterNew extends BeeBaseAdapter
 	protected static final int TYPE_FEATURE = 5;
     protected static final int TYPE_SEARCH = 7;
     protected static final int TYPE_PRODUCTS = 8;
-
-	private HomeModel dataModel;
+    protected static final int TYPE_NEWCATEGORY = 9;
+	private FirstLvModel firstLvModel;
 	private SearchModel searchModel;
 	public B0_IndexAdapterNew(Context c, ArrayList dataList) {
 		super(c, dataList);
 	}
 
-	public B0_IndexAdapterNew(Context c, HomeModel dataModel, SearchModel searchModel) {
-		super(c, dataModel.playersList);
-		this.dataModel = dataModel;
+	public B0_IndexAdapterNew(Context c, FirstLvModel firstLvModel, SearchModel searchModel) {
+		super(c, firstLvModel.simplegoodsList);
+		this.firstLvModel = firstLvModel;
         this.searchModel = searchModel;
 	}
 
@@ -76,7 +73,8 @@ public class B0_IndexAdapterNew extends BeeBaseAdapter
     public int getCount() 
     {
 
-        int count = 3  + dataModel.categorygoodsList.size();
+//        int count = 3  + dataModel.categorygoodsList.size();
+        int count = 4;
     	return count;
     }
     
@@ -104,7 +102,7 @@ public class B0_IndexAdapterNew extends BeeBaseAdapter
         if(position<1){
             return TYPE_SEARCH;
         }else if (position <2){
-            return TYPE_CATEGORY_SPECIAL;
+            return TYPE_NEWCATEGORY;
         }else if (position<4) {
             return TYPE_PRODUCTS;
         }else {
@@ -157,13 +155,13 @@ public class B0_IndexAdapterNew extends BeeBaseAdapter
                 return cellView;
             }
 
-            List<SIMPLEGOODS> itemList = null;
-
-            int distance =  dataModel.simplegoodsList.size() - position*2;
-            int cellCount = distance >= 2? 2:distance;
-
-            itemList = dataModel.simplegoodsList.subList(position*2,position*2+cellCount);
-            ((HotSellingCell)cellView).bindData(itemList);
+//            List<SIMPLEGOODS> itemList = null;
+//
+//            int distance =  dataModel.simplegoodsList.size() - position*2;
+//            int cellCount = distance >= 2? 2:distance;
+//
+//            itemList = dataModel.simplegoodsList.subList(position*2,position*2+cellCount);
+//            ((HotSellingCell)cellView).bindData(itemList);
 
 		}    
         else if (TYPE_CATEGORYSELL == getItemViewRealType(position))
@@ -177,20 +175,17 @@ public class B0_IndexAdapterNew extends BeeBaseAdapter
                 return cellView;
             }
 
-            List<SIMPLEGOODS> itemList = null;
 
-
-//            int realPosition = position -  (int)Math.ceil(dataModel.simplegoodsList.size()*1.0/2);
-            int realPosition = position -  3;
-
-            CATEGORYGOODS categorygoods =  dataModel.categorygoodsList.get(realPosition);
-            CATEGORY category = new CATEGORY();
-
-            if (searchModel.categoryArrayList.size()>0){
-                category = searchModel.categoryArrayList.get(realPosition);
-            }
-            ((CategorySellingCell) cellView).bindData(categorygoods,category);
-            
+//            int realPosition = position -  3;
+//
+//            CATEGORYGOODS categorygoods =  dataModel.categorygoodsList.get(realPosition);
+//            CATEGORY category = new CATEGORY();
+//
+//            if (searchModel.categoryArrayList.size()>0){
+//                category = searchModel.categoryArrayList.get(realPosition);
+//            }
+//            ((CategorySellingCell) cellView).bindData(categorygoods,category);
+//
 		}else if (TYPE_FUNCTION == getItemViewRealType(position)){
             if (null == cellView || cellView.getClass()!= FunctionCell.class){
                 cellView = (FunctionCell)LayoutInflater.from(mContext).inflate(R.layout.b0_index_funcion_cell,null);
@@ -211,41 +206,47 @@ public class B0_IndexAdapterNew extends BeeBaseAdapter
             }else {
                 return cellView;
             }
-            List<SIMPLEGOODS> itemList = null;
-
-
-//            int realPosition = position -  (int)Math.ceil(dataModel.simplegoodsList.size()*1.0/2);
-            int realPosition = position -  3;
-
-            CATEGORYGOODS categorygoods =  dataModel.categorygoodsList.get(realPosition);
-            CATEGORY category = new CATEGORY();
-
-            if (searchModel.categoryArrayList.size()>2){
-                category = searchModel.categoryArrayList.get(realPosition);
-                ((SepcialCagegoryCell) cellView).bindData(categorygoods, category,searchModel);
-
-            }
+//            List<SIMPLEGOODS> itemList = null;
+//
+//
+////            int realPosition = position -  (int)Math.ceil(dataModel.simplegoodsList.size()*1.0/2);
+//            int realPosition = position;
+//
+//            CATEGORYGOODS categorygoods =  dataModel.categorygoodsList.get(realPosition);
+//            CATEGORY category = new CATEGORY();
+//
+//            if (searchModel.categoryArrayList.size()>2){
+//                category = searchModel.categoryArrayList.get(realPosition);
+//                ((SepcialCagegoryCell) cellView).bindData(categorygoods, category,searchModel);
+//
+//            }
         }else if (TYPE_FEATURE == getItemViewRealType(position)){
             if (null == cellView || cellView.getClass()!= FeatureSellCell.class){
                 cellView = (FeatureSellCell)LayoutInflater.from(mContext).inflate(R.layout.b0_index_feature,null);
             }else {
                 return cellView;
             }
-            ((FeatureSellCell)cellView).bindData(dataModel.simplegoodsList);
+//            ((FeatureSellCell)cellView).bindData(dataModel.simplegoodsList);
             
         }else if(TYPE_PRODUCTS == getItemViewRealType(position)){
             if (null == cellView || cellView.getClass() != ProductsCell.class){
                 cellView = (ProductsCell)LayoutInflater.from(mContext).inflate(R.layout.b1_index_products_cell,null);
             }else {
-                return cellView;
+//                return cellView;
             }
-//            ((ProductsCell)cellView).bin
+            ((ProductsCell)cellView).bindDate(firstLvModel.simplegoodsList);
         }else if (TYPE_SEARCH == getItemViewRealType(position)){
             if (null == cellView || cellView.getClass() != SearchCell.class){
                 cellView = (SearchCell)LayoutInflater.from(mContext).inflate(R.layout.b1_index_search_cell,null);
             }else return cellView;
-
             //TODO
+        }else if (TYPE_NEWCATEGORY == getItemViewRealType(position)){
+            if (null == cellView || cellView.getClass() != NewCategoryCell.class){
+                cellView = (NewCategoryCell)LayoutInflater.from(mContext).inflate(R.layout.b1_index_newcategory_cell,null);
+            }else {
+
+            }
+            ((NewCategoryCell)cellView).bindDate(firstLvModel.categoryList);
         }
 
         return cellView;

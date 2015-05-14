@@ -8,8 +8,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.insthub.ecmobile.R;
-import com.insthub.ecmobile.adapter.CategorySecondAdapter;
-import com.insthub.ecmobile.protocol.SIMPLEGOODS;
+import com.insthub.ecmobile.adapter.CategoryNewAdapter;
+import com.insthub.ecmobile.protocol.CATEGORYNEW;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,17 +31,17 @@ import butterknife.InjectView;
  * <p/>
  * Created by Paper on 15-5-8 2015.
  */
-public class ProductsCell extends LinearLayout{
+public class NewCategoryCell extends LinearLayout{
     @InjectView(R.id.cell_products_title)
     TextView mCellTitle;
     @InjectView(R.id.cell_products_gv)
     CustomGridView mGv;
 
-    CategorySecondAdapter adapter;
-    private ArrayList<SIMPLEGOODS> datalist = new ArrayList<>();
+    CategoryNewAdapter adapter;
+    private ArrayList<CATEGORYNEW> datalist = new ArrayList<>();
     Handler mHandler;
     Context mContext;
-    public ProductsCell(Context context, AttributeSet attrs) {
+    public NewCategoryCell(Context context, AttributeSet attrs) {
         super(context, attrs);
           mHandler = new Handler(){
             @Override
@@ -57,7 +57,7 @@ public class ProductsCell extends LinearLayout{
 
     private void bindDataDelay() {
         init();
-        adapter = new CategorySecondAdapter(datalist);
+        adapter = new CategoryNewAdapter(datalist);
         mGv.setAdapter(adapter);
     }
 
@@ -66,11 +66,11 @@ public class ProductsCell extends LinearLayout{
         ButterKnife.inject(this);
     }
 
-    public void bindDate(List<SIMPLEGOODS> datalist){
+    public void bindDate(List<CATEGORYNEW> datalist){
         if (datalist !=null &&datalist.size()>0){
             this.datalist.clear();
             this.datalist.addAll(datalist);
-           mHandler.removeMessages(0);
+            mHandler.removeMessages(0);
             mHandler.sendEmptyMessageDelayed(0,30);
         }
     }

@@ -38,7 +38,8 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:layout_weight="1"
-            tools:text="@string/hot_sell_label"
+
+            android:text="@string/hot_sell_label"
             android:drawableTop="@drawable/ic_hotsell"
             />
         <TextView

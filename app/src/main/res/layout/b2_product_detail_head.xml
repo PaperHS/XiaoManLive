@@ -62,44 +62,45 @@
                         android:background="@color/white"
                         android:textSize="19dp" />
 
-                <LinearLayout
+                <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="70dp"
+                        android:paddingLeft="10dp"
                         android:paddingBottom="10dp"
                         android:background="@color/white"
-                        android:gravity="center"
-                        android:orientation="horizontal" >
+                    >
 
                     <TextView
                             android:id="@+id/promote_price"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
-                            android:gravity="center"
-                            android:textColor="#ff0000" />
-
-                    <LinearLayout
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="30dp"
-                            android:background="@color/white"
-                            android:orientation="horizontal" >
+                            android:textSize="20sp"
+                            android:textColor="#ff0000"
+                            tools:text="$100"
+                        />
 
                         <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="11sp" />
+                                android:textSize="18sp"
+                            android:textColor="@color/grey"
+                            android:layout_marginRight="@dimen/activity_horizontal_margin"
+                                android:layout_alignParentRight="true"
+                                android:layout_alignBottom="@id/promote_price"
+                                tools:text="销量100"
+                            />
 
                         <TextView
                                 android:id="@+id/market_price"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="7dp"
-                                android:textSize="11sp" />
-                    </LinearLayout>
-                </LinearLayout>
+                                android:layout_alignBottom="@id/promote_price"
+                                android:layout_toRightOf="@id/promote_price"
+                            android:layout_marginLeft="7dp"
+                                android:textSize="11sp"
+                                tools:text="$10"
+                            />
+                </RelativeLayout>
 
                 <TextView
                         android:visibility="gone"
@@ -157,6 +158,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:padding="0dp"
+                        android:visibility="gone"
                         android:gravity="center" >
 
                         <com.external.texthtml.HtmlTextView

@@ -32,23 +32,21 @@ package com.insthub.BeeFramework.activity;
  */
 
 import android.annotation.SuppressLint;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
-import com.insthub.BeeFramework.Utils.Utils;
+
 import com.insthub.BeeFramework.model.ActivityManagerModel;
 import com.insthub.BeeFramework.model.BusinessMessage;
 import com.insthub.ecmobile.R;
+
 import org.json.JSONException;
 
 @SuppressLint("NewApi")
-public class BaseActivity extends FragmentActivity implements Handler.Callback
+public class BaseActivity extends ActionBarActivity implements Handler.Callback
 {
     public Handler mHandler;
 

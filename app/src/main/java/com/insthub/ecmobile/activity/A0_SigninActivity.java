@@ -23,6 +23,7 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -33,9 +34,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
+
 import com.external.androidquery.callback.AjaxStatus;
 import com.insthub.BeeFramework.activity.BaseActivity;
 import com.insthub.BeeFramework.model.BusinessResponse;
@@ -44,9 +43,13 @@ import com.insthub.ecmobile.R;
 import com.insthub.ecmobile.fragment.E0_ProfileFragment;
 import com.insthub.ecmobile.model.LoginModel;
 import com.insthub.ecmobile.protocol.ApiInterface;
-import com.sina.weibo.sdk.utils.LogUtil;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
 
 
 public class A0_SigninActivity extends BaseActivity implements OnClickListener, BusinessResponse {
@@ -61,6 +64,8 @@ public class A0_SigninActivity extends BaseActivity implements OnClickListener, 
     Button mLoginComfirm;
     @InjectView(R.id.a0_signin_protrol)
     TextView mA0SigninProtrol;
+    @InjectView(R.id.toolbar)
+    Toolbar toolbar;
 
 //	private ImageView back;
 //	private Button login;
@@ -81,12 +86,15 @@ public class A0_SigninActivity extends BaseActivity implements OnClickListener, 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a0_signin);
         ButterKnife.inject(this);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("一键登录");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationIcon(R.drawable.ic_action_content_clear);
 
-        getActionBar().setTitle("一键登录");
-        getActionBar().setDisplayHomeAsUpEnabled(false);
+//        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_content_clear);
         loginModel = new LoginModel(A0_SigninActivity.this);
         loginModel.addResponseListener(this);
-        mA0SigninProtrol.getPaint().setFlags(Paint. UNDERLINE_TEXT_FLAG );
+        mA0SigninProtrol.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
 //		userName = (EditText) findViewById(R.id.login_name);
 //		password = (EditText) findViewById(R.id.login_password);
 //		register = (TextView) findViewById(R.id.login_register);
@@ -113,7 +121,7 @@ public class A0_SigninActivity extends BaseActivity implements OnClickListener, 
     };
 
     @Override
-    @OnClick({R.id.login_getcode, R.id.login_comfirm,R.id.a0_signin_protrol})
+    @OnClick({R.id.login_getcode, R.id.login_comfirm, R.id.a0_signin_protrol})
     public void onClick(View v) {
         Resources resource = (Resources) getBaseContext().getResources();
         String usern = resource.getString(R.string.user_name_cannot_be_empty);
@@ -235,12 +243,13 @@ public class A0_SigninActivity extends BaseActivity implements OnClickListener, 
     @Override
     public void OnMessageResponse(String url, JSONObject jo, AjaxStatus status)
             throws JSONException {
-        Log.e("hshs","login:"+jo.toString());
+        Log.e("hshs", "login:" + jo.toString());
         if (loginModel.responseStatus.succeed == 1) {
             if (url.endsWith(ApiInterface.USER_SMS_SIGNIN)) {
                 Intent intent = new Intent();
                 intent.putExtra("login", true);
                 setResult(Activity.RESULT_OK, intent);
+
                 finish();
                 overridePendingTransition(R.anim.push_up_in, R.anim.push_up_out);
             }

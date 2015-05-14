@@ -1,9 +1,12 @@
 package com.insthub.ecmobile.activity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -32,11 +35,19 @@ public class Main2Activity extends ActionBarActivity {
     ViewPager mainVierpager;
     private List<ShopFragment> mShopFragments;
     private MainPageAdapter mainPageAdapter;
-
+private SharedPreferences shared;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+         shared = getSharedPreferences("userInfo", 0);
+        String uid = shared.getString("uid", "");
+
+         if (TextUtils.isEmpty(uid)){
+            startActivity(new Intent(this,A0_SigninActivity.class));
+            this.finish();
+             return;
+        }
         ButterKnife.inject(this);
 
         View tv= LayoutInflater.from(this).inflate(R.layout.layout_main_title,null);
@@ -63,6 +74,7 @@ public class Main2Activity extends ActionBarActivity {
         mainIndicator.setIndicatorColorResource(R.color.main_color);
         mainIndicator.setTextSize(18);
         mainIndicator.setViewPager(mainVierpager);
+
     }
 
     @Override
