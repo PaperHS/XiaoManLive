@@ -59,7 +59,7 @@ public class S1_SelfInfoAcitivity extends ActionBarActivity {
         ButterKnife.inject(this);
         toobar.setTitle("我的小满");
         setSupportActionBar(toobar);
-        toobar.setNavigationIcon(R.drawable.ic_arraw_left);
+        toobar.setNavigationIcon(R.drawable.ic_arrow_left);
         init();
     }
 
@@ -72,5 +72,11 @@ public class S1_SelfInfoAcitivity extends ActionBarActivity {
     public void onAddress(){
         Intent toAddr = new Intent(this,F0_AddressListActivity.class);
         startActivity(toAddr);
+    }
+
+    @OnClick(R.id.selfinfo_papermoney)
+    public void onPaperMoney(){
+        Intent toMoney = new Intent(this,E3_MyPromotionAcitivity.class);
+        startActivity(toMoney);
     }
 }

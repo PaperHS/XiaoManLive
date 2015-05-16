@@ -18,6 +18,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -40,6 +41,9 @@ import com.insthub.ecmobile.protocol.ApiInterface;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
 public class F1_NewAddressActivity extends BaseActivity implements BusinessResponse {
 	
 	private TextView title;
@@ -59,12 +63,15 @@ public class F1_NewAddressActivity extends BaseActivity implements BusinessRespo
 	private AddressModel addressModel;
 	private int flag;
     private SharedPreferences shared;
+	@InjectView(R.id.toolbar)
+	Toolbar toolbar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.f1_new_address);
-		
+		ButterKnife.inject(this);
+		setSupportActionBar(toolbar);
 		Intent intent = getIntent();
 		flag = intent.getIntExtra("balance", 0);
         shared =getSharedPreferences("userInfo", 0);
@@ -79,7 +86,7 @@ public class F1_NewAddressActivity extends BaseActivity implements BusinessRespo
 				finish();
 			}
 		});
-		getActionBar().setTitle("新建收货地址");
+		getSupportActionBar().setTitle("新建收货地址");
 		name = (EditText) findViewById(R.id.add_address_name);
 		tel = (EditText) findViewById(R.id.add_address_telNum);
 		email = (EditText) findViewById(R.id.add_address_email);

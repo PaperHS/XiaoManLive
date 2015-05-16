@@ -129,6 +129,10 @@
 
     </style>
 
+    <style name="ToolBar.XM" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="navigationIcon">@drawable/ic_arrow_left</item>
+    </style>
+
     <style name="Theme.UPPay" parent="android:style/Theme.Light">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowContentOverlay">@null</item>

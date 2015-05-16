@@ -13,10 +13,6 @@ package com.insthub.ecmobile.adapter;
 //  Powered by BeeFramework
 //
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -36,6 +32,10 @@ import com.insthub.ecmobile.R;
 import com.insthub.ecmobile.activity.F2_EditAddressActivity;
 import com.insthub.ecmobile.event.AddressItemClickEvent;
 import com.insthub.ecmobile.protocol.ADDRESS;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class F0_AddressListAdapter extends BaseAdapter {
 
@@ -112,6 +112,7 @@ public class F0_AddressListAdapter extends BaseAdapter {
 			holder.county = (TextView) convertView.findViewById(R.id.address_manage_item_county);
 			holder.detail = (TextView) convertView.findViewById(R.id.address_manage_item_detail);
 			holder.select = (ImageView) convertView.findViewById(R.id.address_manage_itme_select);
+			holder.phone = (TextView)convertView.findViewById(R.id.address_manage_item_phonum);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
@@ -124,7 +125,7 @@ public class F0_AddressListAdapter extends BaseAdapter {
 		}
 		
 		holder.name.setText(address.consignee);
-		holder.province.setText(address.province_name);
+//		holder.province.setText(address.province_name);
 		if(!address.city_name.equals("null")) {
 			holder.city.setText(address.city_name);
 		}
@@ -133,7 +134,7 @@ public class F0_AddressListAdapter extends BaseAdapter {
 		}
 		
 		holder.detail.setText(address.address);
-		
+		holder.phone.setText(address.tel);
 		if(isSelected.get(position)) {
 			holder.select.setVisibility(View.VISIBLE);
 			holder.name.setTextColor(Color.parseColor("#666699"));
@@ -183,6 +184,7 @@ public class F0_AddressListAdapter extends BaseAdapter {
 		private TextView detail;
 		private ImageView select;
 		private LinearLayout layout;
+		private TextView phone;
 	}
 
 }

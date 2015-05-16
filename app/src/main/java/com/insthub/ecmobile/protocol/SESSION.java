@@ -1,13 +1,12 @@
 
 package com.insthub.ecmobile.protocol;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import com.external.activeandroid.Model;
 import com.external.activeandroid.annotation.Column;
 import com.external.activeandroid.annotation.Table;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 @Table(name = "SESSION")
 public class SESSION  extends Model
@@ -19,7 +18,7 @@ public class SESSION  extends Model
      @Column(name = "sid")
      public String sid;
      
-     
+
      private static SESSION instance;
      public static SESSION getInstance()
      {

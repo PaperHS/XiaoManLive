@@ -243,7 +243,7 @@ public class A0_SigninActivity extends BaseActivity implements OnClickListener, 
     @Override
     public void OnMessageResponse(String url, JSONObject jo, AjaxStatus status)
             throws JSONException {
-        Log.e("hshs", "login:" + jo.toString());
+        Log.d("http", "login:" + jo.toString());
         if (loginModel.responseStatus.succeed == 1) {
             if (url.endsWith(ApiInterface.USER_SMS_SIGNIN)) {
                 Intent intent = new Intent();

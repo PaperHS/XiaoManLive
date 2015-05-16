@@ -12,7 +12,7 @@ public class ApiInterface
      public static final String GOODS  ="/goods";
      public static final String ARTICLE  ="/article";
      public static final String CART_LIST  ="/cart/list";
-     public static final String ADDRESS_LIST  ="/address/list";
+     public static final String ADDRESS_LIST  ="/user/address/list";
      public static final String ADDRESS_SETDEFAULT  ="/address/setDefault";
      public static final String USER_COLLECT_CREATE  ="/user/collect/create";
      public static final String FLOW_DONE  ="/flow/done";

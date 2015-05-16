@@ -5,15 +5,9 @@
     android:layout_height="match_parent"
     android:background="@color/common_bg"
     android:orientation="vertical">
-        <android.support.v7.widget.Toolbar
-        android:id="@+id/toobar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
-        android:background="@color/main_color"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        ></android.support.v7.widget.Toolbar>
-
+    <include android:id="@+id/toolbar"
+        layout="@layout/common_toolbar"
+        ></include>
 
     <FrameLayout
         android:layout_width="fill_parent"
