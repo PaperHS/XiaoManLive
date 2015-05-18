@@ -1,10 +1,9 @@
-package com.insthub.ecmobile.fragment;
-
+package com.insthub.ecmobile.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,125 +11,87 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.external.androidquery.callback.AjaxStatus;
+import com.external.maxwin.view.XListView;
 import com.external.viewpagerindicator.PageIndicator;
+import com.insthub.BeeFramework.activity.BaseActivity;
 import com.insthub.BeeFramework.model.BusinessResponse;
-import com.insthub.BeeFramework.view.MyListView;
 import com.insthub.ecmobile.EcmobileApp;
 import com.insthub.ecmobile.R;
-import com.insthub.ecmobile.activity.B1_ProductListActivity;
-import com.insthub.ecmobile.activity.B2_ProductDetailActivity;
-import com.insthub.ecmobile.activity.BannerWebActivity;
-import com.insthub.ecmobile.adapter.B0_IndexAdapterNew;
-import com.insthub.ecmobile.adapter.B0_indexAdapter2;
+import com.insthub.ecmobile.adapter.B0_NewCategoryAdapter;
 import com.insthub.ecmobile.adapter.Bee_PageAdapter;
-import com.insthub.ecmobile.adapter.ShopAdapter2;
 import com.insthub.ecmobile.model.ADModel;
-import com.insthub.ecmobile.model.FirstLvModel;
-import com.insthub.ecmobile.model.SearchModel;
+import com.insthub.ecmobile.model.CategoryProductsModel;
 import com.insthub.ecmobile.protocol.AD;
 import com.insthub.ecmobile.protocol.ApiInterface;
 import com.insthub.ecmobile.protocol.FILTER;
 import com.insthub.ecmobile.protocol.PLAYER;
+import com.insthub.ecmobile.protocol.SIMPLEGOODS;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link ShopFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * ,==.              |~~~
+ * /  66\             |
+ * \c  -_)         |~~~
+ * `) (           |
+ * /   \       |~~~
+ * /   \ \      |
+ * ((   /\ \_ |~~~
+ * \\  \ `--`|
+ * / / /  |~~~
+ * ___ (_(___)_|
+ * <p/>
+ * Created by Paper on 15-5-18 2015.
  */
-public class ShopFragment extends Fragment implements BusinessResponse{
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-    @InjectView(R.id.fragment_listView)
-    MyListView fragmentListView;
+public class D0_NewCategoryActivity extends BaseActivity implements BusinessResponse {
 
-    // TODO: Rename and change types of parameters
-    private String mTitle;
-    private int mIcon;
-    FrameLayout bannerView;//广告栏
+    @InjectView(R.id.listView)
+    XListView listView;
+    @InjectView(R.id.toolbar)
+    Toolbar toolbar;
+    private FrameLayout bannerView;
     private ViewPager bannerViewPager;
+    private List<View> bannerListView;
     private PageIndicator mIndicator;
-
-    private B0_IndexAdapterNew listAdapter;
-
-    private ArrayList<View> bannerListView;
-    private Bee_PageAdapter bannerPageAdapter;
     private View mTouchTarget;
-
+    private Bee_PageAdapter bannerPageAdapter;
     private ADModel adModel;
-    private FirstLvModel firstLvModel;
-protected ImageLoader imageLoader = ImageLoader.getInstance();
-    public String getTitle() {
-        return getArguments().getString(ARG_PARAM1);
-    }
-
-    public int getIcon() {
-        return getArguments().getInt(ARG_PARAM2, R.drawable.ic_shop1);
-    }
-
-    public void setTitle(String mTitle) {
-        this.mTitle = mTitle;
-    }
-
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment BlankFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ShopFragment newInstance(String param1, int param2) {
-        ShopFragment fragment = new ShopFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putInt(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    public ShopFragment() {
-        // Required empty public constructor
-    }
-
+    private CategoryProductsModel productsModel;
+    private com.nostra13.universalimageloader.core.ImageLoader imageLoader = ImageLoader.getInstance();
+    private ArrayList<SIMPLEGOODS> datalist = new ArrayList<SIMPLEGOODS>();
+    String cat_name;
+    int cat_id;
+    B0_NewCategoryAdapter productsAdapter;
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mTitle = getArguments().getString(ARG_PARAM1);
-            mIcon = getArguments().getInt(ARG_PARAM2);
-        }
-        adModel = new ADModel(getActivity());
-        adModel.addResponseListener(this);
-        firstLvModel = new FirstLvModel(getActivity());
-        firstLvModel.addResponseListener(this);
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_blank, container, false);
-        ButterKnife.inject(this, view);
+        setContentView(R.layout.d0_newcategory);
+        ButterKnife.inject(this);
+        cat_id = Integer.parseInt(getIntent().getStringExtra("cat_id"));
+        cat_name = getIntent().getStringExtra("cat_name");
+        setSupportActionBar(toolbar);
+       getSupportActionBar().setTitle(cat_name);
         init();
-        return view;
+
+        adModel = new ADModel(this);
+        adModel.addResponseListener(this);
+        adModel.fetchADs(1);
+        productsModel = new CategoryProductsModel(this);
+        productsModel.addResponseListener(this);
+        productsModel.fetchGoods(cat_id);
+
     }
 
     private void init() {
-     bannerView = (FrameLayout)LayoutInflater.from(getActivity()).inflate(R.layout.b0_index_banner, null);
+        bannerView = (FrameLayout) LayoutInflater.from(this).inflate(R.layout.b0_index_banner, null);
 
         bannerViewPager = (ViewPager)bannerView.findViewById(R.id.banner_viewpager);
 
@@ -151,6 +112,7 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
         bannerViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             private int mPreviousState = ViewPager.SCROLL_STATE_IDLE;
+
             @Override
             public void onPageScrolled(int i, float v, int i2) {
 
@@ -181,41 +143,20 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
 
         mIndicator = (PageIndicator)bannerView.findViewById(R.id.indicator);
         mIndicator.setViewPager(bannerViewPager);
-
-        fragmentListView.addHeaderView(bannerView);
-        if (mTitle.equals("富国超市")){
-            listAdapter = new B0_IndexAdapterNew(getActivity(),firstLvModel,new SearchModel(getActivity()));
-            adModel.fetchADs(1);
-            firstLvModel.fetchFirstRecom(1, 10, 0);
-            firstLvModel.fetchLvCategory(14);
-        }else if (mTitle.equals("新马路菜市场")){
-            listAdapter = new ShopAdapter2(getActivity(),firstLvModel,new SearchModel(getActivity()));
-            adModel.fetchADs(1);
-            firstLvModel.fetchFirstRecom(2,10,0);
-        }else if (mTitle.equals("鲜果园")){
-            listAdapter = new B0_indexAdapter2(getActivity(),firstLvModel);
-            adModel.fetchADs(1);
-            firstLvModel.fetchLvCategory(1);
-        }else if (mTitle.equals("微商优选")){
-            adModel.fetchADs(4);
-        }else if (mTitle.equals("福田及时送")){
-            adModel.fetchADs(5);
-        }
-        fragmentListView.setAdapter(listAdapter);
-        fragmentListView.setPullRefreshEnable(false);
-        fragmentListView.setPullLoadEnable(false);
-
-
+        listView.addHeaderView(bannerView);
+        productsAdapter = new B0_NewCategoryAdapter(this,datalist);
+        listView.setAdapter(productsAdapter);
+        listView.setPullRefreshEnable(false);
+        listView.setPullLoadEnable(false);
 
     }
-
-     public void addBannerView()
+    public void addBannerView()
     {
         bannerListView.clear();
         for (int i = 0; i < adModel.ads.size(); i++)
         {
             AD player = adModel.ads.get(i);
-            ImageView viewOne =  (ImageView)LayoutInflater.from(getActivity()).inflate(R.layout.b0_index_banner_cell,null);
+            ImageView viewOne =  (ImageView)LayoutInflater.from(this).inflate(R.layout.b0_index_banner_cell, null);
 
 //            shared = getActivity().getSharedPreferences("userInfo", 0);
 //    		editor = shared.edit();
@@ -259,10 +200,10 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
                         if (null == player1.action)
                         {
                             if (null != player1.url) {
-                                Intent intent = new Intent(getActivity(), BannerWebActivity.class);
+                                Intent intent = new Intent(D0_NewCategoryActivity.this, BannerWebActivity.class);
                                 intent.putExtra("url", player1.url);
                                 startActivity(intent);
-                                getActivity().overridePendingTransition(R.anim.push_right_in,
+                                D0_NewCategoryActivity.this.overridePendingTransition(R.anim.push_right_in,
                                         R.anim.push_right_out);
                             }
                         }
@@ -270,28 +211,28 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
                         {
                             if (player1.action.equals("goods"))
                             {
-                                Intent intent = new Intent(getActivity(), B2_ProductDetailActivity.class);
+                                Intent intent = new Intent(D0_NewCategoryActivity.this, B2_ProductDetailActivity.class);
                                 intent.putExtra("good_id", player1.action_id+"");
-                                getActivity().startActivity(intent);
-                                getActivity().overridePendingTransition(R.anim.push_right_in,
+                                D0_NewCategoryActivity.this.startActivity(intent);
+                                D0_NewCategoryActivity.this.overridePendingTransition(R.anim.push_right_in,
                                         R.anim.push_right_out);
                             }
                             else if (player1.action.equals("category"))
                             {
-                                Intent intent = new Intent(getActivity(), B1_ProductListActivity.class);
+                                Intent intent = new Intent(D0_NewCategoryActivity.this, B1_ProductListActivity.class);
                                 FILTER filter = new FILTER();
                                 filter.category_id = String.valueOf(player1.action_id);
                                 intent.putExtra(B1_ProductListActivity.FILTER,filter.toJson().toString());
                                 startActivity(intent);
-                                getActivity().overridePendingTransition(R.anim.push_right_in,
+                                D0_NewCategoryActivity.this.overridePendingTransition(R.anim.push_right_in,
                                         R.anim.push_right_out);
                             }
                             else if (null != player1.url)
                             {
-                                Intent intent = new Intent(getActivity(), BannerWebActivity.class);
+                                Intent intent = new Intent(D0_NewCategoryActivity.this, BannerWebActivity.class);
                                 intent.putExtra("url", player1.url);
                                 startActivity(intent);
-                                getActivity().overridePendingTransition(R.anim.push_right_in,
+                                D0_NewCategoryActivity.this.overridePendingTransition(R.anim.push_right_in,
                                         R.anim.push_right_out);
                             }
                         }
@@ -312,27 +253,23 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
 
     }
 
-	//获取屏幕宽度
+    	//获取屏幕宽度
 	public int getDisplayMetricsWidth() {
-		int i = getActivity().getWindowManager().getDefaultDisplay().getWidth();
-		int j = getActivity().getWindowManager().getDefaultDisplay().getHeight();
+		int i = this.getWindowManager().getDefaultDisplay().getWidth();
+		int j = this.getWindowManager().getDefaultDisplay().getHeight();
 		return Math.min(i, j);
 	}
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.reset(this);
-    }
 
     @Override
     public void OnMessageResponse(String url, JSONObject jo, AjaxStatus status) throws JSONException {
         if (url.endsWith(ApiInterface.HOME_AD)){
             addBannerView();
-        }else if (url.endsWith(ApiInterface.PRODUCT_CATBESTLIST)){
-            listAdapter.notifyDataSetChanged();
-        }else if(url.endsWith(ApiInterface.PRODUCT_CATEGORY)){
-            listAdapter.notifyDataSetChanged();
+        }else if (url.endsWith(ApiInterface.PRODUCT_CATEGORY_SECOND)){
+           datalist.clear();
+            datalist.addAll(productsModel.ads);
+            productsAdapter.notifyDataSetChanged();
         }
     }
+
+
 }

@@ -15,7 +15,7 @@
     <color name="divider">#eeeeee</color>
 	<color name="white">#ffffff</color>
 	<color name="text_red">#ff3333</color>
-	<color name="common_bg">#F6F7F9</color>
+	<color name="common_bg">#bbbbbbbb</color>
 
     <color name="translate">#00ffffff</color>
     <color name="halftranslate">#77ffffff</color>

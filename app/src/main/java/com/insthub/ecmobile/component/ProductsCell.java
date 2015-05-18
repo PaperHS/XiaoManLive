@@ -37,6 +37,8 @@ public class ProductsCell extends LinearLayout{
     @InjectView(R.id.cell_products_gv)
     CustomGridView mGv;
 
+    private String title;
+
     CategorySecondAdapter adapter;
     private ArrayList<SIMPLEGOODS> datalist = new ArrayList<>();
     Handler mHandler;
@@ -46,7 +48,7 @@ public class ProductsCell extends LinearLayout{
           mHandler = new Handler(){
             @Override
             public void handleMessage(Message msg) {
-                bindDataDelay();
+                bindDataDelay(msg.what);
             }
 
 
@@ -55,8 +57,24 @@ public class ProductsCell extends LinearLayout{
 
     }
 
-    private void bindDataDelay() {
+    private void bindDataDelay(int type) {
         init();
+
+        switch (type){
+            case 0:
+                break;
+            case 1:
+
+                mCellTitle.setText(title);
+                mCellTitle.setBackgroundResource(R.color.translate);
+                mCellTitle.setCompoundDrawablesWithIntrinsicBounds(null,null,null,null);
+                break;
+            case 2:
+                mCellTitle.setVisibility(GONE);
+                break;
+            default:
+                break;
+        }
         adapter = new CategorySecondAdapter(datalist);
         mGv.setAdapter(adapter);
     }
@@ -66,12 +84,18 @@ public class ProductsCell extends LinearLayout{
         ButterKnife.inject(this);
     }
 
-    public void bindDate(List<SIMPLEGOODS> datalist){
+    public void bindDate(List<SIMPLEGOODS> datalist,int type,String title){
+
+        if (title !=null)
+            this.title = title;
+
         if (datalist !=null &&datalist.size()>0){
             this.datalist.clear();
             this.datalist.addAll(datalist);
-           mHandler.removeMessages(0);
-            mHandler.sendEmptyMessageDelayed(0,30);
+
+
         }
+        mHandler.removeMessages(type);
+        mHandler.sendEmptyMessageDelayed(type,30);
     }
 }

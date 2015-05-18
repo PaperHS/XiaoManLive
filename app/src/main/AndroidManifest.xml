@@ -206,7 +206,7 @@
         <activity
             android:name=".activity.BannerWebActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".activity.ShareWebActivity"
             android:screenOrientation="portrait" />
@@ -317,6 +317,10 @@
             android:name=".activity.D0_Category1Activity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <activity android:name=".activity.D0_NewCategoryActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".activity.D1_CategoryAllAcitivty"
             android:launchMode="singleTop"

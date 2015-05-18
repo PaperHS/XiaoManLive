@@ -48,7 +48,7 @@ public class BeeQuery<T> extends AQuery {
         }
     }
 	public <K> AQuery ajax(AjaxCallback<K> callback){
-        Log.e("hshs", "absoluteUrl:" + callback.getUrl());
+        Log.d("http", "absoluteUrl:" + callback.getUrl());
 		if (BeeQuery.environment() == BeeQuery.ENVIROMENT_MOCKSERVER)
 		{
 			MockServer.ajax(callback);
@@ -60,7 +60,7 @@ public class BeeQuery<T> extends AQuery {
             String absoluteUrl = getAbsoluteUrl(url);
 
             callback.url(absoluteUrl);
-            Log.e("hshs","absoluteUrl:"+absoluteUrl);
+            Log.d("http","absoluteUrl:"+absoluteUrl);
 
         }
 

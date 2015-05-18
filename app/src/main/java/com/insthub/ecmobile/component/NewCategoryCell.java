@@ -1,13 +1,17 @@
 package com.insthub.ecmobile.component;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.insthub.ecmobile.R;
+import com.insthub.ecmobile.activity.D0_NewCategoryActivity;
 import com.insthub.ecmobile.adapter.CategoryNewAdapter;
 import com.insthub.ecmobile.protocol.CATEGORYNEW;
 
@@ -59,6 +63,16 @@ public class NewCategoryCell extends LinearLayout{
         init();
         adapter = new CategoryNewAdapter(datalist);
         mGv.setAdapter(adapter);
+        mGv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Intent it = new Intent(mContext, D0_NewCategoryActivity.class);
+                it.putExtra("cat_id",datalist.get(i).cat_id);
+                it.putExtra("cat_name",datalist.get(i).cat_name);
+                mContext.startActivity(it);
+            }
+        });
     }
 
 
@@ -74,4 +88,7 @@ public class NewCategoryCell extends LinearLayout{
             mHandler.sendEmptyMessageDelayed(0,30);
         }
     }
+
+
+
 }

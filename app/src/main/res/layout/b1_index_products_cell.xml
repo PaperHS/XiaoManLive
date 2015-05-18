@@ -5,7 +5,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@color/common_bg"
+    android:layout_marginTop="5dp"
     >
     <TextView
         android:id="@+id/cell_products_title"

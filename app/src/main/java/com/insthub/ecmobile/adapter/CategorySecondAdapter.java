@@ -6,14 +6,16 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import butterknife.ButterKnife;
-import butterknife.InjectView;
+
 import com.insthub.ecmobile.EcmobileApp;
 import com.insthub.ecmobile.R;
 import com.insthub.ecmobile.protocol.SIMPLEGOODS;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 /**
  * Created by Administrator on 2015/1/29.
@@ -27,12 +29,17 @@ public class CategorySecondAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 6;
+        if (datalist.size()<6)
+            return 6;
+        if (datalist.size()%3 !=0){
+            return datalist.size()+3-datalist.size()%3;
+        }else
+            return datalist.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return datalist.get(position);
     }
 
     @Override

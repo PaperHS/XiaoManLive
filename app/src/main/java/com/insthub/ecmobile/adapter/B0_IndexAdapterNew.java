@@ -46,6 +46,7 @@ public class B0_IndexAdapterNew extends BeeBaseAdapter
     protected static final int TYPE_SEARCH = 7;
     protected static final int TYPE_PRODUCTS = 8;
     protected static final int TYPE_NEWCATEGORY = 9;
+    protected static final int TYPE_NEWCATEGORY_SIG = 10;
 	private FirstLvModel firstLvModel;
 	private SearchModel searchModel;
 	public B0_IndexAdapterNew(Context c, ArrayList dataList) {
@@ -57,6 +58,11 @@ public class B0_IndexAdapterNew extends BeeBaseAdapter
 		this.firstLvModel = firstLvModel;
         this.searchModel = searchModel;
 	}
+
+    public B0_IndexAdapterNew(Context c,FirstLvModel firstLvModel){
+        super(c,firstLvModel.simplegoodsList);
+        this.firstLvModel = firstLvModel;
+    }
 
 	@Override
 	protected BeeCellHolder createCellHolder(View cellView) {		
@@ -234,7 +240,7 @@ public class B0_IndexAdapterNew extends BeeBaseAdapter
             }else {
 //                return cellView;
             }
-            ((ProductsCell)cellView).bindDate(firstLvModel.simplegoodsList);
+            ((ProductsCell)cellView).bindDate(firstLvModel.simplegoodsList,0,null);
         }else if (TYPE_SEARCH == getItemViewRealType(position)){
             if (null == cellView || cellView.getClass() != SearchCell.class){
                 cellView = (SearchCell)LayoutInflater.from(mContext).inflate(R.layout.b1_index_search_cell,null);
@@ -247,6 +253,14 @@ public class B0_IndexAdapterNew extends BeeBaseAdapter
 
             }
             ((NewCategoryCell)cellView).bindDate(firstLvModel.categoryList);
+        }else if (TYPE_NEWCATEGORY_SIG == getItemViewRealType(position)){
+            if (null == cellView || cellView.getClass() != ProductsCell.class){
+
+                cellView = (ProductsCell)LayoutInflater.from(mContext).inflate(R.layout.b1_index_products_cell,null);
+            }
+            if (firstLvModel.categoryList.size()>0)
+                ((ProductsCell)cellView).bindDate(firstLvModel.categoryList.get(position).children,1,firstLvModel.categoryList.get(position).cat_name);
+
         }
 
         return cellView;
