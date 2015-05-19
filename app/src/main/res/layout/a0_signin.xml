@@ -7,15 +7,9 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical" >
-    <android.support.v7.widget.Toolbar
+    <include layout="@layout/common_toolbar"
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?android:actionBarSize"
-        android:background="@color/main_color"
-        android:gravity="center_vertical"
-        android:layout_gravity="center_vertical"
-        app:titleTextAppearance="@style/ActionBar.title"
-        ></android.support.v7.widget.Toolbar>
+        ></include>
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="@dimen/item_height"
                   android:paddingRight="@dimen/activity_horizontal_margin"

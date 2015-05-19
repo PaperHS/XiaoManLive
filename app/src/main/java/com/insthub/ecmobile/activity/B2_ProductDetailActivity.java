@@ -27,17 +27,17 @@ import android.support.v4.view.ViewPager;
 import android.text.Html;
 import android.text.Spanned;
 import android.util.Log;
-import android.view.*;
+import android.view.Gravity;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.View.OnClickListener;
-import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
-import com.external.HorizontalVariableListView.widget.HorizontalVariableListView;
 
 import com.external.androidquery.callback.AjaxStatus;
 import com.external.maxwin.view.XListView;
@@ -50,14 +50,18 @@ import com.insthub.BeeFramework.view.ToastView;
 import com.insthub.ecmobile.EcmobileApp;
 import com.insthub.ecmobile.EcmobileManager;
 import com.insthub.ecmobile.R;
-import com.insthub.ecmobile.adapter.B3_ProductPhotoAdapter;
 import com.insthub.ecmobile.adapter.Bee_PageAdapter;
 import com.insthub.ecmobile.model.GoodDetailDraft;
 import com.insthub.ecmobile.model.GoodDetailModel;
 import com.insthub.ecmobile.model.ShoppingCartModel;
-import com.insthub.ecmobile.protocol.*;
+import com.insthub.ecmobile.protocol.ApiInterface;
+import com.insthub.ecmobile.protocol.PHOTO;
+import com.insthub.ecmobile.protocol.SPECIFICATION;
+import com.insthub.ecmobile.protocol.SPECIFICATION_VALUE;
+import com.insthub.ecmobile.protocol.STATUS;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.umeng.analytics.MobclickAgent;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -65,6 +69,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class B2_ProductDetailActivity extends BaseActivity implements BusinessResponse, IXListViewListener {
     ImageView mProductDetailMinus;
@@ -387,12 +394,12 @@ public class B2_ProductDetailActivity extends BaseActivity implements BusinessRe
         });
 
         //设置购物车数量
-        if (ShoppingCartModel.getInstance().goods_num == 0) {
-            good_detail_shopping_cart_num_bg.setVisibility(View.GONE);
-        } else {
-            good_detail_shopping_cart_num_bg.setVisibility(View.VISIBLE);
-//            mProductDetailCount.setText(ShoppingCartModel.getInstance().goods_num + "");
-        }
+//        if (ShoppingCartModel.getInstance().goods_num == 0) {
+//            good_detail_shopping_cart_num_bg.setVisibility(View.GONE);
+//        } else {
+//            good_detail_shopping_cart_num_bg.setVisibility(View.VISIBLE);
+////            mProductDetailCount.setText(ShoppingCartModel.getInstance().goods_num + "");
+//        }
 
     }
 

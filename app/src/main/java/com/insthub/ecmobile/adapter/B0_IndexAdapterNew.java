@@ -244,7 +244,9 @@ public class B0_IndexAdapterNew extends BeeBaseAdapter
         }else if (TYPE_SEARCH == getItemViewRealType(position)){
             if (null == cellView || cellView.getClass() != SearchCell.class){
                 cellView = (SearchCell)LayoutInflater.from(mContext).inflate(R.layout.b1_index_search_cell,null);
-            }else return cellView;
+            }
+            ((SearchCell)cellView).bindData(1);
+            return cellView;
             //TODO
         }else if (TYPE_NEWCATEGORY == getItemViewRealType(position)){
             if (null == cellView || cellView.getClass() != NewCategoryCell.class){

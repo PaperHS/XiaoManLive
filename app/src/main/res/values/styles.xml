@@ -37,8 +37,9 @@
     </style>
 
 
-    <style name="ContentOverlay" parent="android:Theme.Light">
+    <style name="ContentOverlay" parent="Theme.AppCompat.Light">
         <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowContentOverlay">@null</item>
      </style>
@@ -125,8 +126,15 @@
         <item name="windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:selectableItemBackground">@null</item>
+        <item name="android:windowAnimationStyle">@style/DefaultAnim</item>
 
+    </style>
+    <style name="DefaultAnim">
 
+        <item name="android:activityOpenEnterAnimation">@anim/push_right_in</item>
+        <item name="android:activityCloseEnterAnimation">@anim/push_left_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/push_left_out</item>
+        <item name="android:activityCloseExitAnimation">@anim/push_right_out</item>
     </style>
 
     <style name="ToolBar.XM" parent="ThemeOverlay.AppCompat.Dark.ActionBar">

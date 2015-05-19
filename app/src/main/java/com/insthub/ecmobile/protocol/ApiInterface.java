@@ -1,6 +1,7 @@
 
 package com.insthub.ecmobile.protocol;
-public class ApiInterface 
+
+public class ApiInterface
 { 
      public static final String ORDER_AFFIRMRECEIVED  ="/order/affirmReceived";
      public static final String SHOPHELP  ="/shopHelp";
@@ -28,7 +29,8 @@ public class ApiInterface
      public static final String USER_SMS_SEND  ="/user/sms_login/send";
 
      public static final String USER_SIGNUP  ="/user/signup";
-     public static final String GOODS_DESC  ="/goods/desc";
+//     public static final String GOODS_DESC  ="/goods/desc";
+     public static final String GOODS_DESC  ="/product/goods_detail";
      public static final String USER_INFO  ="/user/info";
      public static final String ADDRESS_DELETE  ="/address/delete";
      public static final String USER_SIGNUPFIELDS  ="/user/signupFields";
@@ -48,6 +50,7 @@ public class ApiInterface
      public static final String PRODUCT_CATBESTLIST  ="/product/cat_best_list";
      public static final String PRODUCT_CATEGORY  ="/category/cat_child";
      public static final String PRODUCT_CATEGORY_SECOND  ="/product/cat_list";
+     public static final String PRODUCT_LASTBUY ="/product/buy_history";
      public static final String HOME_AD  ="/ad/ad_list";
 
 }

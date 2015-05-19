@@ -1,15 +1,16 @@
 package com.insthub.ecmobile.component;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.insthub.ecmobile.R;
+import com.insthub.ecmobile.activity.LastBuyAcitivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -29,16 +30,20 @@ import butterknife.OnClick;
  * <p/>
  * Created by Paper on 15-5-8 2015.
  */
-public class SearchCell extends LinearLayout{
+public class SearchCell extends LinearLayout implements View.OnClickListener{
     @InjectView(R.id.searchcell_et)
-    EditText mSearchCell;
+    TextView mSearchCell;
     @InjectView(R.id.searchcell_lastbuy)
     TextView mLastBuy;
     @InjectView(R.id.searchcell_allproducts)
     TextView mAllProducts;
+    @InjectView(R.id.searchcell_hotcell)
+    TextView mHotSell;
 
     Handler mHandler;
     Context mContext;
+    int cat_id;
+
     public SearchCell(Context context, AttributeSet attrs) {
         super(context, attrs);
           mHandler = new Handler(){
@@ -62,17 +67,31 @@ public class SearchCell extends LinearLayout{
         ButterKnife.inject(this);
     }
 
-    @OnClick({R.id.searchcell_lastbuy,R.id.searchcell_allproducts,R.id.searchcell_hotcell})
-    public void onC(View view){
+    public void bindData(int cat_id){
+        this.cat_id=cat_id;
+        mHandler.removeMessages(0);
+        mHandler.sendEmptyMessageDelayed(0,30);
+
+    }
+
+
+    @OnClick({R.id.searchcell_lastbuy,R.id.searchcell_allproducts,R.id.searchcell_hotcell,R.id.searchcell_et})
+    @Override
+    public void onClick(View view){
         switch (view.getId()){
             case R.id.searchcell_lastbuy:
+                Intent toLastBuy = new Intent(mContext, LastBuyAcitivity.class);
+                mContext.startActivity(toLastBuy);
                 break;
             case R.id.searchcell_hotcell:
                 break;
             case R.id.searchcell_allproducts:
                 break;
+            case R.id.searchcell_et:
+                break;
             default:
                 break;
         }
     }
+
 }

@@ -81,7 +81,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" >
-
         </activity>
         <activity
             android:name=".activity.A0_SigninActivity"
@@ -317,10 +316,10 @@
             android:name=".activity.D0_Category1Activity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.D0_NewCategoryActivity"
+        <activity
+            android:name=".activity.D0_NewCategoryActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.D1_CategoryAllAcitivty"
             android:launchMode="singleTop"
@@ -451,10 +450,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.S1_SelfInfoAcitivity" >
+        </activity>
         <activity
-            android:name=".activity.S1_SelfInfoAcitivity"
-            >
-
+            android:name=".activity.LastBuyAcitivity"
+            android:label="@string/title_activity_last_buy_acitivity" >
         </activity>
     </application>
 

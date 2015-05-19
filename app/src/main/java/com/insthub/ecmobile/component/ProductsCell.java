@@ -1,13 +1,21 @@
 package com.insthub.ecmobile.component;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.util.Pair;
 import android.util.AttributeSet;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.activityoptions.ActivityCompatICS;
+import com.activityoptions.ActivityOptionsCompatICS;
 import com.insthub.ecmobile.R;
+import com.insthub.ecmobile.activity.B2_ProductDetailActivity;
 import com.insthub.ecmobile.adapter.CategorySecondAdapter;
 import com.insthub.ecmobile.protocol.SIMPLEGOODS;
 
@@ -16,6 +24,7 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnItemClick;
 
 /**
  * ,==.              |~~~
@@ -79,6 +88,21 @@ public class ProductsCell extends LinearLayout{
         mGv.setAdapter(adapter);
     }
 
+    @OnItemClick(R.id.cell_products_gv)
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l){
+
+        SIMPLEGOODS simplegoods = datalist.get(i);
+
+        if (simplegoods!=null) {
+            ActivityOptionsCompatICS options = ActivityOptionsCompatICS.
+                    makeSceneTransitionAnimation((Activity) mContext, Pair.create(view,R.id.good_detail_photo_vp));
+            Intent it = new Intent(mContext, B2_ProductDetailActivity.class);
+            it.putExtra("good_id", "25");
+//            it.putExtra("good_id", simplegoods.goods_id);
+
+            ActivityCompatICS.startActivity((Activity) mContext, it, options.toBundle());
+        }
+    }
 
     public void init(){
         ButterKnife.inject(this);
