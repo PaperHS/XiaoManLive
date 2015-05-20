@@ -79,4 +79,9 @@ public class S1_SelfInfoAcitivity extends ActionBarActivity {
         Intent toMoney = new Intent(this,E3_MyPromotionAcitivity.class);
         startActivity(toMoney);
     }
+    @OnClick(R.id.selfinfo_msgcenter)
+    public void onMsgCenter(){
+        Intent toMsg = new Intent(this,M0_MessageCenterAcitivity.class);
+        startActivity(toMsg);
+    }
 }

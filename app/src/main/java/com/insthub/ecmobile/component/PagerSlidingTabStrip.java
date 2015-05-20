@@ -291,7 +291,16 @@ public class PagerSlidingTabStrip extends HorizontalScrollView implements OnPage
 		tab.setCompoundDrawables(drawable, null, null, null);
 		addTab(position, tab);
 	}
-	
+		/** add one text tab */
+	private void addTextTab(final int position, String title) {
+		TextView tab = new TextView(getContext());
+		tab.setText(title);
+		tab.setGravity(Gravity.CENTER);
+		tab.setSingleLine();
+
+		addTab(position, tab);
+	}
+
 	/** add one number indicator tab */
 	private void addNumTab(final int position, String title, int num) {
 		LinearLayout tab = new LinearLayout(getContext());
@@ -480,7 +489,9 @@ public class PagerSlidingTabStrip extends HorizontalScrollView implements OnPage
 				num = num < 0 ? 0 : num;
 				addNumTab(i, mViewPager.getAdapter().getPageTitle(i).toString(), num);
 			} else {
-				addTextTab(i, mViewPager.getAdapter().getPageTitle(i).toString(),((MainPageAdapter)mViewPager.getAdapter()).getPageIconRes(i));
+				if (mViewPager.getAdapter() instanceof MainPageAdapter)
+					addTextTab(i, mViewPager.getAdapter().getPageTitle(i).toString(),((MainPageAdapter)mViewPager.getAdapter()).getPageIconRes(i));
+				else addTextTab(i,mViewPager.getAdapter().getPageTitle(i).toString());
 			}
 		}
 		

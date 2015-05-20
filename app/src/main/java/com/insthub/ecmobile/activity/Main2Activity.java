@@ -85,7 +85,7 @@ public class Main2Activity extends ActionBarActivity {
         mShopFragments.add(ShopFragment.newInstance("福田及时送", R.drawable.ic_shop4));
         mainPageAdapter = new MainPageAdapter(getSupportFragmentManager(), mShopFragments);
         mainVierpager.setAdapter(mainPageAdapter);
-        mainIndicator.setIndicatorColorResource(R.color.main_color);
+        mainIndicator.setIndicatorColorResource(R.color.text_red);
         mainIndicator.setTextSize(14);
         mainIndicator.setViewPager(mainVierpager);
 

@@ -164,6 +164,10 @@
             android:name=".activity.F2_EditAddressActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".activity.M0_MessageCenterAcitivity"
+            android:screenOrientation="portrait"
+
+            ></activity>
         <activity
             android:name=".activity.F3_RegionPickActivity"
             android:screenOrientation="portrait"
