@@ -6,12 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/common_bg"
-    android:layout_marginTop="5dp"
     >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/white"></View>
     <TextView
         android:id="@+id/cell_products_title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+
         android:background="@drawable/ic_index_discount_title"
         android:text="我爱打折"
         android:textColor="@color/white"
@@ -19,11 +24,20 @@
         android:gravity="left|center_vertical"
         android:drawableLeft="@drawable/ic_index_discount_left"
         />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/white"
+        ></View>
     <com.insthub.ecmobile.component.CustomGridView
+        android:paddingTop="1dp"
         android:id="@+id/cell_products_gv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:numColumns="3"
+        android:verticalSpacing="1dp"
+        android:horizontalSpacing="1dp"
+        android:background="@color/common_bg"
         ></com.insthub.ecmobile.component.CustomGridView>
 
 </com.insthub.ecmobile.component.ProductsCell>

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.insthub.ecmobile.R;
 import com.insthub.ecmobile.activity.LastBuyAcitivity;
+import com.insthub.ecmobile.activity.S2_SearchAcitivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -88,6 +89,8 @@ public class SearchCell extends LinearLayout implements View.OnClickListener{
             case R.id.searchcell_allproducts:
                 break;
             case R.id.searchcell_et:
+                Intent toSearch = new Intent(mContext, S2_SearchAcitivity.class);
+                mContext.startActivity(toSearch);
                 break;
             default:
                 break;

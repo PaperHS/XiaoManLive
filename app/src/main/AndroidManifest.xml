@@ -168,6 +168,9 @@
             android:screenOrientation="portrait"
 
             ></activity>
+        <activity android:name=".activity.S2_SearchAcitivity"
+            android:screenOrientation="portrait"
+            ></activity>
         <activity
             android:name=".activity.F3_RegionPickActivity"
             android:screenOrientation="portrait"

@@ -27,6 +27,11 @@ public class ShopAdapter2 extends B0_IndexAdapterNew {
 
     @Override
     public int getItemViewRealType(int position) {
-        return TYPE_NEWCATEGORY;
+        if (position == 1)
+            return TYPE_SEARCH;
+        else if (position ==2)
+            return TYPE_NEWCATEGORY_SIG;
+        else
+            return TYPE_PRODUCTS;
     }
 }

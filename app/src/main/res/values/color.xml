@@ -13,7 +13,7 @@
 
     <color name="main_color">#ff5512</color>
     <color name="divider">#eeeeee</color>
-	<color name="white">#ffffff</color>
+	<color name="white">#ffffffff</color>
 	<color name="text_red">#ff3333</color>
 	<color name="common_bg">#bbbbbbbb</color>
 

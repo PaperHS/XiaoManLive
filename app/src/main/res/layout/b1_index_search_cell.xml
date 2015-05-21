@@ -5,16 +5,21 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     >
     <TextView
         android:id="@+id/searchcell_et"
+        android:paddingLeft="10dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"
+        android:hint="搜索商品名称"
+        android:gravity="center_vertical"
         android:drawableLeft="@drawable/ic_search"
+        android:background="@drawable/search_bg"
         />
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +34,9 @@
             android:gravity="center_horizontal"
             android:layout_weight="1"
             android:text="@string/last_buy_label"
+            android:drawablePadding="5dp"
             android:drawableTop="@drawable/ic_lastbuy"
+            android:textColor="@color/TextColorBlack"
             />
         <TextView
             android:id="@+id/searchcell_hotcell"
@@ -39,6 +46,8 @@
             android:gravity="center_horizontal"
             android:layout_weight="1"
 
+            android:drawablePadding="5dp"
+            android:textColor="@color/TextColorBlack"
             android:text="@string/hot_sell_label"
             android:drawableTop="@drawable/ic_hotsell"
             />
@@ -50,6 +59,8 @@
             android:gravity="center_horizontal"
             android:layout_weight="1"
             android:text="@string/all_products_label"
+            android:drawablePadding="5dp"
+            android:textColor="@color/TextColorBlack"
             android:drawableTop="@drawable/ic_all_products"
             />
         <!--<RelativeLayout-->

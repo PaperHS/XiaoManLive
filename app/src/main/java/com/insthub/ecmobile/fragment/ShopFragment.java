@@ -191,15 +191,27 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
         }else if (mTitle.equals("新马路菜市场")){
             listAdapter = new ShopAdapter2(getActivity(),firstLvModel,new SearchModel(getActivity()));
             adModel.fetchADs(1);
-            firstLvModel.fetchFirstRecom(2,10,0);
+            firstLvModel.fetchFirstRecom(1, 10, 0);
+            firstLvModel.fetchLvCategory(14);
+//            adModel.fetchADs(1);
+//            firstLvModel.fetchFirstRecom(2,10,0);
         }else if (mTitle.equals("鲜果园")){
             listAdapter = new B0_indexAdapter2(getActivity(),firstLvModel);
             adModel.fetchADs(1);
             firstLvModel.fetchLvCategory(1);
         }else if (mTitle.equals("微商优选")){
-            adModel.fetchADs(4);
+
+            listAdapter = new ShopAdapter2(getActivity(),firstLvModel,new SearchModel(getActivity()));
+            adModel.fetchADs(1);
+            firstLvModel.fetchFirstRecom(1, 10, 0);
+            firstLvModel.fetchLvCategory(14);
+            adModel.fetchADs(1);
         }else if (mTitle.equals("福田及时送")){
-            adModel.fetchADs(5);
+
+            listAdapter = new B0_indexAdapter2(getActivity(),firstLvModel);
+            adModel.fetchADs(1);
+            firstLvModel.fetchLvCategory(1);
+
         }
         fragmentListView.setAdapter(listAdapter);
         fragmentListView.setPullRefreshEnable(false);

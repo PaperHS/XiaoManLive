@@ -2,12 +2,12 @@ package com.insthub.ecmobile.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.insthub.BeeFramework.activity.BaseActivity;
 import com.insthub.ecmobile.R;
 
 import butterknife.ButterKnife;
@@ -28,7 +28,7 @@ import butterknife.OnClick;
  * <p/>
  * Created by Paper on 15-5-14 2015.
  */
-public class S1_SelfInfoAcitivity extends ActionBarActivity {
+public class S1_SelfInfoAcitivity extends BaseActivity {
 
     @InjectView(R.id.toobar)
     Toolbar toobar;
