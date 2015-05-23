@@ -59,21 +59,21 @@ public class C0_ShoppingCartAdapter extends BaseAdapter {
 	public static int CART_CHANGE_CHANGE1 = 3;
     public static int CART_CHANGE_MODIFY = 2;
     public static int CART_CHANGE_REMOVE = 1;
-    
+
     private SharedPreferences shared;
 	private SharedPreferences.Editor editor;
-    
-    public static Map<Integer, Boolean> isSelected = new HashMap<Integer, Boolean>();; 
-    
+
+    public static Map<Integer, Boolean> isSelected = new HashMap<Integer, Boolean>();;
+
     private MyDialog mDialog;
     protected ImageLoader imageLoader = ImageLoader.getInstance();
 	public C0_ShoppingCartAdapter(Context context, List<GOODS_LIST> list) {
 		this.context = context;
 		this.list = list;
 		inflater = LayoutInflater.from(context);
-	
+
 	}
-	
+
 	private boolean init(int position) {
 		if(isSelected.containsKey(Integer.valueOf(position))) {
 			if(isSelected.get(position) == true) {
@@ -85,71 +85,71 @@ public class C0_ShoppingCartAdapter extends BaseAdapter {
 			return false;
 		}
 	}
-	
+
 	@Override
-	public int getCount() {		
+	public int getCount() {
 		return list.size();
 	}
 
 	@Override
-	public Object getItem(int position) {		
+	public Object getItem(int position) {
 		return list.get(position);
 	}
 
 	@Override
-	public long getItemId(int position) {		
+	public long getItemId(int position) {
 		return position;
 	}
 
 	@Override
-	public int getItemViewType(int position) {		
+	public int getItemViewType(int position) {
 		return position;
 	}
 
 	@Override
-	public int getViewTypeCount() {		
+	public int getViewTypeCount() {
 		int count = list != null ? list.size() : 1;
 		return count;
 	}
 
 	@Override
-	public View getView(final int position, View convertView, ViewGroup parent) {		
+	public View getView(final int position, View convertView, ViewGroup parent) {
 		final ViewHolder holder;
         final Resources resource = (Resources) context.getResources();
 		i = 0;
 		if(convertView == null) {
 			holder = new ViewHolder();
 			convertView = inflater.inflate(R.layout.c0_shopping_cart_cell, null);
-			
+
 			holder.totel = (TextView) convertView.findViewById(R.id.shop_car_item_total);
 //			holder.change = (Button) convertView.findViewById(R.id.shop_car_item_change);
-			
+
 			holder.view = (FrameLayout) convertView.findViewById(R.id.shop_car_item_view);
 			holder.view1 = (LinearLayout) convertView.findViewById(R.id.shop_car_item_view1);
 //			holder.view2 = (FrameLayout) convertView.findViewById(R.id.shop_car_item_view2);
-			
+
 			holder.image = (ImageView) convertView.findViewById(R.id.shop_car_item_image);
 			holder.text = (TextView) convertView.findViewById(R.id.shop_car_item_text);
 //			holder.property = (TextView) convertView.findViewById(R.id.shop_car_item_property);
-			
+
 			holder.min = (ImageView) convertView.findViewById(R.id.shop_car_item_min);
 			holder.editNum = (EditText) convertView.findViewById(R.id.shop_car_item_editNum);
 			holder.sum = (ImageView) convertView.findViewById(R.id.shop_car_item_sum);
 //			holder.remove = (Button) convertView.findViewById(R.id.shop_car_item_remove);
-			
+
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-		
+
 		final GOODS_LIST goods = list.get(position);
-		
+
 		isSelected.put(position, false);
-		
-		shared = context.getSharedPreferences("userInfo", 0); 
+
+		shared = context.getSharedPreferences("userInfo", 0);
 		editor = shared.edit();
 		String imageType = shared.getString("imageType", "mind");
-		
+
 		if(imageType.equals("high")) {
             imageLoader.displayImage(goods.img.thumb,holder.image, EcmobileApp.options);
 		} else if(imageType.equals("low")) {
@@ -162,10 +162,10 @@ public class C0_ShoppingCartAdapter extends BaseAdapter {
                 imageLoader.displayImage(goods.img.small,holder.image, EcmobileApp.options);
 			}
 		}
-		
+
 		holder.totel.setText(goods.subtotal);
 		holder.text.setText(goods.goods_name);
-		
+
 		StringBuffer sbf = new StringBuffer();
 		for(int i=0;i<goods.goods_attr.size();i++) {
 				sbf.append(goods.goods_attr.get(i).name+"：");
@@ -173,11 +173,11 @@ public class C0_ShoppingCartAdapter extends BaseAdapter {
 		}
 //		sbf.append(resource.getString(R.string.amount));
 		sbf.append(goods.goods_number);
-		
+
 //		holder.property.setText(sbf.toString());
-		
+
 		holder.editNum.setText(goods.goods_number+"");
-		
+
 //		holder.change.setOnClickListener(new OnClickListener() {
 //
 //			@Override
@@ -228,11 +228,11 @@ public class C0_ShoppingCartAdapter extends BaseAdapter {
 //				}
 //			}
 //		});
-		
+
 		holder.min.setOnClickListener(new OnClickListener() {
-				
+
 			@Override
-			public void onClick(View v) {				
+			public void onClick(View v) {
 				i = Integer.valueOf(holder.editNum.getText().toString());
 				if(i>1) {
 					holder.editNum.setText(--i+"");
@@ -267,11 +267,11 @@ public class C0_ShoppingCartAdapter extends BaseAdapter {
                 }
 			}
 		});
-		
+
 		holder.sum.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
-			public void onClick(View v) {				
+			public void onClick(View v) {
 				i = Integer.valueOf(holder.editNum.getText().toString());
                     ++i;
                     holder.editNum.setText(i+"");
@@ -283,7 +283,7 @@ public class C0_ShoppingCartAdapter extends BaseAdapter {
 
 			}
 		});
-		
+
 //		holder.remove.setOnClickListener(new OnClickListener() {
 //
 //			@Override
@@ -311,27 +311,27 @@ public class C0_ShoppingCartAdapter extends BaseAdapter {
 //				});
 //			}
 //		});
-		
+
 		return convertView;
 	}
-	
+
 	class ViewHolder {
-		
+
 		private TextView totel;
 //		private Button change;
 		private FrameLayout view;
 		private LinearLayout view1;
 //		private FrameLayout view2;
-		
+
 		private ImageView image;
 		private TextView text;
 //		private TextView property;
-		
+
 		private ImageView min;
 		private EditText editNum;
 		private ImageView sum;
 //		private Button remove;
-		
+
 	}
 
 }
