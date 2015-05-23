@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Map;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Handler;
@@ -28,55 +27,58 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.external.activeandroid.util.AnimationUtil;
 import com.insthub.BeeFramework.view.MyDialog;
-import com.insthub.BeeFramework.view.WebImageView;
 import com.insthub.ecmobile.EcmobileApp;
-import com.insthub.ecmobile.activity.C0_ShoppingCartActivity;
-import com.insthub.ecmobile.activity.E4_HistoryActivity;
-import com.insthub.ecmobile.fragment.C0_ShoppingCartFragment;
 import com.insthub.ecmobile.protocol.GOODS_LIST;
 import com.insthub.ecmobile.R;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class C0_ShoppingCartAdapter extends BaseAdapter {
 
-	private LayoutInflater inflater;
+	private LayoutInflater mInflater;
 	private Context context;
-	public List<GOODS_LIST> list;
+	public List<GOODS_LIST> mList;
 	private int i;
 	public Handler parentHandler;
 
 	public static int CART_CHANGE_CHANGE2 = 4;
 	public static int CART_CHANGE_CHANGE1 = 3;
-    public static int CART_CHANGE_MODIFY = 2;
-    public static int CART_CHANGE_REMOVE = 1;
+	public static int CART_CHANGE_MODIFY = 2;
+	public static int CART_CHANGE_REMOVE = 1;
 
-    private SharedPreferences shared;
+
+	//  Item type
+	private final int LIST_TYPE_FITRST = 0;
+	private final int LIST_TYPE_END = 2;
+	private final int LIST_TYPE_MID = 1;
+
+	private final int LIST_TYPE_COUNT = 3;
+
+
+	private SharedPreferences shared;
 	private SharedPreferences.Editor editor;
 
-    public static Map<Integer, Boolean> isSelected = new HashMap<Integer, Boolean>();;
+	public static Map<Integer, Boolean> isSelected = new HashMap<Integer, Boolean>();
 
-    private MyDialog mDialog;
-    protected ImageLoader imageLoader = ImageLoader.getInstance();
+	private MyDialog mDialog;
+	protected ImageLoader imageLoader = ImageLoader.getInstance();
+
 	public C0_ShoppingCartAdapter(Context context, List<GOODS_LIST> list) {
 		this.context = context;
-		this.list = list;
-		inflater = LayoutInflater.from(context);
+		this.mList = list;
+		mInflater = LayoutInflater.from(context);
 
 	}
 
 	private boolean init(int position) {
-		if(isSelected.containsKey(Integer.valueOf(position))) {
-			if(isSelected.get(position) == true) {
+		if (isSelected.containsKey(Integer.valueOf(position))) {
+			if (isSelected.get(position) == true) {
 				return true;
 			} else {
 				return false;
@@ -88,12 +90,12 @@ public class C0_ShoppingCartAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		return list.size();
+		return mList.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		return list.get(position);
+		return mList.get(position);
 	}
 
 	@Override
@@ -103,38 +105,66 @@ public class C0_ShoppingCartAdapter extends BaseAdapter {
 
 	@Override
 	public int getItemViewType(int position) {
-		return position;
+
+		// TODO by zz 需要修改 布局类型判断 根据超市的名字
+		if (position == 0) {
+			return LIST_TYPE_FITRST;
+		} else if (position == getCount() - 1) {
+			return LIST_TYPE_END;
+		} else {
+			return LIST_TYPE_MID;
+		}
 	}
 
 	@Override
 	public int getViewTypeCount() {
-		int count = list != null ? list.size() : 1;
-		return count;
+//        int count = mList != null ? mList.size() : 1;
+//        return count;
+		return LIST_TYPE_COUNT;
 	}
 
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
 		final ViewHolder holder;
-        final Resources resource = (Resources) context.getResources();
+		final Resources resource = context.getResources();
 		i = 0;
-		if(convertView == null) {
+		if (convertView == null) {
 			holder = new ViewHolder();
-			convertView = inflater.inflate(R.layout.c0_shopping_cart_cell, null);
+			int type = getItemViewType(position);
 
-			holder.totel = (TextView) convertView.findViewById(R.id.shop_car_item_total);
+			switch (type) {
+				case LIST_TYPE_FITRST:
+					convertView = mInflater.inflate(R.layout.c0_shopping_cart_cell_frist, null);
+					holder.shopIcon = (ImageView) convertView.findViewById(R.id.shop_car_item_shop_icon);
+					holder.shopName = (TextView) convertView.findViewById(R.id.shop_car_item_shop_name);
+					break;
+				case LIST_TYPE_MID:
+					convertView = mInflater.inflate(R.layout.c0_shopping_cart_cell_mid, null);
+					break;
+				case LIST_TYPE_END:
+					convertView = mInflater.inflate(R.layout.c0_shopping_cart_cell_end, null);
+					holder.rebateDes = (TextView) convertView.findViewById(R.id.shop_car_item_bottom_text);
+					holder.rebateDes2 = (TextView) convertView.findViewById(R.id.shop_car_item_bottom_text2);
+					break;
+			}
+
+
+//            convertView = mInflater.inflate(R.layout.c0_shopping_cart_cell, null);
+
+			holder.prices = (TextView) convertView.findViewById(R.id.shop_car_item_total);
 //			holder.change = (Button) convertView.findViewById(R.id.shop_car_item_change);
 
-			holder.view = (FrameLayout) convertView.findViewById(R.id.shop_car_item_view);
-			holder.view1 = (LinearLayout) convertView.findViewById(R.id.shop_car_item_view1);
+//            holder.view = (FrameLayout) convertView.findViewById(R.id.shop_car_item_view);
+//            holder.view1 = (LinearLayout) convertView.findViewById(R.id.shop_car_item_view1);
 //			holder.view2 = (FrameLayout) convertView.findViewById(R.id.shop_car_item_view2);
 
 			holder.image = (ImageView) convertView.findViewById(R.id.shop_car_item_image);
-			holder.text = (TextView) convertView.findViewById(R.id.shop_car_item_text);
+			holder.goodsName = (TextView) convertView.findViewById(R.id.shop_car_item_text);
 //			holder.property = (TextView) convertView.findViewById(R.id.shop_car_item_property);
 
-			holder.min = (ImageView) convertView.findViewById(R.id.shop_car_item_min);
-			holder.editNum = (EditText) convertView.findViewById(R.id.shop_car_item_editNum);
-			holder.sum = (ImageView) convertView.findViewById(R.id.shop_car_item_sum);
+			holder.reduce = (ImageView) convertView.findViewById(R.id.shop_car_item_min);
+			holder.goodsNum = (EditText) convertView.findViewById(R.id.shop_car_item_editNum);
+			holder.add = (ImageView) convertView.findViewById(R.id.shop_car_item_sum);
 //			holder.remove = (Button) convertView.findViewById(R.id.shop_car_item_remove);
 
 			convertView.setTag(holder);
@@ -142,7 +172,7 @@ public class C0_ShoppingCartAdapter extends BaseAdapter {
 			holder = (ViewHolder) convertView.getTag();
 		}
 
-		final GOODS_LIST goods = list.get(position);
+		final GOODS_LIST goods = mList.get(position);
 
 		isSelected.put(position, false);
 
@@ -150,33 +180,34 @@ public class C0_ShoppingCartAdapter extends BaseAdapter {
 		editor = shared.edit();
 		String imageType = shared.getString("imageType", "mind");
 
-		if(imageType.equals("high")) {
-            imageLoader.displayImage(goods.img.thumb,holder.image, EcmobileApp.options);
-		} else if(imageType.equals("low")) {
-            imageLoader.displayImage(goods.img.small,holder.image, EcmobileApp.options);
+		if (imageType.equals("high")) {
+			imageLoader.displayImage(goods.img.thumb, holder.image, EcmobileApp.options);
+		} else if (imageType.equals("low")) {
+			imageLoader.displayImage(goods.img.small, holder.image, EcmobileApp.options);
 		} else {
 			String netType = shared.getString("netType", "wifi");
-			if(netType.equals("wifi")) {
-                imageLoader.displayImage(goods.img.thumb,holder.image, EcmobileApp.options);
+			if (netType.equals("wifi")) {
+				imageLoader.displayImage(goods.img.thumb, holder.image, EcmobileApp.options);
 			} else {
-                imageLoader.displayImage(goods.img.small,holder.image, EcmobileApp.options);
+				imageLoader.displayImage(goods.img.small, holder.image, EcmobileApp.options);
 			}
 		}
 
-		holder.totel.setText(goods.subtotal);
-		holder.text.setText(goods.goods_name);
+		holder.prices.setText(goods.subtotal);
+		holder.goodsName.setText(goods.goods_name);
 
 		StringBuffer sbf = new StringBuffer();
-		for(int i=0;i<goods.goods_attr.size();i++) {
-				sbf.append(goods.goods_attr.get(i).name+"：");
-				sbf.append(goods.goods_attr.get(i).value+" | ");
+		for (int i = 0; i < goods.goods_attr.size(); i++) {
+			sbf.append(goods.goods_attr.get(i).name + "：");
+			sbf.append(goods.goods_attr.get(i).value + " | ");
 		}
 //		sbf.append(resource.getString(R.string.amount));
 		sbf.append(goods.goods_number);
 
 //		holder.property.setText(sbf.toString());
 
-		holder.editNum.setText(goods.goods_number+"");
+		holder.goodsNum.setText(goods.goods_number + "");
+
 
 //		holder.change.setOnClickListener(new OnClickListener() {
 //
@@ -212,7 +243,7 @@ public class C0_ShoppingCartAdapter extends BaseAdapter {
 //
 //					isSelected.put(position, false);
 //					boolean a = false;
-//					for(int j=0;j<list.size();j++) {
+//					for(int j=0;j<mList.size();j++) {
 //						if(init(j) == true) {
 //							a = true;
 //							break;
@@ -229,57 +260,57 @@ public class C0_ShoppingCartAdapter extends BaseAdapter {
 //			}
 //		});
 
-		holder.min.setOnClickListener(new OnClickListener() {
+		holder.reduce.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				i = Integer.valueOf(holder.editNum.getText().toString());
-				if(i>1) {
-					holder.editNum.setText(--i+"");
-                    Message msg = new Message();
-		                msg.what = CART_CHANGE_MODIFY;
-		                msg.arg1 = Integer.valueOf(goods.rec_id);
-		                msg.arg2 = Integer.valueOf(holder.editNum.getText().toString());
-                        parentHandler.handleMessage(msg);
-				}else {
-                    				mDialog = new MyDialog(context, resource.getString(R.string.shopcaritem_remove), resource.getString(R.string.delete_confirm));
-                mDialog.show();
-                mDialog.positive.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						mDialog.dismiss();
-						Message msg = new Message();
-		                msg.what = CART_CHANGE_REMOVE;
-		                msg.arg1 = Integer.valueOf(goods.rec_id);
+				i = Integer.valueOf(holder.goodsNum.getText().toString());
+				if (i > 1) {
+					holder.goodsNum.setText(--i + "");
+					Message msg = new Message();
+					msg.what = CART_CHANGE_MODIFY;
+					msg.arg1 = Integer.valueOf(goods.rec_id);
+					msg.arg2 = Integer.valueOf(holder.goodsNum.getText().toString());
+					parentHandler.handleMessage(msg);
+				} else {
+					mDialog = new MyDialog(context, resource.getString(R.string.shopcaritem_remove), resource.getString(R.string.delete_confirm));
+					mDialog.show();
+					mDialog.positive.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							mDialog.dismiss();
+							Message msg = new Message();
+							msg.what = CART_CHANGE_REMOVE;
+							msg.arg1 = Integer.valueOf(goods.rec_id);
 
-		                parentHandler.handleMessage(msg);
+							parentHandler.handleMessage(msg);
 
-					}
-				});
-                mDialog.negative.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						mDialog.dismiss();
+						}
+					});
+					mDialog.negative.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							mDialog.dismiss();
 
-					}
-				});
+						}
+					});
 
-                }
+				}
 			}
 		});
 
-		holder.sum.setOnClickListener(new OnClickListener() {
+		holder.add.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				i = Integer.valueOf(holder.editNum.getText().toString());
-                    ++i;
-                    holder.editNum.setText(i+"");
-                Message msg = new Message();
-		                msg.what = CART_CHANGE_MODIFY;
-		                msg.arg1 = Integer.valueOf(goods.rec_id);
-		                msg.arg2 = Integer.valueOf(holder.editNum.getText().toString());
-                        parentHandler.handleMessage(msg);
+				i = Integer.valueOf(holder.goodsNum.getText().toString());
+				++i;
+				holder.goodsNum.setText(i + "");
+				Message msg = new Message();
+				msg.what = CART_CHANGE_MODIFY;
+				msg.arg1 = Integer.valueOf(goods.rec_id);
+				msg.arg2 = Integer.valueOf(holder.goodsNum.getText().toString());
+				parentHandler.handleMessage(msg);
 
 			}
 		});
@@ -315,23 +346,49 @@ public class C0_ShoppingCartAdapter extends BaseAdapter {
 		return convertView;
 	}
 
-	class ViewHolder {
+//    class ViewHolder {
+//
+//        private TextView totel;
+//        //		private Button change;
+//        private FrameLayout view;
+//        private LinearLayout view1;
+////		private FrameLayout view2;
+//
+//        private ImageView image;
+//        private TextView text;
+////		private TextView property;
+//
+//        private ImageView min;
+//        private EditText editNum;
+//        private ImageView sum;
+////		private Button remove;
+//
+//
+//    }
 
-		private TextView totel;
-//		private Button change;
-		private FrameLayout view;
-		private LinearLayout view1;
-//		private FrameLayout view2;
 
-		private ImageView image;
-		private TextView text;
-//		private TextView property;
+	final class ViewHolder {
+		// 商品图片
+		ImageView image;
+		// 商品名
+		TextView goodsName;
+		// 商品价
+		TextView prices;
+		// add 和 reduce
+		ImageView add;
+		ImageView reduce;
+		// 商品数量
+		EditText goodsNum;
 
-		private ImageView min;
-		private EditText editNum;
-		private ImageView sum;
-//		private Button remove;
+		// Top bar
+		ImageView shopIcon;
+		TextView shopName;
+
+		// foot bar
+		TextView rebateDes;
+		TextView rebateDes2;
 
 	}
+
 
 }
