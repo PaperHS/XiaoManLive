@@ -7,6 +7,7 @@
     <color name="red_black">#ff3333</color>
     <color name="red_dark">#aa0000</color>
     <color name="grey">#99999999</color>
+    <color name="green">#ff00ff01</color>
 
     <drawable name="color_b">#44aaaaaa</drawable>
 	<drawable name="color_a">#00000000</drawable>
@@ -21,4 +22,7 @@
     <color name="halftranslate">#77ffffff</color>
     <color name="TextColorGray">#99999999</color>
     <color name="cyan">#1AA3A1</color>
+
+
+
 </resources>

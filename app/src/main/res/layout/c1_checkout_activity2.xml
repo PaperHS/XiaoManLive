@@ -71,7 +71,7 @@
                         android:layout_weight="1"
                         android:gravity="right"
                         android:padding="5dp"
-                        android:text="￥0"
+                        android:text="￥104"
                         android:textColor="@color/text_red" />
                 </LinearLayout>
 
@@ -96,7 +96,7 @@
                         android:layout_weight="1"
                         android:gravity="right"
                         android:padding="5dp"
-                        android:text="￥0"
+                        android:text="-￥0"
                         android:textColor="@color/text_red" />
                 </LinearLayout>
 
@@ -120,7 +120,7 @@
                         android:layout_weight="1"
                         android:gravity="right"
                         android:padding="5dp"
-                        android:text="￥0"
+                        android:text="+￥12"
                         android:textColor="@color/text_red" />
                 </LinearLayout>
 
@@ -144,7 +144,8 @@
                         android:layout_marginLeft="5dp"
                         android:layout_weight="1"
                         android:padding="5dp"
-                        android:text="总金额" />
+                        android:text="总金额"
+                        android:id="@+id/" />
 
                     <TextView
                         android:id="@+id/balance_total"
