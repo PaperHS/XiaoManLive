@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2012 Jake Wharton
+<?xml version="1.0" encoding="utf-8"?><!-- Copyright (C) 2012 Jake Wharton
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,25 +14,44 @@
 -->
 
 <resources>
-    <style name="tvStyle.Common.min" parent="android:Widget.TextView">
+    <!-- 分离style by zz -->
+    <style name="tvStyle.Common.min" parent="tvStyle.Common.black.min">
+        <item name="android:textColor">@color/main_color</item>
+    </style>
+
+    <style name="tvStyle.Common.mid" parent="tvStyle.Common.black.mid">
+        <item name="android:textColor">@color/main_color</item>
+    </style>
+
+    <style name="tvStyle.Common.large" parent="tvStyle.Common.black.large">
+        <item name="android:textColor">@color/main_color</item>
+    </style>
+
+    <style name="tvStyle.Common.max" parent="tvStyle.Common.black.max">
+        <item name="android:textColor">@color/main_color</item>
+    </style>
+
+
+    <!-- add by zz -->
+    <style name="tvStyle.Common.black.min" parent="android:Widget.TextView">
         <item name="android:gravity">center</item>
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/main_color</item>
     </style>
-    <style name="tvStyle.Common.mid" parent="android:Widget.TextView">
+
+    <style name="tvStyle.Common.black.mid" parent="android:Widget.TextView">
         <item name="android:gravity">center</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/main_color</item>
     </style>
-    <style name="tvStyle.Common.large" parent="android:Widget.TextView">
+
+    <style name="tvStyle.Common.black.large" parent="android:Widget.TextView">
         <item name="android:gravity">center</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/main_color</item>
     </style>
-    <style name="tvStyle.Common.max" parent="android:Widget.TextView">
+
+
+    <style name="tvStyle.Common.black.max" parent="android:Widget.TextView">
         <item name="android:gravity">center</item>
         <item name="android:textSize">24sp</item>
-        <item name="android:textColor">@color/main_color</item>
     </style>
 
 
@@ -42,7 +60,7 @@
         <item name="windowActionBar">false</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowContentOverlay">@null</item>
-     </style>
+    </style>
 
     <style name="StyledIndicators" parent="android:Theme.Light">
         <item name="vpiCirclePageIndicatorStyle">@style/CustomCirclePageIndicator</item>
@@ -102,8 +120,8 @@
         <item name="fadeLength">1000</item>
         <item name="fadeDelay">1000</item>
     </style>
-    
-    
+
+
     <style name="dialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>
@@ -113,12 +131,12 @@
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:backgroundDimAmount">0.6</item>
- 	</style>
- 	
+    </style>
+
     <style name="customTheme" parent="@android:style/Theme.Light.NoTitleBar">
         <item name="android:splitMotionEvents">false</item>
- 	</style>
- 	
+    </style>
+
     <style name="AppTheme.Main" parent="Theme.AppCompat.Light">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <item name="android:actionBarStyle">@style/ActionBar.XM</item>
@@ -129,6 +147,7 @@
         <item name="android:windowAnimationStyle">@style/DefaultAnim</item>
 
     </style>
+
     <style name="DefaultAnim">
 
         <item name="android:activityOpenEnterAnimation">@anim/push_right_in</item>
@@ -145,13 +164,17 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
+
     <style name="ProgressBarHorizontal">
         <item name="android:indeterminateOnly">false</item>
         <item name="android:progressDrawable">@drawable/seekbar_img</item>
-        <item name="android:indeterminateDrawable">@android:drawable/progress_indeterminate_horizontal</item>
+        <item name="android:indeterminateDrawable">
+            @android:drawable/progress_indeterminate_horizontal
+        </item>
         <item name="android:minHeight">3dip</item>
         <item name="android:maxHeight">3dip</item>
     </style>
+
     <style name="ActionBar.XM" parent="android:Widget.ActionBar">
 
         <item name="theme">@style/ThemeOverlay.MyApp.ActionBar</item>
@@ -162,16 +185,53 @@
         <item name="android:displayOptions">homeAsUp|disableHome|showTitle</item>
         <item name="android:homeAsUpIndicator">@drawable/ic_arraw_left</item>
     </style>
+
     <style name="ThemeOverlay.MyApp.ActionBar" parent="ThemeOverlay.AppCompat.ActionBar">
         <item name="android:textColorPrimary">@color/white</item>
     </style>
+
     <style name="ActionBar.title" parent="android:Widget.ActionBar.TabText">
         <item name="android:textColor">@color/white</item>
 
-        
+
     </style>
+
     <style name="Theme.NoActionBar" parent="android:Theme.Light">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
     </style>
+
+
+
+
+
+
+
+
+    <!-- 立即支付界面的style  by zz-->
+
+    <style name="recharge_mode_tv_style" parent="tvStyle.Common.black.large">
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginTop">2dp</item>
+    </style>
+
+    <style name="recharge_tv_hint_style" parent="tvStyle.Common.black.mid">
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="recharge_icon_style">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginLeft">10dp</item>
+    </style>
+
+
+
+
+
+
 </resources>

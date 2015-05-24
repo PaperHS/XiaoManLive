@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/common_bg"
+              android:orientation="vertical">
+
+    <include
+        layout="@layout/common_toolbar"
+        android:orientation="vertical"></include>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:fillViewport="false"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_shop_icon_0"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="#ff776655"/>
+
+                <TextView
+                    style="@style/tvStyle.Common.black.mid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/iv_shop_icon_0"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toEndOf="@+id/iv_shop_icon_0"
+                    android:layout_toRightOf="@+id/iv_shop_icon_0"
+                    android:text="乐购超市"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/iv_shop_icon_0"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toEndOf="@+id/iv_shop_icon_0"
+                    android:layout_toRightOf="@+id/iv_shop_icon_0">
+
+                    <TextView
+                        style="@style/tvStyle.Common.black.min"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="总价: "/>
+
+                    <TextView
+                        android:id="@+id/total_price_0"
+                        style="@style/tvStyle.Common.black.min"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="￥20"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="配送费"/>
+
+                    <TextView
+                        android:id="@+id/tv_distribution_prices_0"
+                        style="@style/tvStyle.Common.mid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="￥6"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider"></View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_shop_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/iv_shop_icon_1"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="#ff776655"/>
+
+                        <TextView
+                            style="@style/tvStyle.Common.black.mid"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@+id/iv_shop_icon_1"
+                            android:layout_marginLeft="20dp"
+                            android:layout_toEndOf="@+id/iv_shop_icon_1"
+                            android:layout_toRightOf="@+id/iv_shop_icon_1"
+                            android:text="新马路菜市场"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/iv_shop_icon_1"
+                            android:layout_marginLeft="20dp"
+                            android:layout_toEndOf="@+id/iv_shop_icon_1"
+                            android:layout_toRightOf="@+id/iv_shop_icon_1">
+
+                            <TextView
+                                style="@style/tvStyle.Common.black.min"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="总价: "/>
+
+                            <TextView
+                                android:id="@+id/total_price_1"
+                                style="@style/tvStyle.Common.black.min"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="￥20"/>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_shop_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/iv_shop_icon_2"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="#ff776655"/>
+
+                        <TextView
+                            style="@style/tvStyle.Common.black.mid"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@+id/iv_shop_icon_2"
+                            android:layout_marginLeft="20dp"
+                            android:layout_toEndOf="@+id/iv_shop_icon_2"
+                            android:layout_toRightOf="@+id/iv_shop_icon_2"
+                            android:text="鲜果园"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/iv_shop_icon_2"
+                            android:layout_marginLeft="20dp"
+                            android:layout_toEndOf="@+id/iv_shop_icon_2"
+                            android:layout_toRightOf="@+id/iv_shop_icon_2">
+
+                            <TextView
+                                style="@style/tvStyle.Common.black.min"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="总价: "/>
+
+                            <TextView
+                                android:id="@+id/total_price_2"
+                                style="@style/tvStyle.Common.black.min"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="￥20"/>
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:gravity="right">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="配送费"/>
+
+                    <TextView
+                        android:id="@+id/tv_distribution_prices_1"
+                        style="@style/tvStyle.Common.mid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="￥6"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider"></View>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_shop_icon_3"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="#ff776655"/>
+
+                <TextView
+                    style="@style/tvStyle.Common.black.mid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/iv_shop_icon_3"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toEndOf="@+id/iv_shop_icon_3"
+                    android:layout_toRightOf="@+id/iv_shop_icon_3"
+                    android:text="优选微店"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/iv_shop_icon_3"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toEndOf="@+id/iv_shop_icon_3"
+                    android:layout_toRightOf="@+id/iv_shop_icon_3">
+
+                    <TextView
+                        style="@style/tvStyle.Common.black.min"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="总价: "/>
+
+                    <TextView
+                        android:id="@+id/total_price_3"
+                        style="@style/tvStyle.Common.black.min"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="￥20"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="配送费"/>
+
+                    <TextView
+                        android:id="@+id/tv_distribution_prices_3"
+                        style="@style/tvStyle.Common.mid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="￥6"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider"></View>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_shop_icon_4"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="#ff776655"/>
+
+                <TextView
+                    style="@style/tvStyle.Common.black.mid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/iv_shop_icon_4"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toEndOf="@+id/iv_shop_icon_4"
+                    android:layout_toRightOf="@+id/iv_shop_icon_4"
+                    android:text="福田及时送"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/iv_shop_icon_4"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toEndOf="@+id/iv_shop_icon_4"
+                    android:layout_toRightOf="@+id/iv_shop_icon_4">
+
+                    <TextView
+                        style="@style/tvStyle.Common.black.min"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="总价: "/>
+
+                    <TextView
+                        android:id="@+id/total_price_4"
+                        style="@style/tvStyle.Common.black.min"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="￥20"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="配送费"/>
+
+                    <TextView
+                        android:id="@+id/tv_distribution_prices_4"
+                        style="@style/tvStyle.Common.mid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="免费"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_centerVertical="true"
+                    android:background="@color/divider"></View>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="4dp"
+                    android:text="结算"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="商品总价"/>
+
+                <TextView
+                    android:id="@+id/balance_goods_total"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="￥104"
+                    android:textColor="@color/main_color"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="95折优惠"/>
+
+                <TextView
+                    android:id="@+id/balance_discount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="-￥0"
+                    android:textColor="@color/main_color"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="配送费用"/>
+
+                <TextView
+                    android:id="@+id/balance_fees"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="+￥12"
+                    android:textColor="@color/main_color"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="代金卷"/>
+
+                <TextView
+                    android:id="@+id/balance_bonus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="-￥0"
+                    android:textColor="@color/main_color"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/main_color"></View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:text="总金额"
+                    />
+
+                <TextView
+                    android:id="@+id/balance_total"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="￥116"
+                    android:textColor="@color/main_color"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/divider"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                >
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="配送"/>
+
+                <TextView
+                    style="@style/tvStyle.Common.black.min"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="温馨提示：及时送商品为下单及送的商品，请注意查收"
+                    android:textColor="@color/green"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                >
+
+                <TextView
+                    style="@style/tvStyle.Common.black.large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="预约送达时间"/>
+
+                <TextView
+                    style="@style/tvStyle.Common.large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/iv_arrow_icon"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/iv_arrow_icon"
+                    android:layout_toStartOf="@+id/iv_arrow_icon"
+                    android:text="未选择时间"
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_arrow_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/accsessory_arrow_right"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/divider"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="备注"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                >
+
+                <TextView
+                    style="@style/tvStyle.Common.large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="可填写安全存放地址、请按门铃等配送相关要求"/>
+
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/edt_checkout_"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/divider"
+                android:minHeight="40dp" />
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
