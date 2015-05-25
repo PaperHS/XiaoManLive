@@ -25,28 +25,20 @@
 
         </ListView>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right|center_vertical"
-            android:paddingBottom="5dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="5dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:text="订单状态"/>
+        <!--<com.external.maxwin.view.XListView-->
+            <!--android:id="@+id/trade_list"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="fill_parent"-->
+            <!--android:background="#00000000"-->
+            <!--android:divider="#00000000"-->
+            <!--android:dividerHeight="0.1dp"-->
+            <!--android:footerDividersEnabled="false"-->
+            <!--android:headerDividersEnabled="false"-->
+            <!--android:listSelector="@android:color/transparent">-->
+        <!--</com.external.maxwin.view.XListView>-->
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_arrow_right"/>
-        </LinearLayout>
+
 
     </LinearLayout>
 </LinearLayout>

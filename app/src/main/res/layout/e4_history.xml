@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/body"
-    android:orientation="vertical" >
-
+    android:orientation="vertical">
 
 
     <FrameLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent">
 
         <com.external.maxwin.view.XListView
             android:id="@+id/trade_list"
@@ -20,28 +20,33 @@
             android:dividerHeight="0.1dp"
             android:footerDividersEnabled="false"
             android:headerDividersEnabled="false"
-            android:listSelector="@android:color/transparent" >
+            android:listSelector="@android:color/transparent">
         </com.external.maxwin.view.XListView>
-        
+
         <RelativeLayout
-                android:id="@+id/null_pager"
-                android:background="@color/common_bg"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            android:id="@+id/null_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/common_bg">
+
             <ImageView
-                    android:id="@+id/order_null_img"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:src="@drawable/ic_order_null"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="50dp"
-                    />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@id/order_null_img"
-                    style="@style/tvStyle.Common.large"
-                    android:layout_marginTop="20dp"
-                    android:text="目前还没有任何订单哦"
-                    />
+                android:id="@+id/order_null_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/ic_order_null"
+                />
+
+            <TextView
+                style="@style/tvStyle.Common.large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/order_null_img"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="目前还没有任何订单哦"
+                />
         </RelativeLayout>
 
         <!-- <ImageView
