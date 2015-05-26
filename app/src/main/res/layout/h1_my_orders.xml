@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+<!-- TODO 在订单较多时，最下面会显示全 -->
+    <include
+        layout="@layout/common_toolbar"
+        android:orientation="vertical">
+    </include>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <ListView
+            android:id="@+id/lv_my_orders"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+
+
+        <!--<com.external.maxwin.view.XListView-->
+            <!--android:id="@+id/trade_list"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="fill_parent"-->
+            <!--android:background="#00000000"-->
+            <!--android:divider="#00000000"-->
+            <!--android:dividerHeight="0.1dp"-->
+            <!--android:footerDividersEnabled="false"-->
+            <!--android:headerDividersEnabled="false"-->
+            <!--android:listSelector="@android:color/transparent">-->
+        <!--</com.external.maxwin.view.XListView>-->
+
+
+
+    </LinearLayout>
+</LinearLayout>

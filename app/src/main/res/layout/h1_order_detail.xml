@@ -1,100 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:orientation="vertical" >
-    <LinearLayout 
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+    <LinearLayout
         android:id="@+id/h1_myorder_detail_title"
         android:layout_width="match_parent"
-    	android:layout_height="wrap_content"
-    	android:padding="10dp"
- 
-    	android:orientation="vertical"
-        
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        android:padding="10dp"
+
         >
-            	<TextView 
-	    android:id="@+id/item_myorder_status"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:text="订单状态：等待支付"
-	    android:gravity="center_vertical|left"
-	    android:paddingTop="5dp"
-	    android:paddingBottom="5dp"
-	    android:textColor="@color/TextColorBlack"
-	    style="@style/tvStyle.Common.mid"
-	    />
-	<TextView 
-	    android:id="@+id/item_myorder_time"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:text="建立时间"
-	    android:gravity="center_vertical|left"
-	    android:paddingTop="5dp"
-	    android:paddingBottom="5dp"
-	    android:textColor="@color/TextColorBlack"
-	    style="@style/tvStyle.Common.mid"
-	    />
-	<TextView 
-	    android:id="@+id/item_myorder_count"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:text="商品数量"
-	    android:gravity="center_vertical|left"
-	    android:paddingTop="5dp"
-	    android:paddingBottom="5dp"
-	    android:textColor="@color/TextColorBlack"
-	    style="@style/tvStyle.Common.mid"
-	    />
-	<TextView 
-	    android:id="@+id/item_myorder_price"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:text="@string/order_price"
-	    android:gravity="center_vertical|left"
-	    android:paddingTop="5dp"
-	    android:paddingBottom="5dp"
-	    android:textColor="@color/TextColorBlack"
-	    style="@style/tvStyle.Common.mid"
-	    />
-	<TextView 
-	    android:id="@+id/item_myorder_save"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:text="@string/order_save"
-	    android:gravity="center_vertical|left"
-	    android:paddingTop="5dp"
-	    android:paddingBottom="5dp"
-	    android:textColor="@color/TextColorBlack"
-	    style="@style/tvStyle.Common.mid"
-	    />
+
+        <TextView
+            android:id="@+id/item_myorder_status"
+            style="@style/tvStyle.Common.mid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|left"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="订单状态：等待支付"
+            android:textColor="@color/TextColorBlack"
+            />
+
+        <TextView
+            android:id="@+id/item_myorder_time"
+            style="@style/tvStyle.Common.mid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|left"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="建立时间"
+            android:textColor="@color/TextColorBlack"
+            />
+
+        <TextView
+            android:id="@+id/item_myorder_count"
+            style="@style/tvStyle.Common.mid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|left"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="商品数量"
+            android:textColor="@color/TextColorBlack"
+            />
+
+        <TextView
+            android:id="@+id/item_myorder_price"
+            style="@style/tvStyle.Common.mid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|left"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="@string/order_price"
+            android:textColor="@color/TextColorBlack"
+            />
+
+        <TextView
+            android:id="@+id/item_myorder_save"
+            style="@style/tvStyle.Common.mid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|left"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="@string/order_save"
+            android:textColor="@color/TextColorBlack"
+            />
     </LinearLayout>
-    
-	<TextView 
+
+    <TextView
         android:id="@+id/h1_myorder_detail_label"
-        android:layout_below="@id/h1_myorder_detail_title"
+        style="@style/tvStyle.Common.mid"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_height"
-        android:textColor="@color/main_color"
-        style="@style/tvStyle.Common.mid"
-        android:text="已购商品"
-        android:gravity="center_vertical|left"
+        android:layout_below="@id/h1_myorder_detail_title"
         android:drawableRight="@drawable/ic_arrow_right"
+        android:gravity="center_vertical|left"
+        android:text="已购商品"
+        android:textColor="@color/main_color"
         />
-	<ListView 
-	    android:id="@+id/h1_orderdetail_listview"
-	    android:layout_below="@id/h1_myorder_detail_label"
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"
-	    android:scrollbars="none"
-	    ></ListView>
-	<Button 
-	    android:id="@+id/h1_myorder_detail_cancelorder"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    style="@style/tvStyle.Common.mid"
-	    android:layout_alignParentBottom="true"
-	    android:text="取消订单"
-	    />
+
+    <ListView
+        android:id="@+id/h1_orderdetail_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/h1_myorder_detail_label"
+        android:scrollbars="none"
+        ></ListView>
+
+    <Button
+        android:id="@+id/h1_myorder_detail_cancelorder"
+        style="@style/tvStyle.Common.mid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="取消订单"
+        />
 </RelativeLayout>
