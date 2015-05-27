@@ -4,5 +4,6 @@
     <color name="TextColorBlack">#777777</color>
     <color name="TextColorWhite">#FFFFFFFF</color>
     <color name="BgColor">#ffd1dce9</color>
+    <color name="Black">#000000</color>
 
 </resources>

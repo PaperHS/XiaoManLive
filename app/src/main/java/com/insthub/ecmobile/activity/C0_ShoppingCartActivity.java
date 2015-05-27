@@ -19,6 +19,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -45,6 +46,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
 public class C0_ShoppingCartActivity extends BaseActivity implements BusinessResponse, IXListViewListenerCart {
     private View footerView;
 
@@ -59,16 +63,21 @@ public class C0_ShoppingCartActivity extends BaseActivity implements BusinessRes
     private ArrayList<String> items = new ArrayList<String>();
     private ShoppingCartModel shoppingCartModel;
     public Handler messageHandler;
-    private ImageView back;
+//    private ImageView back;
     private MyDialog mDialog;
     private OrderModel orderModel;
     private AddressModel addressModel;
     private ProgressDialog pd = null;
+    @InjectView(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.c0_shopping_cart);
+        ButterKnife.inject(this);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("购物车");
         shop_car_null = (FrameLayout) findViewById(R.id.shop_car_null);
         shop_car_isnot = (FrameLayout) findViewById(R.id.shop_car_isnot);
         final Resources resource = (Resources) getBaseContext().getResources();
@@ -127,17 +136,17 @@ public class C0_ShoppingCartActivity extends BaseActivity implements BusinessRes
             }
         };
 
-        back = (ImageView) findViewById(R.id.top_view_back);
-        back.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                finish();
-                overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
-
-            }
-        });
+//        back = (ImageView) findViewById(R.id.top_view_back);
+//        back.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//
+//                finish();
+//                overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+//
+//            }
+//        });
 
         orderModel = new OrderModel(this);
         orderModel.addResponseListener(this);

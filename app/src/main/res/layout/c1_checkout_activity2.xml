@@ -145,7 +145,7 @@
                         android:layout_weight="1"
                         android:padding="5dp"
                         android:text="总金额"
-                        android:id="@+id/" />
+                        />
 
                     <TextView
                         android:id="@+id/balance_total"

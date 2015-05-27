@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,18 +15,28 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.external.androidquery.callback.AjaxStatus;
+import com.insthub.BeeFramework.model.BusinessResponse;
+import com.insthub.BeeFramework.view.AddressChoiceDialog;
 import com.insthub.ecmobile.R;
 import com.insthub.ecmobile.adapter.MainPageAdapter;
 import com.insthub.ecmobile.component.PagerSlidingTabStrip;
 import com.insthub.ecmobile.fragment.ShopFragment;
+import com.insthub.ecmobile.model.AddressModel;
+import com.insthub.ecmobile.protocol.ApiInterface;
+import com.insthub.ecmobile.protocol.STATUS;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
-public class Main2Activity extends ActionBarActivity {
+public class Main2Activity extends ActionBarActivity implements BusinessResponse{
 
     @InjectView(R.id.toolbar)
     Toolbar toolbar;
@@ -40,19 +49,21 @@ public class Main2Activity extends ActionBarActivity {
     private List<ShopFragment> mShopFragments;
     private MainPageAdapter mainPageAdapter;
     private SharedPreferences shared;
+    AddressChoiceDialog addressChoiceDialog;
+    AddressModel addressModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        shared = getSharedPreferences("userInfo", 0);
-        String uid = shared.getString("uid", "");
-
-        if (TextUtils.isEmpty(uid)) {
-            startActivity(new Intent(this, A0_SigninActivity.class));
-            this.finish();
-            return;
-        }
+//        shared = getSharedPreferences("userInfo", 0);
+//        String uid = shared.getString("uid", "");
+//
+//        if (TextUtils.isEmpty(uid)) {
+//            startActivity(new Intent(this, A0_SigninActivity.class));
+//            this.finish();
+//            return;
+//        }
         ButterKnife.inject(this);
 
         View tv = LayoutInflater.from(this).inflate(R.layout.layout_main_title, null);
@@ -76,6 +87,12 @@ public class Main2Activity extends ActionBarActivity {
         init();
     }
 
+    @OnClick(R.id.main_shopcart_btn)
+    public void onToShopcart(){
+        Intent it = new Intent(this,C0_ShoppingCartActivity.class);
+        startActivity(it);
+    }
+
     private void init() {
         mShopFragments = new ArrayList<>();
         mShopFragments.add(ShopFragment.newInstance("富国超市", R.drawable.ic_shop1));
@@ -88,7 +105,9 @@ public class Main2Activity extends ActionBarActivity {
         mainIndicator.setIndicatorColorResource(R.color.text_red);
         mainIndicator.setTextSize(14);
         mainIndicator.setViewPager(mainVierpager);
-
+        addressModel = new AddressModel(this);
+        addressModel.addResponseListener(this);
+        addressModel.getAddressList();
     }
 
     @Override
@@ -112,4 +131,29 @@ public class Main2Activity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-}
+
+
+    @Override
+    public void OnMessageResponse(String url, JSONObject jo, AjaxStatus status) throws JSONException {
+        if (url.endsWith(ApiInterface.ADDRESS_LIST)) {
+            STATUS s = new STATUS();
+            s.fromJson(jo.optJSONObject("status"));
+            if (s.succeed == 1) {
+                //TODO dialog show
+
+                if (addressChoiceDialog == null) {
+                    addressChoiceDialog = new AddressChoiceDialog(this, "请选择送货地址", addressModel.addressList);
+                    addressChoiceDialog.positive.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            addressChoiceDialog.dismiss();
+                            Intent intent = new Intent(Main2Activity.this, F1_NewAddressActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+                }
+
+            }
+        }
+    }
+    }
