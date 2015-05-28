@@ -8,6 +8,15 @@
     <dimen name="smaller_txtsize">13px</dimen>
     <!-- zxf end -->
 
+    <dimen name="xm_acitonbarsize">50dp</dimen>
+    <dimen name="xm_titlestripSize">40dp</dimen>
+    <dimen name="xm_bannerSize">94dp</dimen>
+    <dimen name="xm_searchcellSize">94dp</dimen>
+    <dimen name="xm_categorySize">50dp</dimen>
+    <dimen name="xm_categoryTitleSize">35dp</dimen>
+    <dimen name="xm_productscell_img">85dp</dimen>
+    <dimen name="xm_productscell_name">40dp</dimen>
+    <dimen name="xm_productscell_price">40dp</dimen>
 
     <dimen name="recomment_margin">2dp</dimen>
     <dimen name="recomment_textsize">10sp</dimen>

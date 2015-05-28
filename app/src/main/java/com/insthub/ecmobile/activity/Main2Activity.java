@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,6 +26,10 @@ import com.insthub.ecmobile.fragment.ShopFragment;
 import com.insthub.ecmobile.model.AddressModel;
 import com.insthub.ecmobile.protocol.ApiInterface;
 import com.insthub.ecmobile.protocol.STATUS;
+import com.tencent.map.geolocation.TencentLocation;
+import com.tencent.map.geolocation.TencentLocationListener;
+import com.tencent.map.geolocation.TencentLocationManager;
+import com.tencent.map.geolocation.TencentLocationRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,7 +41,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-public class Main2Activity extends ActionBarActivity implements BusinessResponse{
+public class Main2Activity extends ActionBarActivity implements BusinessResponse,TencentLocationListener{
 
     @InjectView(R.id.toolbar)
     Toolbar toolbar;
@@ -51,6 +56,7 @@ public class Main2Activity extends ActionBarActivity implements BusinessResponse
     private SharedPreferences shared;
     AddressChoiceDialog addressChoiceDialog;
     AddressModel addressModel;
+    private TencentLocationManager locationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,9 +86,10 @@ public class Main2Activity extends ActionBarActivity implements BusinessResponse
         params.gravity = Gravity.CENTER_VERTICAL;
         toolbar.addView(tv, params);
         setSupportActionBar(toolbar);
+
 //        getSupportActionBar().setCustomView(tv);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         init();
     }
@@ -107,7 +114,24 @@ public class Main2Activity extends ActionBarActivity implements BusinessResponse
         mainIndicator.setViewPager(mainVierpager);
         addressModel = new AddressModel(this);
         addressModel.addResponseListener(this);
-        addressModel.getAddressList();
+//        addressModel.getAddressList();
+        //请求gps
+        TencentLocationRequest request = TencentLocationRequest.create();
+        locationManager = TencentLocationManager.getInstance(this);
+        int error = locationManager.requestLocationUpdates(request, this);
+        if (error==1){
+            Log.e("location", "tenlent less");
+        }else if(error==2){
+            Log.e("location","tenlent key error");
+        }
+        Log.e("location","error:"+error);
+    locationManager.removeUpdates(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        super.onDestroy();
     }
 
     @Override
@@ -156,4 +180,20 @@ public class Main2Activity extends ActionBarActivity implements BusinessResponse
             }
         }
     }
+
+    @Override
+    public void onLocationChanged(TencentLocation tencentLocation, int i, String s) {
+        if (TencentLocation.ERROR_OK == i) {
+            // 定位成功
+            titleAddress.setText(tencentLocation.getAddress());
+            android.util.Log.e("location","   "+tencentLocation.getAddress());
+        } else {
+            // 定位失败
+        }
     }
+
+    @Override
+    public void onStatusUpdate(String s, int i, String s1) {
+        Log.e("location",s+"   "+s1);
+    }
+}

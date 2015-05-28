@@ -6,4 +6,5 @@
     android:minHeight="?attr/actionBarSize"
     android:background="@color/main_color"
     app:theme="@style/ToolBar.XM"
+    android:id="@+id/toolbar"
     ></android.support.v7.widget.Toolbar>

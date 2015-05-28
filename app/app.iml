@@ -89,6 +89,7 @@
     <orderEntry type="library" exported="" name="pushservice-3.2.0" level="project" />
     <orderEntry type="library" exported="" name="UPPayPluginExPro" level="project" />
     <orderEntry type="library" exported="" name="support-v4-22.0.0" level="project" />
+    <orderEntry type="library" exported="" name="TencentLocationSDK_v4.1.1_r175129" level="project" />
     <orderEntry type="library" exported="" name="Msc" level="project" />
     <orderEntry type="library" exported="" name="weibosdkcore" level="project" />
     <orderEntry type="library" exported="" name="eventbus-2.4.0" level="project" />

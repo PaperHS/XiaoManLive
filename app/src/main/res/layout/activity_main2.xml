@@ -4,17 +4,12 @@
     android:orientation="vertical"
     tools:context="com.insthub.ecmobile.activity.Main2Activity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?android:actionBarSize"
-        android:background="@color/main_color"
-        >
-    </android.support.v7.widget.Toolbar>
+    <include layout="@layout/common_toolbar"></include>
+
     <com.insthub.ecmobile.component.PagerSlidingTabStrip
         android:id="@+id/main_indicator"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/xm_titlestripSize"
         >
     </com.insthub.ecmobile.component.PagerSlidingTabStrip>
     <RelativeLayout

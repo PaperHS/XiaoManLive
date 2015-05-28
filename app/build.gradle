@@ -24,4 +24,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:22.0.0'
     compile 'com.android.support:support-v4:22.0.0'
     compile 'de.greenrobot:eventbus:2.4.0'
+    compile files('libs/TencentLocationSDK_v4.1.1_r175129.jar')
 }

@@ -6,10 +6,10 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/banner_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="160dp" />
+        android:layout_height="@dimen/xm_bannerSize" />
 
     <FrameLayout
-            android:visibility="gone"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="15dp"
         android:layout_gravity="center_horizontal|bottom"
