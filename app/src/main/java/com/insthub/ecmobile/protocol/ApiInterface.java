@@ -53,4 +53,5 @@ public class ApiInterface
      public static final String PRODUCT_LASTBUY ="/product/buy_history";
      public static final String HOME_AD  ="/ad/ad_list";
 
+     public static final String HOME_INDEX  ="/product/supplier/top_list";
 }

@@ -91,7 +91,6 @@ public class A0_SigninActivity extends BaseActivity implements OnClickListener, 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationIcon(R.drawable.ic_action_content_clear);
 
-//        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_content_clear);
         loginModel = new LoginModel(A0_SigninActivity.this);
         loginModel.addResponseListener(this);
         mA0SigninProtrol.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
@@ -249,7 +248,6 @@ public class A0_SigninActivity extends BaseActivity implements OnClickListener, 
                 Intent intent = new Intent();
                 intent.putExtra("login", true);
                 setResult(Activity.RESULT_OK, intent);
-
                 finish();
                 overridePendingTransition(R.anim.push_up_in, R.anim.push_up_out);
             }

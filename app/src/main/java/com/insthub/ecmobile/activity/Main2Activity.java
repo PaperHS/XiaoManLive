@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
@@ -24,7 +24,9 @@ import com.insthub.ecmobile.adapter.MainPageAdapter;
 import com.insthub.ecmobile.component.PagerSlidingTabStrip;
 import com.insthub.ecmobile.fragment.ShopFragment;
 import com.insthub.ecmobile.model.AddressModel;
+import com.insthub.ecmobile.model.IndexStoreModel;
 import com.insthub.ecmobile.protocol.ApiInterface;
+import com.insthub.ecmobile.protocol.HOMESTORE;
 import com.insthub.ecmobile.protocol.STATUS;
 import com.tencent.map.geolocation.TencentLocation;
 import com.tencent.map.geolocation.TencentLocationListener;
@@ -41,7 +43,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-public class Main2Activity extends ActionBarActivity implements BusinessResponse,TencentLocationListener{
+public class Main2Activity extends AppCompatActivity implements BusinessResponse,TencentLocationListener{
 
     @InjectView(R.id.toolbar)
     Toolbar toolbar;
@@ -57,6 +59,7 @@ public class Main2Activity extends ActionBarActivity implements BusinessResponse
     AddressChoiceDialog addressChoiceDialog;
     AddressModel addressModel;
     private TencentLocationManager locationManager;
+    IndexStoreModel indexStoreModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,31 +104,30 @@ public class Main2Activity extends ActionBarActivity implements BusinessResponse
     }
 
     private void init() {
+        indexStoreModel = new IndexStoreModel(this);
+        indexStoreModel.addResponseListener(this);
+        indexStoreModel.fetchStores();
         mShopFragments = new ArrayList<>();
-        mShopFragments.add(ShopFragment.newInstance("富国超市", R.drawable.ic_shop1));
-        mShopFragments.add(ShopFragment.newInstance("新马路菜市场", R.drawable.ic_shop2));
-        mShopFragments.add(ShopFragment.newInstance("鲜果园", R.drawable.ic_shop3));
-        mShopFragments.add(ShopFragment.newInstance("微商优选", R.drawable.ic_shop4));
-        mShopFragments.add(ShopFragment.newInstance("福田及时送", R.drawable.ic_shop4));
+
         mainPageAdapter = new MainPageAdapter(getSupportFragmentManager(), mShopFragments);
         mainVierpager.setAdapter(mainPageAdapter);
         mainIndicator.setIndicatorColorResource(R.color.text_red);
         mainIndicator.setTextSize(14);
-        mainIndicator.setViewPager(mainVierpager);
+//        mainIndicator.setViewPager(mainVierpager);
         addressModel = new AddressModel(this);
         addressModel.addResponseListener(this);
 //        addressModel.getAddressList();
         //请求gps
         TencentLocationRequest request = TencentLocationRequest.create();
         locationManager = TencentLocationManager.getInstance(this);
-        int error = locationManager.requestLocationUpdates(request, this);
+        int error = locationManager.requestLocationUpdates(request, this,getMainLooper());
         if (error==1){
             Log.e("location", "tenlent less");
         }else if(error==2){
             Log.e("location","tenlent key error");
         }
-        Log.e("location","error:"+error);
-    locationManager.removeUpdates(this);
+        Log.e("location", "error:" + error);
+
     }
 
     @Override
@@ -178,6 +180,13 @@ public class Main2Activity extends ActionBarActivity implements BusinessResponse
                 }
 
             }
+        }else if (url.endsWith(ApiInterface.HOME_INDEX)){
+            for (HOMESTORE store :indexStoreModel.stores){
+                ShopFragment fragment = ShopFragment.newInstance(store.suppliers_name,Integer.parseInt(store.theme));
+                mShopFragments.add(fragment);
+            }
+            mainPageAdapter.notifyDataSetChanged();
+            mainIndicator.setViewPager(mainVierpager);
         }
     }
 
@@ -186,10 +195,12 @@ public class Main2Activity extends ActionBarActivity implements BusinessResponse
         if (TencentLocation.ERROR_OK == i) {
             // 定位成功
             titleAddress.setText(tencentLocation.getAddress());
-            android.util.Log.e("location","   "+tencentLocation.getAddress());
+            Log.e("location","   "+tencentLocation.getAddress());
         } else {
             // 定位失败
+            Log.e("location"," error  "+i+":"+s);
         }
+        locationManager.removeUpdates(this);
     }
 
     @Override

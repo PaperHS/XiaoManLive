@@ -36,7 +36,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.insthub.BeeFramework.model.ActivityManagerModel;
@@ -46,7 +46,7 @@ import com.insthub.ecmobile.R;
 import org.json.JSONException;
 
 @SuppressLint("NewApi")
-public class BaseActivity extends ActionBarActivity implements Handler.Callback
+public class BaseActivity extends AppCompatActivity implements Handler.Callback
 {
     public Handler mHandler;
 

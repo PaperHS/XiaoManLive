@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:text=" 送至 重庆市 "
+        android:drawablePadding="5dp"
         android:drawableLeft="@drawable/ic_action_circle"
         android:drawableRight="@drawable/ic_action_down"
         />

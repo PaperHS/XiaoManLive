@@ -43,8 +43,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.insthub.ecmobile.adapter.MainPageAdapter;
-
 /**
  * This is forked from com.astuetz.pagerslidingtabstrip.
  * 
@@ -489,9 +487,10 @@ public class PagerSlidingTabStrip extends HorizontalScrollView implements OnPage
 				num = num < 0 ? 0 : num;
 				addNumTab(i, mViewPager.getAdapter().getPageTitle(i).toString(), num);
 			} else {
-				if (mViewPager.getAdapter() instanceof MainPageAdapter)
-					addTextTab(i, mViewPager.getAdapter().getPageTitle(i).toString(),((MainPageAdapter)mViewPager.getAdapter()).getPageIconRes(i));
-				else addTextTab(i,mViewPager.getAdapter().getPageTitle(i).toString());
+//				if (mViewPager.getAdapter() instanceof MainPageAdapter)
+//					addTextTab(i, mViewPager.getAdapter().getPageTitle(i).toString(),((MainPageAdapter)mViewPager.getAdapter()).getPageIconRes(i));
+//				else
+					addTextTab(i,mViewPager.getAdapter().getPageTitle(i).toString());
 			}
 		}
 		

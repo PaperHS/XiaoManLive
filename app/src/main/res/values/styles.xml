@@ -139,13 +139,18 @@
 
     <style name="AppTheme.Main" parent="Theme.AppCompat.Light">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-        <item name="android:actionBarStyle">@style/ActionBar.XM</item>
-        <item name="android:splitMotionEvents">false</item>
+d        <item name="android:splitMotionEvents">false</item>
         <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:selectableItemBackground">@null</item>
         <item name="android:windowAnimationStyle">@style/DefaultAnim</item>
-
+        <item name="colorPrimary">@color/main_color</item>
+        <!--   darker variant for the status bar and contextual app bars -->
+        <item name="colorPrimaryDark">@color/main_color</item>
+        <!--   theme UI controls like checkboxes and text fields -->
+        <item name="colorAccent">@color/white</item>
+        <item name="android:actionBarSize">@dimen/xm_acitonbarsize</item>
     </style>
 
     <style name="DefaultAnim">
@@ -158,7 +163,6 @@
 
     <style name="ToolBar.XM" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="navigationIcon">@drawable/ic_arrow_left</item>
-        <item name="android:actionBarSize">@dimen/xm_acitonbarsize</item>
     </style>
 
     <style name="Theme.UPPay" parent="android:style/Theme.Light">
