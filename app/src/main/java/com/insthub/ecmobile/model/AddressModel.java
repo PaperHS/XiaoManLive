@@ -14,30 +14,54 @@ package com.insthub.ecmobile.model;
 //  Powered by BeeFramework
 //
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-import com.insthub.BeeFramework.view.MyProgressDialog;
-import com.insthub.ecmobile.R;
-import com.insthub.ecmobile.protocol.*;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.app.ProgressDialog;
 import android.content.Context;
 
 import com.external.androidquery.callback.AjaxStatus;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.insthub.BeeFramework.model.BaseModel;
 import com.insthub.BeeFramework.model.BeeCallback;
+import com.insthub.BeeFramework.view.MyProgressDialog;
+import com.insthub.ecmobile.R;
+import com.insthub.ecmobile.protocol.ADDRESS;
+import com.insthub.ecmobile.protocol.ApiInterface;
+import com.insthub.ecmobile.protocol.CommonResponse;
+import com.insthub.ecmobile.protocol.REGIONS;
+import com.insthub.ecmobile.protocol.REGION_DATA;
+import com.insthub.ecmobile.protocol.SEARCHADDRESS;
+import com.insthub.ecmobile.protocol.SESSION;
+import com.insthub.ecmobile.protocol.SearchAddrResponse;
+import com.insthub.ecmobile.protocol.addressaddRequest;
+import com.insthub.ecmobile.protocol.addressaddResponse;
+import com.insthub.ecmobile.protocol.addressdeleteRequest;
+import com.insthub.ecmobile.protocol.addressdeleteResponse;
+import com.insthub.ecmobile.protocol.addressinfoRequest;
+import com.insthub.ecmobile.protocol.addressinfoResponse;
+import com.insthub.ecmobile.protocol.addresslistRequest;
+import com.insthub.ecmobile.protocol.addresslistResponse;
+import com.insthub.ecmobile.protocol.addresssetDefaultRequest;
+import com.insthub.ecmobile.protocol.addresssetDefaultResponse;
+import com.insthub.ecmobile.protocol.addressupdateRequest;
+import com.insthub.ecmobile.protocol.addressupdateResponse;
+import com.insthub.ecmobile.protocol.regionRequest;
+import com.insthub.ecmobile.protocol.regionResponse;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class AddressModel extends BaseModel {
 
     public ArrayList<ADDRESS> addressList = new ArrayList<ADDRESS>();
     public ArrayList<REGIONS> regionsList0 = new ArrayList<REGIONS>();
     public ADDRESS address;
-
+    public SEARCHADDRESS searchaddress;
+    public List<CityModel> citys ;
     public AddressModel(Context context) {
         super(context);
 
@@ -369,6 +393,63 @@ public class AddressModel extends BaseModel {
         MyProgressDialog pd = new MyProgressDialog(mContext,mContext.getResources().getString(R.string.hold_on));
         aq.progress(pd.mDialog).ajax(cb);
 
+    }
+
+    public void searchAddress(){
+        BeeCallback<JSONObject> cb = new BeeCallback<JSONObject>() {
+
+            @Override
+            public void callback(String url, JSONObject jo, AjaxStatus status) {
+                AddressModel.this.callback(url, jo, status);
+                try {
+                    SearchAddrResponse response = new SearchAddrResponse();
+                    response.fromJson(jo);
+                    if (jo != null) {
+                        if (response.status.succeed == 1) {
+                            searchaddress = response.data;
+                            AddressModel.this.OnMessageResponse(url, jo, status);
+                        }
+                    }
+
+                } catch (JSONException e) {
+
+                    e.printStackTrace();
+                }
+            }
+
+        };
+        cb.url(ApiInterface.ADDRESS_SEARCH).type(JSONObject.class);
+        aq.ajax(cb);
+    }
+
+    public void fetchCitys(){
+        BeeCallback<JSONObject> cb = new BeeCallback<JSONObject>() {
+
+            @Override
+            public void callback(String url, JSONObject jo, AjaxStatus status) {
+                AddressModel.this.callback(url, jo, status);
+                try {
+                    CommonResponse response = new CommonResponse();
+                    response.fromJson(jo);
+                    if (jo != null) {
+                        if (response.status.succeed == 1) {
+                            Gson gson = new Gson();
+                            Type type = new TypeToken<List<CityModel>>(){}.getType();
+
+                            citys = gson.fromJson(response.data,type);
+                            AddressModel.this.OnMessageResponse(url, jo, status);
+                        }
+                    }
+
+                } catch (JSONException e) {
+
+                    e.printStackTrace();
+                }
+            }
+
+        };
+        cb.url(ApiInterface.ADDRESS_SEARCH).type(JSONObject.class);
+        aq.ajax(cb);
     }
 
 }

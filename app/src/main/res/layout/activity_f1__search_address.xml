@@ -9,5 +9,12 @@
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></FrameLayout>
-
+    <ListView
+        android:id="@+id/fragment_cities"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:dividerHeight="1px"
+        android:divider="@color/grey"
+        ></ListView>
 </RelativeLayout>

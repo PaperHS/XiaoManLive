@@ -17,6 +17,7 @@
     <dimen name="xm_productscell_img">85dp</dimen>
     <dimen name="xm_productscell_name">40dp</dimen>
     <dimen name="xm_productscell_price">40dp</dimen>
+    <dimen name="xm_common_list_size">35dp</dimen>
 
     <dimen name="recomment_margin">2dp</dimen>
     <dimen name="recomment_textsize">10sp</dimen>

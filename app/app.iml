@@ -101,6 +101,7 @@
     <orderEntry type="library" exported="" name="umeng_sdk" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-22.1.1" level="project" />
     <orderEntry type="library" exported="" name="Xg_sdk_v2.38_20150405_2046" level="project" />
+    <orderEntry type="library" exported="" name="gson-2.3.1" level="project" />
     <orderEntry type="library" exported="" name="libammsdk" level="project" />
     <orderEntry type="library" exported="" name="commons-httpclient-3.0.1" level="project" />
     <orderEntry type="library" exported="" name="butterknife-6.0.0" level="project" />

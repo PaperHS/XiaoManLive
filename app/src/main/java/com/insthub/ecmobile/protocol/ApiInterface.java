@@ -36,6 +36,9 @@ public class ApiInterface
      public static final String USER_SIGNUPFIELDS  ="/user/signupFields";
      public static final String SEARCHKEYWORDS  ="/searchKeywords";
      public static final String ADDRESS_UPDATE  ="/address/update";
+
+     public static final String ADDRESS_CITY  ="/address/city_list";
+     public static final String ADDRESS_SEARCH ="/user/address/search";
      public static final String ADDRESS_INFO  ="/address/info";
      public static final String VALIDATE_BONUS  ="/validate/bonus";
      public static final String REGION  ="/region";
