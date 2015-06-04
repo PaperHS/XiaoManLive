@@ -395,7 +395,7 @@ public class AddressModel extends BaseModel {
 
     }
 
-    public void searchAddress(){
+    public void searchAddress(int keyword,String keywords){
         BeeCallback<JSONObject> cb = new BeeCallback<JSONObject>() {
 
             @Override
@@ -418,6 +418,16 @@ public class AddressModel extends BaseModel {
             }
 
         };
+        Map<String, String> params = new HashMap<String, String>();
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("city_id",keyword);
+
+            jsonObject.put("keywords",keywords);
+            params.put("json", jsonObject.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         cb.url(ApiInterface.ADDRESS_SEARCH).type(JSONObject.class);
         aq.ajax(cb);
     }
@@ -448,7 +458,7 @@ public class AddressModel extends BaseModel {
             }
 
         };
-        cb.url(ApiInterface.ADDRESS_SEARCH).type(JSONObject.class);
+        cb.url(ApiInterface.ADDRESS_CITY).type(JSONObject.class);
         aq.ajax(cb);
     }
 

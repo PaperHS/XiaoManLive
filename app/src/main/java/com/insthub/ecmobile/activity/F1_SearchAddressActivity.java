@@ -12,9 +12,18 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.external.androidquery.callback.AjaxStatus;
 import com.insthub.BeeFramework.activity.BaseActivity;
+import com.insthub.BeeFramework.model.BusinessResponse;
 import com.insthub.ecmobile.R;
+import com.insthub.ecmobile.fragment.SearchAddress;
+import com.insthub.ecmobile.model.AddressModel;
 import com.insthub.ecmobile.model.CityModel;
+import com.insthub.ecmobile.protocol.ApiInterface;
+import com.nineoldandroids.animation.ObjectAnimator;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +32,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnItemClick;
 
-public class F1_SearchAddressActivity extends BaseActivity {
+public class F1_SearchAddressActivity extends BaseActivity implements BusinessResponse{
 
     @InjectView(R.id.toolbar)
     Toolbar toolbar;
@@ -34,8 +43,11 @@ public class F1_SearchAddressActivity extends BaseActivity {
     TextView mToolbarTitle;
     @InjectView(R.id.fragment_cities)
     ListView fragmentCities;
-    List<CityModel> cities = new ArrayList<>();
 
+    List<CityModel> cities = new ArrayList<>();
+    AddressModel addressModel ;
+    AddressAdapter addressAdapter;
+    SearchAddress mSearchAddress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,20 +56,49 @@ public class F1_SearchAddressActivity extends BaseActivity {
         View tv = LayoutInflater.from(this).inflate(R.layout.toolbar_search_address, null);
         mToolbarBack = (ImageView) tv.findViewById(R.id.toolbar_back);
         mToolbarTitle = (TextView) tv.findViewById(R.id.toolbar_title);
-
+        mToolbarTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                fragmentCities.setVisibility(View.VISIBLE);
+                ObjectAnimator.ofFloat(fragmentCities, "scaleY", 0,1f).setDuration(300).start();
+            }
+        });
         Toolbar.LayoutParams params = new Toolbar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         params.gravity = Gravity.CENTER_VERTICAL;
         toolbar.addView(tv, params);
         setSupportActionBar(toolbar);
-        fragmentCities.setAdapter(new AddressAdapter());
+        getSupportActionBar().setDisplayShowHomeEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
-
+        addressAdapter = new AddressAdapter();
+        fragmentCities.setAdapter(addressAdapter);
+        fragmentCities.setPivotY(0);
+        addressModel = new AddressModel(this);
+        addressModel.addResponseListener(this);
+        addressModel.fetchCitys();
+        mSearchAddress = new SearchAddress();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, mSearchAddress)
+                .commit();
 
     }
 
-    @OnItemClick(R.id.searchaddress_lv)
+    @OnItemClick(R.id.fragment_cities)
     public void onAddressClick(int position){
         mToolbarTitle.setText(cities.get(position).region_name);
+        ObjectAnimator.ofFloat(fragmentCities, "scaleY", 1f,0).setDuration(300).start();
+        mSearchAddress.setmCityId(cities.get(position).region_id);
+//        fragmentCities.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void OnMessageResponse(String url, JSONObject jo, AjaxStatus status) throws JSONException {
+            if (url.endsWith(ApiInterface.ADDRESS_CITY)){
+                cities.clear();
+                cities.addAll(addressModel.citys);
+                addressAdapter.notifyDataSetChanged();
+            }
     }
 
     class AddressAdapter extends BaseAdapter {

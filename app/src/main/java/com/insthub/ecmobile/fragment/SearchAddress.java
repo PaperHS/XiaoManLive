@@ -3,6 +3,7 @@ package com.insthub.ecmobile.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.external.androidquery.callback.AjaxStatus;
 import com.external.maxwin.view.XListView;
 import com.insthub.BeeFramework.model.BusinessResponse;
+import com.insthub.BeeFramework.view.ToastView;
 import com.insthub.ecmobile.R;
 import com.insthub.ecmobile.model.AddressModel;
 import com.insthub.ecmobile.protocol.ApiInterface;
@@ -47,6 +49,12 @@ public class SearchAddress extends Fragment implements BusinessResponse{
     XListView searchaddressLv;
     AddressModel addressModel ;
 
+    public void setmCityId(int mCityId) {
+        this.mCityId = mCityId;
+    }
+
+    private int mCityId;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,9 +72,14 @@ public class SearchAddress extends Fragment implements BusinessResponse{
         return view;
     }
 
-    @OnClick
+    @OnClick(R.id.searchaddress_btn)
     public void  onSearch(){
-        addressModel.searchAddress();
+        if (TextUtils.isEmpty(searchaddressEt.getEditableText())){
+            ToastView toastView = new ToastView(getActivity(),"请输入搜索地址");
+            toastView.show();
+            return;
+        }
+        addressModel.searchAddress(mCityId,searchaddressEt.getEditableText().toString().trim());
     }
     @Override
     public void onDestroyView() {
@@ -80,4 +93,6 @@ public class SearchAddress extends Fragment implements BusinessResponse{
 
         }
     }
+
+
 }

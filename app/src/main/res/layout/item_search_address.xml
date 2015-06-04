@@ -8,7 +8,8 @@
         android:id="@+id/item_search_name"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_height="@dimen/xm_common_list_size"
         android:layout_centerVertical="true"
         tools:text="义乌市"
         />
@@ -18,5 +19,6 @@
         android:src="@drawable/ic_arrow_right"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         />
 </RelativeLayout>

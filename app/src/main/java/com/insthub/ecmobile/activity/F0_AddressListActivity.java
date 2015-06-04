@@ -49,6 +49,7 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * 收货地址管理
@@ -121,6 +122,12 @@ public class F0_AddressListActivity extends BaseActivity implements BusinessResp
             }
         };
 
+    }
+
+    @OnClick(R.id.address_null_add)
+    public void onAddclick(){
+        Intent toAdd = new Intent(this,F1_SearchAddressActivity.class);
+        startActivity(toAdd);
     }
 
     @Override

@@ -13,7 +13,7 @@ public class ApiInterface
      public static final String GOODS  ="/goods";
      public static final String ARTICLE  ="/article";
      public static final String CART_LIST  ="/cart/list";
-     public static final String ADDRESS_LIST  ="/user/address/list";
+     public static final String ADDRESS_LIST  ="/address/list";
      public static final String ADDRESS_SETDEFAULT  ="/address/setDefault";
      public static final String USER_COLLECT_CREATE  ="/user/collect/create";
      public static final String FLOW_DONE  ="/flow/done";
@@ -25,8 +25,8 @@ public class ApiInterface
      public static final String HOME_DATA  ="/home/data";
      public static final String ADDRESS_ADD  ="/address/add";
      public static final String USER_SIGNIN  ="/user/signin";
-     public static final String USER_SMS_SIGNIN  ="/user/sms_login/login";
-     public static final String USER_SMS_SEND  ="/user/sms_login/send";
+     public static final String USER_SMS_SIGNIN  ="/user/login";
+     public static final String USER_SMS_SEND  ="/user/send_login_sms";
 
      public static final String USER_SIGNUP  ="/user/signup";
 //     public static final String GOODS_DESC  ="/goods/desc";
@@ -38,7 +38,7 @@ public class ApiInterface
      public static final String ADDRESS_UPDATE  ="/address/update";
 
      public static final String ADDRESS_CITY  ="/address/city_list";
-     public static final String ADDRESS_SEARCH ="/user/address/search";
+     public static final String ADDRESS_SEARCH ="/address/search";
      public static final String ADDRESS_INFO  ="/address/info";
      public static final String VALIDATE_BONUS  ="/validate/bonus";
      public static final String REGION  ="/region";
