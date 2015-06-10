@@ -5,8 +5,8 @@ import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.insthub.ecmobile.R;
 
 public class MyProgressDialog {
@@ -21,13 +21,13 @@ public class MyProgressDialog {
 
 		TextView text = (TextView) view.findViewById(R.id.progress_message);
 		text.setText(message);
-		ImageView loadingImage = (ImageView) view.findViewById(R.id.progress_view);
-		loadingImage.setImageResource(R.anim.loading_animation);
-		animationDrawable = (AnimationDrawable)loadingImage.getDrawable();
-        if(animationDrawable!=null){
-            animationDrawable.setOneShot(false);
-            animationDrawable.start();
-        }
+//		ImageView loadingImage = (ImageView) view.findViewById(R.id.progress_view);
+//		loadingImage.setImageResource(R.anim.loading_animation);
+//		animationDrawable = (AnimationDrawable)loadingImage.getDrawable();
+//        if(animationDrawable!=null){
+//            animationDrawable.setOneShot(false);
+//            animationDrawable.start();
+//        }
 
 		mDialog = new Dialog(context, R.style.dialog);
 		mDialog.setContentView(view);

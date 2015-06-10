@@ -55,11 +55,18 @@ public class F1_SearchAddressActivity extends BaseActivity implements BusinessRe
         ButterKnife.inject(this);
         View tv = LayoutInflater.from(this).inflate(R.layout.toolbar_search_address, null);
         mToolbarBack = (ImageView) tv.findViewById(R.id.toolbar_back);
+        mToolbarBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setResult(-1);
+                F1_SearchAddressActivity.this.finish();
+            }
+        });
         mToolbarTitle = (TextView) tv.findViewById(R.id.toolbar_title);
         mToolbarTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                fragmentCities.setVisibility(View.VISIBLE);
+                fragmentCities.setVisibility(View.VISIBLE);
                 ObjectAnimator.ofFloat(fragmentCities, "scaleY", 0,1f).setDuration(300).start();
             }
         });
@@ -69,7 +76,7 @@ public class F1_SearchAddressActivity extends BaseActivity implements BusinessRe
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-
+        mToolbarTitle.setText("请选择地区");
         addressAdapter = new AddressAdapter();
         fragmentCities.setAdapter(addressAdapter);
         fragmentCities.setPivotY(0);
@@ -81,7 +88,7 @@ public class F1_SearchAddressActivity extends BaseActivity implements BusinessRe
                 .beginTransaction()
                 .replace(R.id.fragment_container, mSearchAddress)
                 .commit();
-
+        fragmentContainer.setVisibility(View.GONE);
     }
 
     @OnItemClick(R.id.fragment_cities)
@@ -89,7 +96,9 @@ public class F1_SearchAddressActivity extends BaseActivity implements BusinessRe
         mToolbarTitle.setText(cities.get(position).region_name);
         ObjectAnimator.ofFloat(fragmentCities, "scaleY", 1f,0).setDuration(300).start();
         mSearchAddress.setmCityId(cities.get(position).region_id);
-//        fragmentCities.setVisibility(View.GONE);
+        mSearchAddress.setmCityName(cities.get(position).region_name);
+        fragmentCities.setVisibility(View.GONE);
+        fragmentContainer.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -100,6 +109,8 @@ public class F1_SearchAddressActivity extends BaseActivity implements BusinessRe
                 addressAdapter.notifyDataSetChanged();
             }
     }
+
+
 
     class AddressAdapter extends BaseAdapter {
 

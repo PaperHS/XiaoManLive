@@ -53,7 +53,7 @@ public class FirstLvModel extends BaseModel {
         super(context);
     }
 
-    public void fetchFirstRecom(int cat_id,int num,int offset) {
+    public void fetchFirstRecom(int suppliers_id,int num,int offset) {
         firstLvRecomRequest request = new firstLvRecomRequest();
         BeeCallback<JSONObject> cb = new BeeCallback<JSONObject>() {
 
@@ -88,7 +88,7 @@ public class FirstLvModel extends BaseModel {
 
 
 
-        request.cat_id = cat_id;
+        request.suppliers_id = suppliers_id;
         request.number = num;
         request.offset = offset;
         Map<String, String> params = new HashMap<String, String>();
@@ -97,7 +97,7 @@ public class FirstLvModel extends BaseModel {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        cb.url(ApiInterface.PRODUCT_CATBESTLIST).type(JSONObject.class).params(params);
+        cb.url(ApiInterface.PRODUCT_RECOMMEND).type(JSONObject.class).params(params);
         MyProgressDialog pd = new MyProgressDialog(mContext, mContext.getResources().getString(R.string.hold_on));
         aq.ajax(cb);
 
@@ -143,7 +143,7 @@ public class FirstLvModel extends BaseModel {
       Map<String, String> params = new HashMap<String, String>();
         try {
             JSONObject object = new JSONObject();
-            object.put("cat_id",cat_id);
+            object.put("suppliers_id",cat_id);
             params.put("json", object.toString());
         } catch (JSONException e) {
             e.printStackTrace();
@@ -154,10 +154,56 @@ public class FirstLvModel extends BaseModel {
 
 
     }
+    public  void fetchCatGoods(int suppliers_id){
+        BeeCallback<JSONObject> cb = new BeeCallback<JSONObject>() {
+
+            @Override
+            public void callback(String url, JSONObject jo, AjaxStatus status) {
+                FirstLvModel.this.callback(url, jo, status);
+                try {
+                    categoryResponseNew response = new categoryResponseNew();
+                    response.fromJson(jo);
+                    if (jo != null) {
+
+                        if (response.status.succeed == 1) {
+                            ArrayList<CATEGORYNEW> data = response.data;
+
+                            categoryList.clear();
+                            if (null != data && data.size() > 0) {
+                                categoryList.clear();
+                                categoryList.addAll(data);
+
+                            }
+
+                            FirstLvModel.this.OnMessageResponse(url, jo, status);
+                        }
+                    }
+
+                } catch (JSONException e) {
+                    // TODO: handle exception
+                }
+
+            }
+        };
+
+
+      Map<String, String> params = new HashMap<String, String>();
+        try {
+            JSONObject object = new JSONObject();
+            object.put("suppliers_id",suppliers_id);
+            params.put("json", object.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        cb.url(ApiInterface.PRODUCT_CATGOODS).type(JSONObject.class).params(params);
+        MyProgressDialog pd = new MyProgressDialog(mContext, mContext.getResources().getString(R.string.hold_on));
+        aq.ajax(cb);
+
+    }
 
     public void fetchPreSearchMore(FILTER filter) {
         searchRequest request = new searchRequest();
-        ;
+
 
         BeeCallback<JSONObject> cb = new BeeCallback<JSONObject>() {
 

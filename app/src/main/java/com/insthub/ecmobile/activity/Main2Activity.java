@@ -43,7 +43,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-public class Main2Activity extends AppCompatActivity implements BusinessResponse,TencentLocationListener{
+public class Main2Activity extends AppCompatActivity implements BusinessResponse, TencentLocationListener {
 
     @InjectView(R.id.toolbar)
     Toolbar toolbar;
@@ -61,6 +61,7 @@ public class Main2Activity extends AppCompatActivity implements BusinessResponse
     private TencentLocationManager locationManager;
     IndexStoreModel indexStoreModel;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,13 +77,20 @@ public class Main2Activity extends AppCompatActivity implements BusinessResponse
         ButterKnife.inject(this);
 
         View tv = LayoutInflater.from(this).inflate(R.layout.layout_main_title, null);
-        titleAddress = (TextView)tv.findViewById(R.id.title_address);
-        titlePerson = (ImageView)tv.findViewById(R.id.title_person);
+        titleAddress = (TextView) tv.findViewById(R.id.title_address);
+        titlePerson = (ImageView) tv.findViewById(R.id.title_person);
         titlePerson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it = new Intent(Main2Activity.this,S1_SelfInfoAcitivity.class);
+                Intent it = new Intent(Main2Activity.this, S1_SelfInfoAcitivity.class);
                 startActivity(it);
+            }
+        });
+        titleAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                addressChoiceDialog.show();
             }
         });
         Toolbar.LayoutParams params = new Toolbar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -98,15 +106,15 @@ public class Main2Activity extends AppCompatActivity implements BusinessResponse
     }
 
     @OnClick(R.id.main_shopcart_btn)
-    public void onToShopcart(){
-        Intent it = new Intent(this,C0_ShoppingCartActivity.class);
+    public void onToShopcart() {
+        Intent it = new Intent(this, C0_ShoppingCartActivity.class);
         startActivity(it);
     }
 
     private void init() {
         indexStoreModel = new IndexStoreModel(this);
         indexStoreModel.addResponseListener(this);
-        indexStoreModel.fetchStores();
+        indexStoreModel.fetchStores(3421);
         mShopFragments = new ArrayList<>();
 
         mainPageAdapter = new MainPageAdapter(getSupportFragmentManager(), mShopFragments);
@@ -120,14 +128,23 @@ public class Main2Activity extends AppCompatActivity implements BusinessResponse
         //请求gps
         TencentLocationRequest request = TencentLocationRequest.create();
         locationManager = TencentLocationManager.getInstance(this);
-        int error = locationManager.requestLocationUpdates(request, this,getMainLooper());
-        if (error==1){
+        int error = locationManager.requestLocationUpdates(request, this, getMainLooper());
+        if (error == 1) {
             Log.e("location", "tenlent less");
-        }else if(error==2){
-            Log.e("location","tenlent key error");
+        } else if (error == 2) {
+            Log.e("location", "tenlent key error");
         }
         Log.e("location", "error:" + error);
-
+        addressModel.getAddressList();
+        addressChoiceDialog = new AddressChoiceDialog(this, "请选择送货地址", addressModel.addressList);
+        addressChoiceDialog.positive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addressChoiceDialog.dismiss();
+                Intent intent = new Intent(Main2Activity.this, F1_NewAddressActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -167,22 +184,13 @@ public class Main2Activity extends AppCompatActivity implements BusinessResponse
             if (s.succeed == 1) {
                 //TODO dialog show
 
-                if (addressChoiceDialog == null) {
-                    addressChoiceDialog = new AddressChoiceDialog(this, "请选择送货地址", addressModel.addressList);
-                    addressChoiceDialog.positive.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            addressChoiceDialog.dismiss();
-                            Intent intent = new Intent(Main2Activity.this, F1_NewAddressActivity.class);
-                            startActivity(intent);
-                        }
-                    });
-                }
+//                if (addressChoiceDialog == null) {
+//                } else addressChoiceDialog.show();
 
             }
-        }else if (url.endsWith(ApiInterface.HOME_INDEX)){
-            for (HOMESTORE store :indexStoreModel.stores){
-                ShopFragment fragment = ShopFragment.newInstance(store.suppliers_name,Integer.parseInt(store.theme));
+        } else if (url.endsWith(ApiInterface.HOME_INDEX)) {
+            for (HOMESTORE store : indexStoreModel.stores) {
+                ShopFragment fragment = ShopFragment.newInstance(store.suppliers_name, Integer.parseInt(store.theme),Integer.parseInt(store.suppliers_id));
                 mShopFragments.add(fragment);
             }
             mainPageAdapter.notifyDataSetChanged();
@@ -195,16 +203,16 @@ public class Main2Activity extends AppCompatActivity implements BusinessResponse
         if (TencentLocation.ERROR_OK == i) {
             // 定位成功
             titleAddress.setText(tencentLocation.getAddress());
-            Log.e("location","   "+tencentLocation.getAddress());
+            Log.e("location", "   " + tencentLocation.getAddress());
         } else {
             // 定位失败
-            Log.e("location"," error  "+i+":"+s);
+            Log.e("location", " error  " + i + ":" + s);
         }
         locationManager.removeUpdates(this);
     }
 
     @Override
     public void onStatusUpdate(String s, int i, String s1) {
-        Log.e("location",s+"   "+s1);
+        Log.e("location", s + "   " + s1);
     }
 }

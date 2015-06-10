@@ -41,6 +41,7 @@ public class ApiInterface
      public static final String ADDRESS_SEARCH ="/address/search";
      public static final String ADDRESS_INFO  ="/address/info";
      public static final String VALIDATE_BONUS  ="/validate/bonus";
+     public static final String USER_BONUS  ="/user/bonus";
      public static final String REGION  ="/region";
      public static final String USER_COLLECT_LIST  ="/user/collect/list";
      public static final String ORDER_LIST  ="/order/list";
@@ -52,9 +53,13 @@ public class ApiInterface
      public static final String FLOW_CHECKORDER  ="/flow/checkOrder";
      public static final String PRODUCT_CATBESTLIST  ="/product/cat_best_list";
      public static final String PRODUCT_CATEGORY  ="/category/cat_child";
-     public static final String PRODUCT_CATEGORY_SECOND  ="/product/cat_list";
+     public static final String PRODUCT_CATEGORY_SECOND  ="/supplier/cat_list";
+
+     public static final String PRODUCT_CATGOODS  ="/supplier/cat_goods";
+
+     public static final String PRODUCT_RECOMMEND   ="/supplier/recommend_goods";
      public static final String PRODUCT_LASTBUY ="/product/buy_history";
      public static final String HOME_AD  ="/ad/ad_list";
 
-     public static final String HOME_INDEX  ="/product/supplier/top_list";
+     public static final String HOME_INDEX  ="/supplier/top_list";
 }

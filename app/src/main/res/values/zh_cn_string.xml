@@ -24,7 +24,7 @@
 <string name="address_email">Email(必填)</string>
 <string name="address_phone">手机号码（必填）</string>
 <string name="address_zip">邮政编码</string>
-<string name="address_area">地址&#160; </string>
+<string name="address_area">地&#160;&#160;&#160;&#160;址</string>
 <string name="address_address">收货人门牌号</string>
 <string name="address_add">添加地址</string>
 <string name="select_address">选择地址</string>

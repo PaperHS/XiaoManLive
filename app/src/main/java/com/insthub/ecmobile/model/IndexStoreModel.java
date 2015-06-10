@@ -26,6 +26,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class IndexStoreModel extends BaseModel {
 
@@ -37,7 +39,7 @@ public class IndexStoreModel extends BaseModel {
         super(context);
     }
 
-    public void fetchStores() {
+    public void fetchStores(int region_id) {
 
         BeeCallback<JSONObject> cb = new BeeCallback<JSONObject>() {
 
@@ -70,11 +72,18 @@ public class IndexStoreModel extends BaseModel {
             }
         };
 
+        Map<String, String> params = new HashMap<String, String>();
+        try {
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("region_id",region_id);
 
 
+            params.put("json", jsonObject.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-
-        cb.url(ApiInterface.HOME_INDEX).type(JSONObject.class);
+        cb.url(ApiInterface.HOME_INDEX).type(JSONObject.class).params(params);
 
         aq.ajax(cb);
 

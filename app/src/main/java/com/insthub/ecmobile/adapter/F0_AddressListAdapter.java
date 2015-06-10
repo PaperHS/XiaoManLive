@@ -91,12 +91,12 @@ public class F0_AddressListAdapter extends BaseAdapter {
 		return position;
 	}
 
-	@Override
-	public int getViewTypeCount() {
-		 
-		int count = list != null ? list.size() : 0;
-		return count;
-	}
+//	@Override
+//	public int getViewTypeCount() {
+//
+//		int count = list != null ? list.size() : 1;
+//		return count;
+//	}
 
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {

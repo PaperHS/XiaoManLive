@@ -51,12 +51,14 @@ public class ShopFragment extends Fragment implements BusinessResponse{
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PARAM3 = "param3";
     @InjectView(R.id.fragment_listView)
     MyListView fragmentListView;
 
     // TODO: Rename and change types of parameters
     private String mTitle;
     private int mIcon;
+    private int supplier_id;
     FrameLayout bannerView;//广告栏
     private ViewPager bannerViewPager;
     private PageIndicator mIndicator;
@@ -92,11 +94,12 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
      * @return A new instance of fragment BlankFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ShopFragment newInstance(String param1, int param2) {
+    public static ShopFragment newInstance(String param1, int param2,int id) {
         ShopFragment fragment = new ShopFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putInt(ARG_PARAM2, param2);
+        args.putInt(ARG_PARAM3,id);
         fragment.setArguments(args);
         return fragment;
     }
@@ -111,6 +114,7 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
         if (getArguments() != null) {
             mTitle = getArguments().getString(ARG_PARAM1);
             mIcon = getArguments().getInt(ARG_PARAM2);
+            supplier_id = getArguments().getInt(ARG_PARAM3);
         }
         adModel = new ADModel(getActivity());
         adModel.addResponseListener(this);
@@ -213,6 +217,7 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
             firstLvModel.fetchLvCategory(1);
 
         }
+        firstLvModel.fetchLvCategory(supplier_id);
         fragmentListView.setAdapter(listAdapter);
         fragmentListView.setPullRefreshEnable(false);
         fragmentListView.setPullLoadEnable(false);

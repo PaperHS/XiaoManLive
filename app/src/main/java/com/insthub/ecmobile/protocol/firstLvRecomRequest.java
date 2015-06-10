@@ -18,8 +18,8 @@ public class firstLvRecomRequest extends Model
 
      @Column(name = "offset")
      public int offset;
-     @Column(name = "cat_id")
-     public int   cat_id;
+     @Column(name = "suppliers_id")
+     public int   suppliers_id;
 
      public void  fromJson(JSONObject jsonObject)  throws JSONException
      {
@@ -32,7 +32,7 @@ public class firstLvRecomRequest extends Model
 
           this.number = jsonObject.optInt("number");
           this.offset = jsonObject.optInt("offset");
-          this.cat_id = jsonObject.optInt("cat_id");
+          this.suppliers_id = jsonObject.optInt("suppliers_id");
 
           return ;
      }
@@ -42,7 +42,7 @@ public class firstLvRecomRequest extends Model
           JSONObject localItemObject = new JSONObject();
          localItemObject.put("number",this.number);
           localItemObject.put("offset",this.offset);
-          localItemObject.put("cat_id",this.cat_id);
+          localItemObject.put("suppliers_id",this.suppliers_id);
           return localItemObject;
      }
 

@@ -31,14 +31,12 @@ package com.insthub.ecmobile.protocol;
  *	IN THE SOFTWARE.
  */
 
+import com.external.activeandroid.annotation.Column;
 import com.external.activeandroid.annotation.Table;
-import java.util.ArrayList;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import com.external.activeandroid.Model;
-import com.external.activeandroid.annotation.Column;
-import com.external.activeandroid.annotation.Table;
 
 @Table(name = "BONUS")
 public class BONUS
@@ -54,6 +52,15 @@ public class BONUS
 
     @Column(name = "bonus_id")
     public String bonus_id;
+    @Column(name = "use_start_date")
+    public long use_start_date;
+    @Column(name = "use_end_date")
+    public  long use_end_date;
+    @Column(name = "min_goods_amount")
+    public String min_goods_amount;
+
+    @Column(name = "bonus_sn")
+    public String bonus_sn;
 
     @Column(name = "bonus_money_formated")
     public String bonus_money_formated;
@@ -71,6 +78,10 @@ public class BONUS
         this.type_money = jsonObject.optString("type_money");
         this.bonus_id   = jsonObject.optString("bonus_id");
         this.bonus_money_formated = jsonObject.optString("bonus_money_formated");
+        this.bonus_sn = jsonObject.optString("bonus_sn");
+        this.use_end_date = jsonObject.optLong("use_end_date");
+        this.use_start_date =jsonObject.optLong("use_start_date");
+        this.min_goods_amount=jsonObject.getString("min_goods_amount");
         return ;
     }
 
@@ -83,6 +94,10 @@ public class BONUS
         localItemObject.put("type_money", type_money);
         localItemObject.put("bonus_id", bonus_id);
         localItemObject.put("bonus_money_formated", bonus_money_formated);
+        localItemObject.put("use_start_date",use_start_date);
+        localItemObject.put("use_end_date",use_end_date);
+        localItemObject.put("bonus_sn",bonus_sn);
+        localItemObject.put("min_goods_amount",min_goods_amount);
         return localItemObject;
     }
 

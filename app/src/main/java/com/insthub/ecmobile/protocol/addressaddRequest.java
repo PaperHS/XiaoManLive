@@ -1,19 +1,19 @@
 
 package com.insthub.ecmobile.protocol;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import com.external.activeandroid.Model;
 import com.external.activeandroid.annotation.Column;
 import com.external.activeandroid.annotation.Table;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 @Table(name = "addressaddRequest")
 public class addressaddRequest  extends Model
 {
 
      @Column(name = "address")
-     public ADDRESS   address;
+     public ADDRESSNEW   address;
 
      @Column(name = "session")
      public SESSION   session;
@@ -25,7 +25,7 @@ public class addressaddRequest  extends Model
            }
 
           JSONArray subItemArray;
-          ADDRESS  address = new ADDRESS();
+          ADDRESSNEW  address = new ADDRESSNEW();
           address.fromJson(jsonObject.optJSONObject("address"));
           this.address = address;
           SESSION  session = new SESSION();

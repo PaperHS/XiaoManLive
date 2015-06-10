@@ -29,7 +29,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.external.activeandroid.util.ReflectionUtils;
 import com.external.androidquery.callback.AjaxStatus;
 import com.insthub.BeeFramework.activity.BaseActivity;
 import com.insthub.BeeFramework.model.BusinessResponse;
@@ -46,7 +45,7 @@ import butterknife.InjectView;
 
 public class F1_NewAddressActivity extends BaseActivity implements BusinessResponse {
 	
-	private TextView title;
+//	private TextView title;
 	private ImageView back;
 	private EditText name;
 	private EditText tel;
@@ -63,6 +62,7 @@ public class F1_NewAddressActivity extends BaseActivity implements BusinessRespo
 	private AddressModel addressModel;
 	private int flag;
     private SharedPreferences shared;
+	private int address_code;
 	@InjectView(R.id.toolbar)
 	Toolbar toolbar;
 
@@ -75,17 +75,17 @@ public class F1_NewAddressActivity extends BaseActivity implements BusinessRespo
 		Intent intent = getIntent();
 		flag = intent.getIntExtra("balance", 0);
         shared =getSharedPreferences("userInfo", 0);
-		title = (TextView) findViewById(R.id.top_view_text);
+//		title = (TextView) findViewById(R.id.top_view_text);
         Resources resource = (Resources) getBaseContext().getResources();
-        title.setText(resource.getString(R.string.address_add));
-		back = (ImageView) findViewById(R.id.top_view_back);
-		back.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				finish();
-			}
-		});
+//        title.setText(resource.getString(R.string.address_add));
+//		back = (ImageView) findViewById(R.id.top_view_back);
+//		back.setOnClickListener(new OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//				finish();
+//			}
+//		});
 		getSupportActionBar().setTitle("新建收货地址");
 		name = (EditText) findViewById(R.id.add_address_name);
 		tel = (EditText) findViewById(R.id.add_address_telNum);
@@ -101,10 +101,13 @@ public class F1_NewAddressActivity extends BaseActivity implements BusinessRespo
 			
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(F1_NewAddressActivity.this, F3_RegionPickActivity.class);
+//				Intent intent = new Intent(F1_NewAddressActivity.this, F3_RegionPickActivity.class);
+//				startActivityForResult(intent, 1);
+//				overridePendingTransition(R.anim.my_scale_action,R.anim.my_alpha_action);
+				Intent intent = new Intent(F1_NewAddressActivity.this, F1_SearchAddressActivity.class);
 				startActivityForResult(intent, 1);
-				overridePendingTransition(R.anim.my_scale_action,R.anim.my_alpha_action);
-				
+//				overridePendingTransition(R.anim.my_scale_action, R.anim.my_alpha_action);
+
 			}
 		});
 		
@@ -137,32 +140,36 @@ public class F1_NewAddressActivity extends BaseActivity implements BusinessRespo
 			        toast.setGravity(Gravity.CENTER, 0, 0);
 			        toast.show();
                     tel.requestFocus();
-				} else if("".equals(mail)) {
-					ToastView toast = new ToastView(F1_NewAddressActivity.this, emailText);
-			        toast.setGravity(Gravity.CENTER, 0, 0);
-			        toast.show();
-                    email.requestFocus();
-				} else if(!ReflectionUtils.isEmail(mail)) {
-					ToastView toast = new ToastView(F1_NewAddressActivity.this, cor);
-			        toast.setGravity(Gravity.CENTER, 0, 0);
-			        toast.show();
-                    email.requestFocus();
+//				} else if("".equals(mail)) {
+//					ToastView toast = new ToastView(F1_NewAddressActivity.this, emailText);
+//			        toast.setGravity(Gravity.CENTER, 0, 0);
+//			        toast.show();
+//                    email.requestFocus();
+//				} else if(!ReflectionUtils.isEmail(mail)) {
+//					ToastView toast = new ToastView(F1_NewAddressActivity.this, cor);
+//			        toast.setGravity(Gravity.CENTER, 0, 0);
+//			        toast.show();
+//                    email.requestFocus();
 				} else if("".equals(address)) {
 					ToastView toast = new ToastView(F1_NewAddressActivity.this, adda);
-			        toast.setGravity(Gravity.CENTER, 0, 0);
-			        toast.show();
-                    detail.requestFocus();
-				} else if(country_id == null || province_id == null || city_id == null || county_id == null) {
-					ToastView toast = new ToastView(F1_NewAddressActivity.this, con);
-			        toast.setGravity(Gravity.CENTER, 0, 0);
-			        toast.show();
-                    Intent intent = new Intent(F1_NewAddressActivity.this, F3_RegionPickActivity.class);
-                    startActivityForResult(intent, 1);
-                    overridePendingTransition(R.anim.my_scale_action,R.anim.my_alpha_action);
+					toast.setGravity(Gravity.CENTER, 0, 0);
+					toast.show();
+					detail.requestFocus();
+//				} else if(country_id == null || province_id == null || city_id == null || county_id == null) {
+//					ToastView toast = new ToastView(F1_NewAddressActivity.this, con);
+//			        toast.setGravity(Gravity.CENTER, 0, 0);
+//			        toast.show();
+//                    Intent intent = new Intent(F1_NewAddressActivity.this, F3_RegionPickActivity.class);
+//                    startActivityForResult(intent, 1);
+//                    overridePendingTransition(R.anim.my_scale_action,R.anim.my_alpha_action);
+				}else if (address_code ==0){
+					ToastView toast = new ToastView(F1_NewAddressActivity.this, "请选择地区");
+					toast.setGravity(Gravity.CENTER, 0, 0);
+					toast.show();
 				} else {
 					addressModel = new AddressModel(F1_NewAddressActivity.this);
 					addressModel.addResponseListener(F1_NewAddressActivity.this);
-					addressModel.addAddress(consignee, telNum, mail, "", zipcode, address, country_id, province_id, city_id, county_id);
+					addressModel.addAddress(consignee,Integer.toString(address_code),address,telNum);
 				
 				}
 				
@@ -185,19 +192,24 @@ public class F1_NewAddressActivity extends BaseActivity implements BusinessRespo
     	super.onActivityResult(requestCode, resultCode, data);
 
 		if (requestCode == 1) {
-			if (data != null) {
-				country_id = data.getStringExtra("country_id");
-				province_id = data.getStringExtra("province_id");
-				city_id = data.getStringExtra("city_id");
-				county_id = data.getStringExtra("county_id");
-				
-				StringBuffer sbf = new StringBuffer();
-				sbf.append(data.getStringExtra("country_name")+" ");
-				sbf.append(data.getStringExtra("province_name")+" ");
-				sbf.append(data.getStringExtra("city_name")+" ");
-				sbf.append(data.getStringExtra("county_name"));
-				address.setText(sbf.toString());
-				
+//			if (data != null) {
+//				country_id = data.getStringExtra("country_id");
+//				province_id = data.getStringExtra("province_id");
+//				city_id = data.getStringExtra("city_id");
+//				county_id = data.getStringExtra("county_id");
+//
+//				StringBuffer sbf = new StringBuffer();
+//				sbf.append(data.getStringExtra("country_name")+" ");
+//				sbf.append(data.getStringExtra("province_name")+" ");
+//				sbf.append(data.getStringExtra("city_name")+" ");
+//				sbf.append(data.getStringExtra("county_name"));
+//				address.setText(sbf.toString());
+//
+//			}
+			if (resultCode >0){
+				address_code = requestCode;
+				String  addressStr = data.getStringExtra("address");
+				address.setText(addressStr);
 			}
 		}
     }

@@ -15,6 +15,7 @@ package com.insthub.ecmobile.model;
 //
 
 import android.content.Context;
+import android.util.Log;
 
 import com.external.androidquery.callback.AjaxStatus;
 import com.google.gson.Gson;
@@ -24,6 +25,7 @@ import com.insthub.BeeFramework.model.BeeCallback;
 import com.insthub.BeeFramework.view.MyProgressDialog;
 import com.insthub.ecmobile.R;
 import com.insthub.ecmobile.protocol.ADDRESS;
+import com.insthub.ecmobile.protocol.ADDRESSNEW;
 import com.insthub.ecmobile.protocol.ApiInterface;
 import com.insthub.ecmobile.protocol.CommonResponse;
 import com.insthub.ecmobile.protocol.REGIONS;
@@ -60,7 +62,7 @@ public class AddressModel extends BaseModel {
     public ArrayList<ADDRESS> addressList = new ArrayList<ADDRESS>();
     public ArrayList<REGIONS> regionsList0 = new ArrayList<REGIONS>();
     public ADDRESS address;
-    public SEARCHADDRESS searchaddress;
+    public List<SEARCHADDRESS> searchaddress = new ArrayList<>();
     public List<CityModel> citys ;
     public AddressModel(Context context) {
         super(context);
@@ -112,7 +114,7 @@ public class AddressModel extends BaseModel {
     }
 
     // 添加地址
-    public void addAddress(String consignee, String tel, String email, String mobile, String zipcode, String address, String country, String province, String city, String district) {
+    public void addAddress(String consignee, String region_id, String address, String mobile) {
        addressaddRequest request=new addressaddRequest();
         BeeCallback<JSONObject> cb = new BeeCallback<JSONObject>() {
 
@@ -137,29 +139,42 @@ public class AddressModel extends BaseModel {
         };
 
         SESSION session = SESSION.getInstance();
-        ADDRESS add = new ADDRESS();
-        add.consignee = consignee;
-        add.tel = tel;
-        add.email = email;
-        add.mobile = mobile;
-        add.zipcode = zipcode;
-        add.address = address;
-        add.country = country;
-        add.province = province;
-        add.city = city;
-        add.district = district;
-
-       request.session=session;
-       request.address=add;
+//        ADDRESS add = new ADDRESS();
+//        add.consignee = consignee;
+//        add.tel = tel;
+//        add.email = email;
+//        add.mobile = mobile;
+//        add.zipcode = zipcode;
+//        add.address = address;
+//        add.country = country;
+//        add.province = province;
+//        add.city = city;
+//        add.district = district;
+        ADDRESSNEW addressnew = new ADDRESSNEW();
+        addressnew.address=address;
+        addressnew.consignee =consignee;
+        addressnew.mobile=mobile;
+        addressnew.region_id = region_id;
+        request.session =session;
+        request.address=addressnew;
+//       request.session=session;
+//       request.address=add;
 
         Map<String, String> params = new HashMap<String, String>();
         try {
+//            JSONObject jsonObject = new JSONObject();
+//            JSONObject re_address = new JSONObject();
+//            re_address.put("consignee",consignee);
+//            re_address.put("region_id",region_id);
+//            re_address.put("address",address);
+//            re_address.put("mobile",mobile);
+//            jsonObject.put("address", re_address.toString());
+//            jsonObject.put("session", session.toJson().toString());
             params.put("json", request.toJson().toString());
-
+            Log.e("http", "add address:" + request.toJson().toString());
         } catch (JSONException e) {
             // TODO: handle exception
         }
-
 
         cb.url(ApiInterface.ADDRESS_ADD).type(JSONObject.class).params(params);
         MyProgressDialog pd = new MyProgressDialog(mContext,mContext.getResources().getString(R.string.hold_on));
@@ -422,13 +437,12 @@ public class AddressModel extends BaseModel {
         try {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("city_id",keyword);
-
             jsonObject.put("keywords",keywords);
             params.put("json", jsonObject.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        cb.url(ApiInterface.ADDRESS_SEARCH).type(JSONObject.class);
+        cb.url(ApiInterface.ADDRESS_SEARCH).type(JSONObject.class).params(params);
         aq.ajax(cb);
     }
 
