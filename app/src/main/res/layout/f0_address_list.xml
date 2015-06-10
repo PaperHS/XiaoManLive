@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/common_bg"
+    android:background="@color/white"
     android:orientation="vertical">
     <include android:id="@+id/toolbar"
         layout="@layout/common_toolbar"
@@ -21,11 +21,12 @@
             android:paddingLeft="10dp"
             android:background="@color/white"
             android:divider="@color/common_bg"
-            android:dividerHeight="1dp"
+            android:dividerHeight="1px"
             android:footerDividersEnabled="true"
             android:headerDividersEnabled="false"
             android:visibility="gone"
-             >
+
+            >
         </ListView>
 
         <RelativeLayout

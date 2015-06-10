@@ -6,7 +6,7 @@
     <color name="spec_select_text_color">#ff0000</color>
     <color name="red_black">#ff3333</color>
     <color name="red_dark">#aa0000</color>
-    <color name="grey">#99999999</color>
+    <color name="grey">#666666</color>
     <color name="green">#ff00ff01</color>
 
     <drawable name="color_b">#44aaaaaa</drawable>

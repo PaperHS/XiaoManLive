@@ -13,15 +13,8 @@ package com.insthub.ecmobile.activity;
 //  Powered by BeeFramework
 //
 
-import android.content.res.Resources;
-import com.insthub.BeeFramework.activity.BaseActivity;
-import com.insthub.ecmobile.protocol.ApiInterface;
-import com.umeng.analytics.MobclickAgent;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -34,14 +27,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.external.activeandroid.query.Delete;
-import com.external.activeandroid.util.ReflectionUtils;
 import com.external.androidquery.callback.AjaxStatus;
+import com.insthub.BeeFramework.activity.BaseActivity;
 import com.insthub.BeeFramework.model.BusinessResponse;
 import com.insthub.BeeFramework.view.ToastView;
 import com.insthub.ecmobile.R;
 import com.insthub.ecmobile.model.AddressModel;
-import com.insthub.ecmobile.model.ProtocolConst;
 import com.insthub.ecmobile.protocol.ADDRESS;
+import com.insthub.ecmobile.protocol.ApiInterface;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class F2_EditAddressActivity extends BaseActivity implements BusinessResponse {
 	
@@ -63,54 +59,55 @@ public class F2_EditAddressActivity extends BaseActivity implements BusinessResp
 	private String county_id;
 	private String address_id;
     private static  final int REQUEST_REGION_PICK=1;
-	
+	private int address_code;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.f2_edit_address);
 		
-		back = (ImageView) findViewById(R.id.address_manage2_back);
-		back.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {				
-				finish();
-			}
-		});
+//		back = (ImageView) findViewById(R.id.address_manage2_back);
+//		back.setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				finish();
+//			}
+//		});
 		
-		del = (Button) findViewById(R.id.address_manage2_del);
-		del.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {				
-				if(null != addressModel.address && addressModel.address.default_address == 1) {
-                    Resources resource = (Resources) getBaseContext().getResources();
-                    String can=resource.getString(R.string.can_not_delete );
-                    ToastView toast = new ToastView(F2_EditAddressActivity.this, can);
-			        toast.setGravity(Gravity.CENTER, 0, 0);
-			        toast.show();
-				} else {
-					addressModel.addressDelete(address_id);
-				}
-			}
-		});
+//		del = (Button) findViewById(R.id.address_manage2_del);
+//		del.setOnClickListener(new OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//				if(null != addressModel.address && addressModel.address.default_address == 1) {
+//                    Resources resource = (Resources) getBaseContext().getResources();
+//                    String can=resource.getString(R.string.can_not_delete );
+//                    ToastView toast = new ToastView(F2_EditAddressActivity.this, can);
+//			        toast.setGravity(Gravity.CENTER, 0, 0);
+//			        toast.show();
+//				} else {
+//					addressModel.addressDelete(address_id);
+//				}
+//			}
+//		});
 		
 		name = (EditText) findViewById(R.id.address_manage2_name);
 		tel = (EditText) findViewById(R.id.address_manage2_telNum);
-		email = (EditText) findViewById(R.id.address_manage2_email);
-		zipCode = (EditText) findViewById(R.id.address_manage2_zipCode);
+//		email = (EditText) findViewById(R.id.address_manage2_email);
+//		zipCode = (EditText) findViewById(R.id.address_manage2_zipCode);
 		area = (LinearLayout) findViewById(R.id.address_manage2_area);
 		address = (TextView) findViewById(R.id.address_manage2_address);
 		detail = (EditText) findViewById(R.id.address_manage2_detail);
-		setDefault = (Button) findViewById(R.id.address_manage2_default);
-		change = (Button) findViewById(R.id.address_manage2_change);
+//		setDefault = (Button) findViewById(R.id.address_manage2_default);
+//		change = (Button) findViewById(R.id.address_manage2_change);
 		
 		area.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {				
-				Intent intent = new Intent(F2_EditAddressActivity.this, F3_RegionPickActivity.class);
+				Intent intent = new Intent(F2_EditAddressActivity.this, F1_SearchAddressActivity.class);
 				startActivityForResult(intent, REQUEST_REGION_PICK);
-				overridePendingTransition(R.anim.my_scale_action,R.anim.my_alpha_action);
+//				overridePendingTransition(R.anim.my_scale_action,R.anim.my_alpha_action);
 			}
 		});
 		
@@ -121,23 +118,23 @@ public class F2_EditAddressActivity extends BaseActivity implements BusinessResp
 		addressModel.addResponseListener(this);
 		addressModel.getAddressInfo(address_id);
 		
-		setDefault.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {				
-				addressModel.addressDefault(address_id);
-			}
-		});
-		
+//		setDefault.setOnClickListener(new OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//				addressModel.addressDefault(address_id);
+//			}
+//		});
+//
 		change.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
-			public void onClick(View v) {				
-				
+			public void onClick(View v) {
+
 				String consignee = name.getText().toString();
 				String telNum = tel.getText().toString();
-				String mail = email.getText().toString();
-				String zipcode = zipCode.getText().toString();
+//				String mail = email.getText().toString();
+//				String zipcode = zipCode.getText().toString();
 				String address = detail.getText().toString();
 
                 Resources resource = (Resources) getBaseContext().getResources();
@@ -149,31 +146,31 @@ public class F2_EditAddressActivity extends BaseActivity implements BusinessResp
                 String con=resource.getString(R.string.confirm_address);
 
                 if("".equals(consignee)) {
-					Toast toast = Toast.makeText(F2_EditAddressActivity.this, name, 0);
+					Toast toast = Toast.makeText(F2_EditAddressActivity.this, name, Toast.LENGTH_SHORT);
 			        toast.setGravity(Gravity.CENTER, 0, 0);
 			        toast.show();
 				} else if("".equals(telNum)) {
-					Toast toast = Toast.makeText(F2_EditAddressActivity.this, tel, 0);
+					Toast toast = Toast.makeText(F2_EditAddressActivity.this, tel, Toast.LENGTH_SHORT);
 			        toast.setGravity(Gravity.CENTER, 0, 0);
 			        toast.show();
-				} else if("".equals(mail)) {
-					Toast toast = Toast.makeText(F2_EditAddressActivity.this, email, 0);
-			        toast.setGravity(Gravity.CENTER, 0, 0);
-			        toast.show();
-				} else if(!ReflectionUtils.isEmail(mail)) {
-					Toast toast = Toast.makeText(F2_EditAddressActivity.this, cor, 0);
-			        toast.setGravity(Gravity.CENTER, 0, 0);
-			        toast.show();
+//				} else if("".equals(mail)) {
+//					Toast toast = Toast.makeText(F2_EditAddressActivity.this, email, Toast.LENGTH_SHORT);
+//			        toast.setGravity(Gravity.CENTER, 0, 0);
+//			        toast.show();
+//				} else if(!ReflectionUtils.isEmail(mail)) {
+//					Toast toast = Toast.makeText(F2_EditAddressActivity.this, cor, Toast.LENGTH_SHORT);
+//			        toast.setGravity(Gravity.CENTER, 0, 0);
+//			        toast.show();
 				} else if("".equals(address)) {
-					Toast toast = Toast.makeText(F2_EditAddressActivity.this, addr, 0);
+					Toast toast = Toast.makeText(F2_EditAddressActivity.this, addr, Toast.LENGTH_SHORT);
 			        toast.setGravity(Gravity.CENTER, 0, 0);
 			        toast.show();
-				} else if(country_id == null || province_id == null || city_id == null || county_id == null) {
-					Toast toast = Toast.makeText(F2_EditAddressActivity.this, con, 0);
-			        toast.setGravity(Gravity.CENTER, 0, 0);
-			        toast.show();
+//				} else if(country_id == null || province_id == null || city_id == null || county_id == null) {
+//					Toast toast = Toast.makeText(F2_EditAddressActivity.this, con, Toast.LENGTH_SHORT);
+//			        toast.setGravity(Gravity.CENTER, 0, 0);
+//			        toast.show();
 				} else {
-					addressModel.addressUpdate(address_id, consignee, telNum, mail, "", zipcode, address, country_id, province_id, city_id, county_id);
+					addressModel.addressUpdate(address_id, consignee, telNum,address,Integer.toString(address_code));
 				}
 				
 			}
@@ -233,16 +230,12 @@ public class F2_EditAddressActivity extends BaseActivity implements BusinessResp
 
 		if (requestCode == REQUEST_REGION_PICK) {
 			if (data != null) {
-				country_id = data.getStringExtra("country_id");
-				province_id = data.getStringExtra("province_id");
-				city_id = data.getStringExtra("city_id");
-				county_id = data.getStringExtra("county_id");
-				
-				StringBuffer sbf = new StringBuffer();
-				sbf.append(data.getStringExtra("province_name")+" ");
-				sbf.append(data.getStringExtra("city_name")+" ");
-				sbf.append(data.getStringExtra("county_name"));
-				address.setText(sbf.toString());
+				if (resultCode >0){
+					address_code = resultCode;
+					String  addressStr = data.getStringExtra("address");
+					address.setText(addressStr);
+				}
+
 			}
 		}
     }

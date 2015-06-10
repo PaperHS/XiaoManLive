@@ -15,7 +15,6 @@ package com.insthub.ecmobile.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
 import android.view.LayoutInflater;
@@ -111,7 +110,7 @@ public class F0_AddressListAdapter extends BaseAdapter {
 			holder.city = (TextView) convertView.findViewById(R.id.address_manage_item_city);
 			holder.county = (TextView) convertView.findViewById(R.id.address_manage_item_county);
 			holder.detail = (TextView) convertView.findViewById(R.id.address_manage_item_detail);
-			holder.select = (ImageView) convertView.findViewById(R.id.address_manage_itme_select);
+//			holder.select = (ImageView) convertView.findViewById(R.id.address_manage_itme_select);
 			holder.phone = (TextView)convertView.findViewById(R.id.address_manage_item_phonum);
 			convertView.setTag(holder);
 		} else {
@@ -126,30 +125,31 @@ public class F0_AddressListAdapter extends BaseAdapter {
 		
 		holder.name.setText(address.consignee);
 //		holder.province.setText(address.province_name);
-		if(!address.city_name.equals("null")) {
-			holder.city.setText(address.city_name);
-		}
-		if(!address.district_name.equals("null")) {
-			holder.county.setText(address.district_name);
-		}
-		
+//		if(!address.city_name.equals("null")) {
+//			holder.city.setText(address.);
+//		}
+
+//		if(!address.district_name.equals("null")) {
+//			holder.county.setText(address.district_name);
+//		}
+		holder.county.setText(address.country_name+" "+address.district_name);
 		holder.detail.setText(address.address);
 		holder.phone.setText(address.tel);
-		if(isSelected.get(position)) {
-			holder.select.setVisibility(View.VISIBLE);
-			holder.name.setTextColor(Color.parseColor("#666699"));
-			holder.province.setTextColor(Color.parseColor("#666699"));
-			holder.city.setTextColor(Color.parseColor("#666699"));
-			holder.county.setTextColor(Color.parseColor("#666699"));
-			holder.detail.setTextColor(Color.parseColor("#666699"));
-		} else {
-			holder.select.setVisibility(View.GONE);
-			holder.name.setTextColor(Color.parseColor("#000000"));
-			holder.province.setTextColor(Color.parseColor("#000000"));
-			holder.city.setTextColor(Color.parseColor("#000000"));
-			holder.county.setTextColor(Color.parseColor("#000000"));
-			holder.detail.setTextColor(Color.parseColor("#000000"));
-		}
+//		if(isSelected.get(position)) {
+//			holder.select.setVisibility(View.VISIBLE);
+//			holder.name.setTextColor(Color.parseColor("#666699"));
+//			holder.province.setTextColor(Color.parseColor("#666699"));
+//			holder.city.setTextColor(Color.parseColor("#666699"));
+//			holder.county.setTextColor(Color.parseColor("#666699"));
+//			holder.detail.setTextColor(Color.parseColor("#666699"));
+//		} else {
+//			holder.select.setVisibility(View.GONE);
+//			holder.name.setTextColor(Color.parseColor("#000000"));
+//			holder.province.setTextColor(Color.parseColor("#000000"));
+//			holder.city.setTextColor(Color.parseColor("#000000"));
+//			holder.county.setTextColor(Color.parseColor("#000000"));
+//			holder.detail.setTextColor(Color.parseColor("#000000"));
+//		}
 		
 		holder.layout.setOnClickListener(new OnClickListener() {
 			
@@ -162,7 +162,7 @@ public class F0_AddressListAdapter extends BaseAdapter {
 	                msg.arg1 = Integer.valueOf(address.id);
 	                parentHandler.handleMessage(msg);
 				}else if (flag == 2){
-                    EventBus.getDefault().post(new AddressItemClickEvent(address.city_name+address.district_name+address.address));
+                    EventBus.getDefault().post(new AddressItemClickEvent(address.district_name));
                 }
                 else {
 					Intent intent = new Intent(context, F2_EditAddressActivity.class);

@@ -207,7 +207,7 @@ public class F1_NewAddressActivity extends BaseActivity implements BusinessRespo
 //
 //			}
 			if (resultCode >0){
-				address_code = requestCode;
+				address_code = resultCode;
 				String  addressStr = data.getStringExtra("address");
 				address.setText(addressStr);
 			}

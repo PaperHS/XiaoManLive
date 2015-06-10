@@ -17,11 +17,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.external.androidquery.callback.AjaxStatus;
+import com.external.eventbus.EventBus;
 import com.insthub.BeeFramework.model.BusinessResponse;
 import com.insthub.BeeFramework.view.AddressChoiceDialog;
 import com.insthub.ecmobile.R;
 import com.insthub.ecmobile.adapter.MainPageAdapter;
 import com.insthub.ecmobile.component.PagerSlidingTabStrip;
+import com.insthub.ecmobile.event.AddressItemClickEvent;
 import com.insthub.ecmobile.fragment.ShopFragment;
 import com.insthub.ecmobile.model.AddressModel;
 import com.insthub.ecmobile.model.IndexStoreModel;
@@ -112,9 +114,10 @@ public class Main2Activity extends AppCompatActivity implements BusinessResponse
     }
 
     private void init() {
+        EventBus.getDefault().register(this,"onAddressClick",AddressItemClickEvent.class);
         indexStoreModel = new IndexStoreModel(this);
         indexStoreModel.addResponseListener(this);
-        indexStoreModel.fetchStores(3421);
+        indexStoreModel.fetchStores(3429);
         mShopFragments = new ArrayList<>();
 
         mainPageAdapter = new MainPageAdapter(getSupportFragmentManager(), mShopFragments);
@@ -149,7 +152,7 @@ public class Main2Activity extends AppCompatActivity implements BusinessResponse
 
     @Override
     protected void onDestroy() {
-
+        EventBus.getDefault().unregister(this);
         super.onDestroy();
     }
 
@@ -196,6 +199,11 @@ public class Main2Activity extends AppCompatActivity implements BusinessResponse
             mainPageAdapter.notifyDataSetChanged();
             mainIndicator.setViewPager(mainVierpager);
         }
+    }
+    public void onAddressClick(AddressItemClickEvent event){
+        addressChoiceDialog.dismiss();
+        titleAddress.setText(event.getPosition());
+//        getActivity().getActionBar().setTitle("送至："+event.getPosition());
     }
 
     @Override

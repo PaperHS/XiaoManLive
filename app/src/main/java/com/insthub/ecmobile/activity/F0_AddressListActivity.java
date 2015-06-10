@@ -22,10 +22,9 @@ import android.os.Message;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
@@ -89,15 +88,15 @@ public class F0_AddressListActivity extends BaseActivity implements BusinessResp
 //		add = (ImageView) findViewById(R.id.address_manage_add);
         listView = (ListView) findViewById(R.id.address_manage_list);
         bg = (RelativeLayout) findViewById(R.id.address_list_bg);
-        footer = LayoutInflater.from(this).inflate(R.layout.f0_addresslist_footer, null);
-        listView.addFooterView(footer);
-        footer.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(F0_AddressListActivity.this, F1_NewAddressActivity.class);
-                startActivity(intent);
-            }
-        });
+//        footer = LayoutInflater.from(this).inflate(R.layout.f0_addresslist_footer, null);
+//        listView.addFooterView(footer);
+//        footer.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(F0_AddressListActivity.this, F1_NewAddressActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 //		add.setOnClickListener(new OnClickListener() {
 //
 //			@Override
@@ -125,9 +124,15 @@ public class F0_AddressListActivity extends BaseActivity implements BusinessResp
     }
 
     @OnClick(R.id.address_null_add)
-    public void onAddclick(){
-        Intent toAdd = new Intent(this,F1_SearchAddressActivity.class);
+    public void onAddclick() {
+        Intent toAdd = new Intent(this, F1_SearchAddressActivity.class);
         startActivity(toAdd);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_add, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -136,6 +141,10 @@ public class F0_AddressListActivity extends BaseActivity implements BusinessResp
         if (item.getItemId() == android.R.id.home) {
 
             finish();
+            return true;
+        } else if (item.getItemId() == R.id.action_address_add) {
+            Intent intent = new Intent(F0_AddressListActivity.this, F1_NewAddressActivity.class);
+            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);

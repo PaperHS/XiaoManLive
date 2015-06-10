@@ -104,6 +104,7 @@ public class AddressModel extends BaseModel {
         Map<String, String> params = new HashMap<String, String>();
         try {
             params.put("json", request.toJson().toString());
+            Log.e("http", "add address:" + params.toString());
         } catch (JSONException e) {
             // TODO: handle exception
         }
@@ -171,6 +172,8 @@ public class AddressModel extends BaseModel {
 //            jsonObject.put("address", re_address.toString());
 //            jsonObject.put("session", session.toJson().toString());
             params.put("json", request.toJson().toString());
+//            params.put("session",session.toString());
+            params.put("address",addressnew.toString());
             Log.e("http", "add address:" + request.toJson().toString());
         } catch (JSONException e) {
             // TODO: handle exception
@@ -360,7 +363,7 @@ public class AddressModel extends BaseModel {
     }
 
     // 修改地址
-    public void addressUpdate(String address_id, String consignee, String tel, String email, String mobile, String zipcode, String address, String country, String province, String city, String district) {
+    public void addressUpdate(String address_id, String consignee, String tel,String address, String district) {
        addressupdateRequest request=new addressupdateRequest();
         BeeCallback<JSONObject> cb = new BeeCallback<JSONObject>() {
 
@@ -383,24 +386,31 @@ public class AddressModel extends BaseModel {
             }
 
         };
-        ADDRESS add = new ADDRESS();
-        add.consignee = consignee;
-        add.tel = tel;
-        add.email = email;
-        add.mobile = mobile;
-        add.zipcode = zipcode;
-        add.address = address;
-        add.country = country;
-        add.province = province;
-        add.city = city;
-        add.district = district;
-        request.address=add;
+//        ADDRESS add = new ADDRESS();
+//        add.consignee = consignee;
+//        add.tel = tel;
+
+//        add.email = email;
+//        add.mobile = mobile;
+//        add.zipcode = zipcode;
+//        add.address = address;
+//        add.country = country;
+//        add.province = province;
+//        add.city = city;
+//        add.district = district;
+//        request.address=add;
         request.session=SESSION.getInstance();
         request.address_id=address_id;
-
+        ADDRESSNEW addressnew = new ADDRESSNEW();
+        addressnew.region_id = district;
+        addressnew.mobile = tel;
+        addressnew.consignee = consignee;
+        addressnew.address = address;
         Map<String, String> params = new HashMap<String, String>();
         try {
             params.put("json", request.toJson().toString());
+            params.put("address",addressnew.toJson().toString());
+            params.put("address_id",address_id);
         } catch (JSONException e) {
             e.printStackTrace();
         }
