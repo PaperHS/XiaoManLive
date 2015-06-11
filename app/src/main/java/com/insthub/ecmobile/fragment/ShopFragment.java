@@ -44,7 +44,7 @@ import butterknife.InjectView;
  * Use the {@link ShopFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ShopFragment extends Fragment implements BusinessResponse{
+public class ShopFragment extends Fragment implements BusinessResponse {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -69,7 +69,8 @@ public class ShopFragment extends Fragment implements BusinessResponse{
 
     private ADModel adModel;
     private FirstLvModel firstLvModel;
-protected ImageLoader imageLoader = ImageLoader.getInstance();
+    protected ImageLoader imageLoader = ImageLoader.getInstance();
+
     public String getTitle() {
         return getArguments().getString(ARG_PARAM1);
     }
@@ -92,12 +93,12 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
      * @return A new instance of fragment BlankFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ShopFragment newInstance(String param1, int param2,int id) {
+    public static ShopFragment newInstance(String param1, int param2, int id) {
         ShopFragment fragment = new ShopFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putInt(ARG_PARAM2, param2);
-        args.putInt(ARG_PARAM3,id);
+        args.putInt(ARG_PARAM3, id);
         fragment.setArguments(args);
         return fragment;
     }
@@ -132,15 +133,15 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
     }
 
     private void init() {
-     bannerView = (FrameLayout)LayoutInflater.from(getActivity()).inflate(R.layout.b0_index_banner, null);
+        bannerView = (FrameLayout) LayoutInflater.from(getActivity()).inflate(R.layout.b0_index_banner, null);
 
-        bannerViewPager = (ViewPager)bannerView.findViewById(R.id.banner_viewpager);
+        bannerViewPager = (ViewPager) bannerView.findViewById(R.id.banner_viewpager);
 
         ViewGroup.LayoutParams params1 = bannerViewPager.getLayoutParams();
-		params1.width = getDisplayMetricsWidth();
-		params1.height = (int) (params1.width*1.0/484*200);
+        params1.width = getDisplayMetricsWidth();
+        params1.height = (int) (params1.width * 1.0 / 484 * 200);
 
-		bannerViewPager.setLayoutParams(params1);
+        bannerViewPager.setLayoutParams(params1);
 
         bannerListView = new ArrayList<View>();
 
@@ -153,6 +154,7 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
         bannerViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             private int mPreviousState = ViewPager.SCROLL_STATE_IDLE;
+
             @Override
             public void onPageScrolled(int i, float v, int i2) {
 
@@ -181,22 +183,22 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
         });
 
 
-        mIndicator = (PageIndicator)bannerView.findViewById(R.id.indicator);
+        mIndicator = (PageIndicator) bannerView.findViewById(R.id.indicator);
         mIndicator.setViewPager(bannerViewPager);
 
         fragmentListView.addHeaderView(bannerView);
-        switch (mTheme){
+        switch (mTheme) {
             case 0:
-                listAdapter = new B0_IndexAdapterNew(getActivity(),firstLvModel,new SearchModel(getActivity()));
-            adModel.fetchADs(supplier_id);
-            firstLvModel.fetchFirstRecom(supplier_id, 10, 0);
-            firstLvModel.fetchLvCategory(supplier_id);
+                listAdapter = new B0_IndexAdapterNew(getActivity(), firstLvModel, new SearchModel(getActivity()));
+                adModel.fetchADs(supplier_id);
+                firstLvModel.fetchFirstRecom(supplier_id, 10, 0);
+                firstLvModel.fetchLvCategory(supplier_id);
                 break;
             case 1:
-                listAdapter = new B0_IndexAdapterNew(getActivity(),firstLvModel,new SearchModel(getActivity()));
-            adModel.fetchADs(supplier_id);
-            firstLvModel.fetchFirstRecom(supplier_id, 10, 0);
-            firstLvModel.fetchLvCategory(supplier_id);
+                listAdapter = new B0_IndexAdapterNew(getActivity(), firstLvModel, new SearchModel(getActivity()));
+                adModel.fetchADs(supplier_id);
+                firstLvModel.fetchFirstRecom(supplier_id, 10, 0);
+                firstLvModel.fetchLvCategory(supplier_id);
                 break;
             default:
                 break;
@@ -235,16 +237,13 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
         fragmentListView.setPullLoadEnable(false);
 
 
-
     }
 
-     public void addBannerView()
-    {
+    public void addBannerView() {
         bannerListView.clear();
-        for (int i = 0; i < adModel.ads.size(); i++)
-        {
+        for (int i = 0; i < adModel.ads.size(); i++) {
             AD player = adModel.ads.get(i);
-            ImageView viewOne =  (ImageView)LayoutInflater.from(getActivity()).inflate(R.layout.b0_index_banner_cell,null);
+            ImageView viewOne = (ImageView) LayoutInflater.from(getActivity()).inflate(R.layout.b0_index_banner_cell, null);
 
 //            shared = getActivity().getSharedPreferences("userInfo", 0);
 //    		editor = shared.edit();
@@ -262,13 +261,10 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
 //                    imageLoader.displayImage(player.photo.small,viewOne, EcmobileApp.options);
 //    			}
 //    		}
-            imageLoader.displayImage(player.ad_code,viewOne, EcmobileApp.options);
-            try
-            {
+            imageLoader.displayImage(player.ad_code, viewOne, EcmobileApp.options);
+            try {
                 viewOne.setTag(player.toJson().toString());
-            }
-            catch (JSONException e)
-            {
+            } catch (JSONException e) {
 
             }
 
@@ -284,9 +280,8 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
                     try {
                         JSONObject jsonObject = new JSONObject(playerJSONString);
                         PLAYER player1 = new PLAYER();
-                         player1.fromJson(jsonObject);
-                        if (null == player1.action)
-                        {
+                        player1.fromJson(jsonObject);
+                        if (null == player1.action) {
                             if (null != player1.url) {
                                 Intent intent = new Intent(getActivity(), BannerWebActivity.class);
                                 intent.putExtra("url", player1.url);
@@ -294,29 +289,22 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
                                 getActivity().overridePendingTransition(R.anim.push_right_in,
                                         R.anim.push_right_out);
                             }
-                        }
-                        else
-                        {
-                            if (player1.action.equals("goods"))
-                            {
+                        } else {
+                            if (player1.action.equals("goods")) {
                                 Intent intent = new Intent(getActivity(), B2_ProductDetailActivity.class);
-                                intent.putExtra("good_id", player1.action_id+"");
+                                intent.putExtra("good_id", player1.action_id + "");
                                 getActivity().startActivity(intent);
                                 getActivity().overridePendingTransition(R.anim.push_right_in,
                                         R.anim.push_right_out);
-                            }
-                            else if (player1.action.equals("category"))
-                            {
+                            } else if (player1.action.equals("category")) {
                                 Intent intent = new Intent(getActivity(), B1_ProductListActivity.class);
                                 FILTER filter = new FILTER();
                                 filter.category_id = String.valueOf(player1.action_id);
-                                intent.putExtra(B1_ProductListActivity.FILTER,filter.toJson().toString());
+                                intent.putExtra(B1_ProductListActivity.FILTER, filter.toJson().toString());
                                 startActivity(intent);
                                 getActivity().overridePendingTransition(R.anim.push_right_in,
                                         R.anim.push_right_out);
-                            }
-                            else if (null != player1.url)
-                            {
+                            } else if (null != player1.url) {
                                 Intent intent = new Intent(getActivity(), BannerWebActivity.class);
                                 intent.putExtra("url", player1.url);
                                 startActivity(intent);
@@ -341,12 +329,12 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
 
     }
 
-	//获取屏幕宽度
-	public int getDisplayMetricsWidth() {
-		int i = getActivity().getWindowManager().getDefaultDisplay().getWidth();
-		int j = getActivity().getWindowManager().getDefaultDisplay().getHeight();
-		return Math.min(i, j);
-	}
+    //获取屏幕宽度
+    public int getDisplayMetricsWidth() {
+        int i = getActivity().getWindowManager().getDefaultDisplay().getWidth();
+        int j = getActivity().getWindowManager().getDefaultDisplay().getHeight();
+        return Math.min(i, j);
+    }
 
     @Override
     public void onDestroyView() {
@@ -356,11 +344,11 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
 
     @Override
     public void OnMessageResponse(String url, JSONObject jo, AjaxStatus status) throws JSONException {
-        if (url.endsWith(ApiInterface.HOME_AD)){
+        if (url.endsWith(ApiInterface.HOME_AD)) {
             addBannerView();
-        }else if (url.endsWith(ApiInterface.PRODUCT_CATBESTLIST)){
+        } else if (url.endsWith(ApiInterface.PRODUCT_CATBESTLIST)) {
             listAdapter.notifyDataSetChanged();
-        }else if(url.endsWith(ApiInterface.PRODUCT_CATEGORY)){
+        } else if (url.endsWith(ApiInterface.PRODUCT_CATEGORY)) {
             listAdapter.notifyDataSetChanged();
         }
     }

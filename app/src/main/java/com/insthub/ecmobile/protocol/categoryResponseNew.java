@@ -37,7 +37,7 @@ public class categoryResponseNew extends Model
               for(int i = 0;i < subItemArray.length();i++)
                {
                   JSONObject subItemObject = subItemArray.getJSONObject(i);
-                  CATEGORYNEW subItem = new CATEGORYNEW();
+                   CATEGORYNEW subItem = new CATEGORYNEW();
                   subItem.fromJson(subItemObject);
                   this.data.add(subItem);
                }

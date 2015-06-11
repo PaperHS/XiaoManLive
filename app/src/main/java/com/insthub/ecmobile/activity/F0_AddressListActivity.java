@@ -87,6 +87,7 @@ public class F0_AddressListActivity extends BaseActivity implements BusinessResp
 //
 //		add = (ImageView) findViewById(R.id.address_manage_add);
         listView = (ListView) findViewById(R.id.address_manage_list);
+        listView.addFooterView(new View(this));
         bg = (RelativeLayout) findViewById(R.id.address_list_bg);
 //        footer = LayoutInflater.from(this).inflate(R.layout.f0_addresslist_footer, null);
 //        listView.addFooterView(footer);

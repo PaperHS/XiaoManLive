@@ -22,7 +22,9 @@ import com.insthub.BeeFramework.view.MyProgressDialog;
 import com.insthub.ecmobile.R;
 import com.insthub.ecmobile.protocol.ApiInterface;
 import com.insthub.ecmobile.protocol.CATEGORYNEW;
+import com.insthub.ecmobile.protocol.CateProducts;
 import com.insthub.ecmobile.protocol.FILTER;
+import com.insthub.ecmobile.protocol.FirstCategory;
 import com.insthub.ecmobile.protocol.PAGINATED;
 import com.insthub.ecmobile.protocol.PAGINATION;
 import com.insthub.ecmobile.protocol.SIMPLEGOODS;
@@ -43,6 +45,7 @@ public class FirstLvModel extends BaseModel {
 
     public ArrayList<SIMPLEGOODS> simplegoodsList = new ArrayList<SIMPLEGOODS>();
     public ArrayList<CATEGORYNEW> categoryList = new ArrayList<CATEGORYNEW>();
+    public ArrayList<CateProducts> cateGoodsList= new ArrayList<CateProducts>();
     public static String PRICE_DESC = "price_desc";
     public static String PRICE_ASC = "price_asc";
     public static String IS_HOT = "is_hot";
@@ -162,17 +165,17 @@ public class FirstLvModel extends BaseModel {
             public void callback(String url, JSONObject jo, AjaxStatus status) {
                 FirstLvModel.this.callback(url, jo, status);
                 try {
-                    categoryResponseNew response = new categoryResponseNew();
+                    FirstCategory response = new FirstCategory();
                     response.fromJson(jo);
                     if (jo != null) {
 
                         if (response.status.succeed == 1) {
-                            ArrayList<CATEGORYNEW> data = response.data;
+                            ArrayList<CateProducts> data = response.data;
 
-                            categoryList.clear();
+                            cateGoodsList.clear();
                             if (null != data && data.size() > 0) {
-                                categoryList.clear();
-                                categoryList.addAll(data);
+                                cateGoodsList.clear();
+                                cateGoodsList.addAll(data);
 
                             }
 

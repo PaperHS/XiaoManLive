@@ -94,7 +94,8 @@
                         android:textColor="#000000"
                         android:textSize="16dp" />
                 </LinearLayout>
-<View
+
+                <View
                     android:layout_width="fill_parent"
                     android:layout_height="0.1dp"
                     android:background="#c4c4c4" />
@@ -103,6 +104,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
@@ -129,7 +131,8 @@
                         android:textSize="16dp" />
 
                 </LinearLayout>
-<View
+
+                <View
                     android:layout_width="fill_parent"
                     android:layout_height="0.1dp"
                     android:background="#c4c4c4" />
@@ -141,6 +144,7 @@
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
@@ -150,6 +154,7 @@
                         android:text="@string/address_area"
                         android:textColor="@color/Black"
                         android:textSize="16dp" />
+
                     <TextView
                         android:id="@+id/address_manage2_address"
                         android:layout_width="match_parent"
@@ -166,6 +171,7 @@
                         android:layout_marginRight="10dp"
                         android:src="@drawable/accsessory_arrow_right" />
                 </LinearLayout>
+
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="0.1dp"
@@ -175,6 +181,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
@@ -199,7 +206,6 @@
                         android:textColor="#000000"
                         android:textSize="16dp" />
                 </LinearLayout>
-
 
 
                 <!--<View-->
@@ -248,36 +254,33 @@
                     android:background="#c4c4c4" />
 
 
-
-
-
             </LinearLayout>
 
             <!--<LinearLayout-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:gravity="center"-->
-                <!--android:orientation="horizontal">-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="horizontal">-->
 
-                <!--<Button-->
-                    <!--android:id="@+id/address_manage2_default"-->
-                    <!--android:layout_width="100dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_margin="10dp"-->
-                    <!--android:background="@drawable/address_edit_default_btn_yellow"-->
-                    <!--android:text="@string/manage2_set"-->
-                    <!--android:textColor="#ffffff"-->
-                    <!--android:textSize="18dp" />-->
+            <!--<Button-->
+            <!--android:id="@+id/address_manage2_default"-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:background="@drawable/address_edit_default_btn_yellow"-->
+            <!--android:text="@string/manage2_set"-->
+            <!--android:textColor="#ffffff"-->
+            <!--android:textSize="18dp" />-->
 
-                <!--<Button-->
-                    <!--android:id="@+id/address_manage2_del"-->
-                    <!--android:layout_width="100dp"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_margin="10dp"-->
-                    <!--android:background="@drawable/address_edit_modify_btn_red"-->
-                    <!--android:text="@string/manage2_delete"-->
-                    <!--android:textColor="#ffffff"-->
-                    <!--android:textSize="18dp" />-->
+            <!--<Button-->
+            <!--android:id="@+id/address_manage2_del"-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:background="@drawable/address_edit_modify_btn_red"-->
+            <!--android:text="@string/manage2_delete"-->
+            <!--android:textColor="#ffffff"-->
+            <!--android:textSize="18dp" />-->
             <!--</LinearLayout>-->
         </LinearLayout>
     </ScrollView>

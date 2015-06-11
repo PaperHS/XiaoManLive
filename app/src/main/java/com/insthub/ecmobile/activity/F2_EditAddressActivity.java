@@ -16,7 +16,10 @@ package com.insthub.ecmobile.activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -39,33 +42,40 @@ import com.insthub.ecmobile.protocol.ApiInterface;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class F2_EditAddressActivity extends BaseActivity implements BusinessResponse {
-	
-	private ImageView back;
-	private Button change;
-	private AddressModel addressModel;
-	private EditText name;
-	private EditText tel;
-	private EditText email;
-	private EditText zipCode;
-	private LinearLayout area;
-	private TextView address;
-	private EditText detail;
-	private Button setDefault;
-	private Button del;
-	private String country_id;
-	private String province_id;
-	private String city_id;
-	private String county_id;
-	private String address_id;
-    private static  final int REQUEST_REGION_PICK=1;
-	private int address_code;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {		
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.f2_edit_address);
-		
+public class F2_EditAddressActivity extends BaseActivity implements BusinessResponse {
+
+    @InjectView(R.id.toolbar)
+    Toolbar toolbar;
+    private ImageView back;
+    private Button change;
+    private AddressModel addressModel;
+    private EditText name;
+    private EditText tel;
+    private EditText email;
+    private EditText zipCode;
+    private LinearLayout area;
+    private TextView address;
+    private EditText detail;
+    private Button setDefault;
+    private Button del;
+    private String country_id;
+    private String province_id;
+    private String city_id;
+    private String county_id;
+    private String address_id;
+    private static final int REQUEST_REGION_PICK = 1;
+    private int address_code;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.f2_edit_address);
+        ButterKnife.inject(this);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("修改地址");
 //		back = (ImageView) findViewById(R.id.address_manage2_back);
 //		back.setOnClickListener(new OnClickListener() {
 //			@Override
@@ -73,7 +83,7 @@ public class F2_EditAddressActivity extends BaseActivity implements BusinessResp
 //				finish();
 //			}
 //		});
-		
+
 //		del = (Button) findViewById(R.id.address_manage2_del);
 //		del.setOnClickListener(new OnClickListener() {
 //
@@ -90,34 +100,34 @@ public class F2_EditAddressActivity extends BaseActivity implements BusinessResp
 //				}
 //			}
 //		});
-		
-		name = (EditText) findViewById(R.id.address_manage2_name);
-		tel = (EditText) findViewById(R.id.address_manage2_telNum);
+
+        name = (EditText) findViewById(R.id.address_manage2_name);
+        tel = (EditText) findViewById(R.id.address_manage2_telNum);
 //		email = (EditText) findViewById(R.id.address_manage2_email);
 //		zipCode = (EditText) findViewById(R.id.address_manage2_zipCode);
-		area = (LinearLayout) findViewById(R.id.address_manage2_area);
-		address = (TextView) findViewById(R.id.address_manage2_address);
-		detail = (EditText) findViewById(R.id.address_manage2_detail);
+        area = (LinearLayout) findViewById(R.id.address_manage2_area);
+        address = (TextView) findViewById(R.id.address_manage2_address);
+        detail = (EditText) findViewById(R.id.address_manage2_detail);
 //		setDefault = (Button) findViewById(R.id.address_manage2_default);
 //		change = (Button) findViewById(R.id.address_manage2_change);
-		
-		area.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {				
-				Intent intent = new Intent(F2_EditAddressActivity.this, F1_SearchAddressActivity.class);
-				startActivityForResult(intent, REQUEST_REGION_PICK);
+
+        area.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(F2_EditAddressActivity.this, F1_SearchAddressActivity.class);
+                startActivityForResult(intent, REQUEST_REGION_PICK);
 //				overridePendingTransition(R.anim.my_scale_action,R.anim.my_alpha_action);
-			}
-		});
-		
-		Intent intent = getIntent();
-		address_id = intent.getStringExtra("address_id");
-		
-		addressModel = new AddressModel(this);
-		addressModel.addResponseListener(this);
-		addressModel.getAddressInfo(address_id);
-		
+            }
+        });
+
+        Intent intent = getIntent();
+        address_id = intent.getStringExtra("address_id");
+
+        addressModel = new AddressModel(this);
+        addressModel.addResponseListener(this);
+        addressModel.getAddressInfo(address_id);
+
 //		setDefault.setOnClickListener(new OnClickListener() {
 //
 //			@Override
@@ -126,33 +136,39 @@ public class F2_EditAddressActivity extends BaseActivity implements BusinessResp
 //			}
 //		});
 //
-		change.setOnClickListener(new OnClickListener() {
+//		change.setOnClickListener(new OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//
+//
+//		});
 
-			@Override
-			public void onClick(View v) {
+    }
 
-				String consignee = name.getText().toString();
-				String telNum = tel.getText().toString();
+    public void onConfirm() {
+        String consignee = name.getText().toString();
+        String telNum = tel.getText().toString();
 //				String mail = email.getText().toString();
 //				String zipcode = zipCode.getText().toString();
-				String address = detail.getText().toString();
+        String address = detail.getText().toString();
 
-                Resources resource = (Resources) getBaseContext().getResources();
-                String name=resource.getString(R.string.add_name);
-                String tel=resource.getString(R.string.add_tel);
-                String email=resource.getString(R.string.add_email);
-                String cor=resource.getString(R.string.add_correct_email);
-                String addr=resource.getString(R.string.add_address );
-                String con=resource.getString(R.string.confirm_address);
+        Resources resource = (Resources) getBaseContext().getResources();
+        String name = resource.getString(R.string.add_name);
+        String tel = resource.getString(R.string.add_tel);
+        String email = resource.getString(R.string.add_email);
+        String cor = resource.getString(R.string.add_correct_email);
+        String addr = resource.getString(R.string.add_address);
+        String con = resource.getString(R.string.confirm_address);
 
-                if("".equals(consignee)) {
-					Toast toast = Toast.makeText(F2_EditAddressActivity.this, name, Toast.LENGTH_SHORT);
-			        toast.setGravity(Gravity.CENTER, 0, 0);
-			        toast.show();
-				} else if("".equals(telNum)) {
-					Toast toast = Toast.makeText(F2_EditAddressActivity.this, tel, Toast.LENGTH_SHORT);
-			        toast.setGravity(Gravity.CENTER, 0, 0);
-			        toast.show();
+        if ("".equals(consignee)) {
+            Toast toast = Toast.makeText(F2_EditAddressActivity.this, name, Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+        } else if ("".equals(telNum)) {
+            Toast toast = Toast.makeText(F2_EditAddressActivity.this, tel, Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
 //				} else if("".equals(mail)) {
 //					Toast toast = Toast.makeText(F2_EditAddressActivity.this, email, Toast.LENGTH_SHORT);
 //			        toast.setGravity(Gravity.CENTER, 0, 0);
@@ -161,87 +177,101 @@ public class F2_EditAddressActivity extends BaseActivity implements BusinessResp
 //					Toast toast = Toast.makeText(F2_EditAddressActivity.this, cor, Toast.LENGTH_SHORT);
 //			        toast.setGravity(Gravity.CENTER, 0, 0);
 //			        toast.show();
-				} else if("".equals(address)) {
-					Toast toast = Toast.makeText(F2_EditAddressActivity.this, addr, Toast.LENGTH_SHORT);
-			        toast.setGravity(Gravity.CENTER, 0, 0);
-			        toast.show();
+        } else if ("".equals(address)) {
+            Toast toast = Toast.makeText(F2_EditAddressActivity.this, addr, Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
 //				} else if(country_id == null || province_id == null || city_id == null || county_id == null) {
 //					Toast toast = Toast.makeText(F2_EditAddressActivity.this, con, Toast.LENGTH_SHORT);
 //			        toast.setGravity(Gravity.CENTER, 0, 0);
 //			        toast.show();
-				} else {
-					addressModel.addressUpdate(address_id, consignee, telNum,address,Integer.toString(address_code));
-				}
-				
-			}
-		});
-		
-	}
-	
-	public void setAddressInfo() {		
-		name.setText(addressModel.address.consignee);
-		tel.setText(addressModel.address.tel);
-		email.setText(addressModel.address.email);
-		zipCode.setText(addressModel.address.zipcode);
-		detail.setText(addressModel.address.address);
-		
-		StringBuffer sbf = new StringBuffer();
-		sbf.append(addressModel.address.province_name+" ");
-		sbf.append(addressModel.address.city_name+" ");
-		sbf.append(addressModel.address.district_name);
-		address.setText(sbf.toString());
-		
-		country_id = addressModel.address.country;
-		province_id = addressModel.address.province;
-		city_id = addressModel.address.city;
-		county_id = addressModel.address.district;
-		
-	}
+        } else {
+            addressModel.addressUpdate(address_id, consignee, telNum, address, Integer.toString(address_code));
+        }
 
-	@Override
-	public void OnMessageResponse(String url, JSONObject jo, AjaxStatus status)
-			throws JSONException {		
-		if(url.endsWith(ApiInterface.ADDRESS_INFO)) {
-			setAddressInfo();
-		} else if(url.endsWith(ApiInterface.ADDRESS_SETDEFAULT)) {
+
+    }
+
+    public void setAddressInfo() {
+        name.setText(addressModel.address.consignee);
+        tel.setText(addressModel.address.tel);
+        email.setText(addressModel.address.email);
+        zipCode.setText(addressModel.address.zipcode);
+        detail.setText(addressModel.address.address);
+
+        StringBuffer sbf = new StringBuffer();
+        sbf.append(addressModel.address.province_name + " ");
+        sbf.append(addressModel.address.city_name + " ");
+        sbf.append(addressModel.address.district_name);
+        address.setText(sbf.toString());
+
+        country_id = addressModel.address.country;
+        province_id = addressModel.address.province;
+        city_id = addressModel.address.city;
+        county_id = addressModel.address.district;
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_right, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_address_right) {
+            onConfirm();
+        }else if (item.getItemId()==android.R.id.home){
+            this.finish();
+        }
+        return true;
+    }
+
+    @Override
+    public void OnMessageResponse(String url, JSONObject jo, AjaxStatus status)
+            throws JSONException {
+        if (url.endsWith(ApiInterface.ADDRESS_INFO)) {
+            setAddressInfo();
+        } else if (url.endsWith(ApiInterface.ADDRESS_SETDEFAULT)) {
             finish();
-		} else if(url.endsWith(ApiInterface.ADDRESS_DELETE)) {
-			delete();
-			finish();
-		} else if(url.endsWith(ApiInterface.ADDRESS_UPDATE)) {
-			if(addressModel.address.default_address == 1) {
-				addressModel.addressDefault(address_id);
-			} else {
+        } else if (url.endsWith(ApiInterface.ADDRESS_DELETE)) {
+            delete();
+            finish();
+        } else if (url.endsWith(ApiInterface.ADDRESS_UPDATE)) {
+            if (addressModel.address.default_address == 1) {
+                addressModel.addressDefault(address_id);
+            } else {
                 Resources resource = (Resources) getBaseContext().getResources();
-                String suc=resource.getString(R.string.successful_operation);
-		        ToastView toast = new ToastView(getApplicationContext(), suc);
+                String suc = resource.getString(R.string.successful_operation);
+                ToastView toast = new ToastView(getApplicationContext(), suc);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
-				finish();
-			}
-			
-		}
-		
-	}
-	
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {    	
-    	super.onActivityResult(requestCode, resultCode, data);
+                finish();
+            }
 
-		if (requestCode == REQUEST_REGION_PICK) {
-			if (data != null) {
-				if (resultCode >0){
-					address_code = resultCode;
-					String  addressStr = data.getStringExtra("address");
-					address.setText(addressStr);
-				}
+        }
 
-			}
-		}
     }
-    
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_REGION_PICK) {
+            if (data != null) {
+                if (resultCode > 0) {
+                    address_code = resultCode;
+                    String addressStr = data.getStringExtra("address");
+                    address.setText(addressStr);
+                }
+
+            }
+        }
+    }
+
     // 根据id删除数据库里的一条记录
     public void delete() {
-    	new Delete().from(ADDRESS.class).where("ADDRESS_id = ?", address_id).execute();
+        new Delete().from(ADDRESS.class).where("ADDRESS_id = ?", address_id).execute();
     }
 }
