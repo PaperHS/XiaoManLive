@@ -144,6 +144,7 @@ public class FirstLvModel extends BaseModel {
         try {
             JSONObject object = new JSONObject();
             object.put("suppliers_id",cat_id);
+//            params.put("suppliers_id",Integer.toString(cat_id));
             params.put("json", object.toString());
         } catch (JSONException e) {
             e.printStackTrace();

@@ -21,9 +21,7 @@ import com.insthub.ecmobile.activity.B1_ProductListActivity;
 import com.insthub.ecmobile.activity.B2_ProductDetailActivity;
 import com.insthub.ecmobile.activity.BannerWebActivity;
 import com.insthub.ecmobile.adapter.B0_IndexAdapterNew;
-import com.insthub.ecmobile.adapter.B0_indexAdapter2;
 import com.insthub.ecmobile.adapter.Bee_PageAdapter;
-import com.insthub.ecmobile.adapter.ShopAdapter2;
 import com.insthub.ecmobile.model.ADModel;
 import com.insthub.ecmobile.model.FirstLvModel;
 import com.insthub.ecmobile.model.SearchModel;
@@ -57,7 +55,7 @@ public class ShopFragment extends Fragment implements BusinessResponse{
 
     // TODO: Rename and change types of parameters
     private String mTitle;
-    private int mIcon;
+    private int mTheme;
     private int supplier_id;
     FrameLayout bannerView;//广告栏
     private ViewPager bannerViewPager;
@@ -113,7 +111,7 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mTitle = getArguments().getString(ARG_PARAM1);
-            mIcon = getArguments().getInt(ARG_PARAM2);
+            mTheme = getArguments().getInt(ARG_PARAM2);
             supplier_id = getArguments().getInt(ARG_PARAM3);
         }
         adModel = new ADModel(getActivity());
@@ -187,37 +185,51 @@ protected ImageLoader imageLoader = ImageLoader.getInstance();
         mIndicator.setViewPager(bannerViewPager);
 
         fragmentListView.addHeaderView(bannerView);
-        if (mTitle.equals("富国超市")){
-            listAdapter = new B0_IndexAdapterNew(getActivity(),firstLvModel,new SearchModel(getActivity()));
-            adModel.fetchADs(1);
-            firstLvModel.fetchFirstRecom(1, 10, 0);
-            firstLvModel.fetchLvCategory(14);
-        }else if (mTitle.equals("新马路菜市场")){
-            listAdapter = new ShopAdapter2(getActivity(),firstLvModel,new SearchModel(getActivity()));
-            adModel.fetchADs(1);
-            firstLvModel.fetchFirstRecom(1, 10, 0);
-            firstLvModel.fetchLvCategory(14);
+        switch (mTheme){
+            case 0:
+                listAdapter = new B0_IndexAdapterNew(getActivity(),firstLvModel,new SearchModel(getActivity()));
+            adModel.fetchADs(supplier_id);
+            firstLvModel.fetchFirstRecom(supplier_id, 10, 0);
+            firstLvModel.fetchLvCategory(supplier_id);
+                break;
+            case 1:
+                listAdapter = new B0_IndexAdapterNew(getActivity(),firstLvModel,new SearchModel(getActivity()));
+            adModel.fetchADs(supplier_id);
+            firstLvModel.fetchFirstRecom(supplier_id, 10, 0);
+            firstLvModel.fetchLvCategory(supplier_id);
+                break;
+            default:
+                break;
+        }
+
+//        if (mTitle.equals("富国超市")){
+//
+//        }else if (mTitle.equals("新马路菜市场")){
+//            listAdapter = new ShopAdapter2(getActivity(),firstLvModel,new SearchModel(getActivity()));
+//            adModel.fetchADs(1);
+//            firstLvModel.fetchFirstRecom(1, 10, 0);
+//            firstLvModel.fetchLvCategory(14);
 //            adModel.fetchADs(1);
 //            firstLvModel.fetchFirstRecom(2,10,0);
-        }else if (mTitle.equals("鲜果园")){
-            listAdapter = new B0_indexAdapter2(getActivity(),firstLvModel);
-            adModel.fetchADs(1);
-            firstLvModel.fetchLvCategory(1);
-        }else if (mTitle.equals("微商优选")){
-
-            listAdapter = new ShopAdapter2(getActivity(),firstLvModel,new SearchModel(getActivity()));
-            adModel.fetchADs(1);
-            firstLvModel.fetchFirstRecom(1, 10, 0);
-            firstLvModel.fetchLvCategory(14);
-            adModel.fetchADs(1);
-        }else if (mTitle.equals("福田及时送")){
-
-            listAdapter = new B0_indexAdapter2(getActivity(),firstLvModel);
-            adModel.fetchADs(1);
-            firstLvModel.fetchLvCategory(1);
-
-        }
-        firstLvModel.fetchLvCategory(supplier_id);
+//        }else if (mTitle.equals("鲜果园")){
+//            listAdapter = new B0_indexAdapter2(getActivity(),firstLvModel);
+//            adModel.fetchADs(1);
+//            firstLvModel.fetchLvCategory(1);
+//        }else if (mTitle.equals("微商优选")){
+//
+//            listAdapter = new ShopAdapter2(getActivity(),firstLvModel,new SearchModel(getActivity()));
+//            adModel.fetchADs(1);
+//            firstLvModel.fetchFirstRecom(1, 10, 0);
+//            firstLvModel.fetchLvCategory(14);
+//            adModel.fetchADs(1);
+//        }else if (mTitle.equals("福田及时送")){
+//
+//            listAdapter = new B0_indexAdapter2(getActivity(),firstLvModel);
+//            adModel.fetchADs(1);
+//            firstLvModel.fetchLvCategory(1);
+//
+//        }
+//        firstLvModel.fetchLvCategory(supplier_id);
         fragmentListView.setAdapter(listAdapter);
         fragmentListView.setPullRefreshEnable(false);
         fragmentListView.setPullLoadEnable(false);

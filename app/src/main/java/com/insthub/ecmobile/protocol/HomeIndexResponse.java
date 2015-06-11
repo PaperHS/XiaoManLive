@@ -29,8 +29,8 @@ public class HomeIndexResponse extends Model
           STATUS  status = new STATUS();
           status.fromJson(jsonObject.optJSONObject("status"));
           this.status = status;
-
-          subItemArray = jsonObject.optJSONArray("data");
+         JSONObject jo = jsonObject.optJSONObject("data");
+         subItemArray  = jo.optJSONArray("supplier_list");
           if(null != subItemArray)
            {
               for(int i = 0;i < subItemArray.length();i++)

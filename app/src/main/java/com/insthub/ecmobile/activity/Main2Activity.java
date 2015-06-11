@@ -196,7 +196,9 @@ public class Main2Activity extends AppCompatActivity implements BusinessResponse
                 ShopFragment fragment = ShopFragment.newInstance(store.suppliers_name, Integer.parseInt(store.theme),Integer.parseInt(store.suppliers_id));
                 mShopFragments.add(fragment);
             }
-            mainPageAdapter.notifyDataSetChanged();
+//            mainPageAdapter.notifyDataSetChanged();
+            mainPageAdapter.updateList(mShopFragments);
+//            mainVierpager.setAdapter(mainPageAdapter);
             mainIndicator.setViewPager(mainVierpager);
         }
     }
