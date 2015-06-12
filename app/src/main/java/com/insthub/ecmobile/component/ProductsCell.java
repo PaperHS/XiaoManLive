@@ -71,9 +71,10 @@ public class ProductsCell extends LinearLayout{
 
         switch (type){
             case 0:
+                mCellTitle.setVisibility(VISIBLE);
                 break;
             case 1:
-
+                mCellTitle.setVisibility(VISIBLE);
                 mCellTitle.setText(title);
                 mCellTitle.setBackgroundResource(R.color.translate);
                 mCellTitle.setCompoundDrawablesWithIntrinsicBounds(null,null,null,null);

@@ -67,8 +67,8 @@ public class UserInfoModel extends BaseModel {
                         if (response.status.succeed == 1) {
                             user = response.data;
                             user.save();
-                            editor.putString("email",user.email);
-                            editor.commit();
+//                            editor.putString("email",user.email);
+//                            editor.commit();
                             UserInfoModel.this.OnMessageResponse(url, jo, status);
                         }
                     }

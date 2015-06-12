@@ -97,6 +97,7 @@ public class FirstLvModel extends BaseModel {
         Map<String, String> params = new HashMap<String, String>();
         try {
             params.put("json", request.toJson().toString());
+            params.put("suppliers_id",Integer.toString(suppliers_id));
         } catch (JSONException e) {
             e.printStackTrace();
         }

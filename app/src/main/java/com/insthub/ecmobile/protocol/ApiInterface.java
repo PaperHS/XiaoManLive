@@ -31,7 +31,7 @@ public class ApiInterface
      public static final String USER_SIGNUP  ="/user/signup";
 //     public static final String GOODS_DESC  ="/goods/desc";
      public static final String GOODS_DESC  ="/product/goods_detail";
-     public static final String USER_INFO  ="/user/info";
+     public static final String USER_INFO  ="/user/user_info";
      public static final String ADDRESS_DELETE  ="/address/delete";
      public static final String USER_SIGNUPFIELDS  ="/user/signupFields";
      public static final String SEARCHKEYWORDS  ="/searchKeywords";

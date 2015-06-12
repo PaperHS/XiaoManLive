@@ -4,13 +4,16 @@
               android:background="@color/common_bg"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
+    <include layout="@layout/common_toolbar"></include>
     <RelativeLayout
             android:background="@color/white"
             android:layout_width="match_parent"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:layout_height="@dimen/item_height">
-        <TextView android:layout_width="wrap_content"
+        <TextView
+
+            android:layout_width="wrap_content"
                   android:layout_height="match_parent"
                   style="@style/tvStyle.Common.mid"
                   android:textColor="@color/TextColorGray"
@@ -40,7 +43,9 @@
                   android:textColor="@color/TextColorGray"
                   android:text="姓名"
                 />
-        <TextView android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/e1_self_name_edit"
+            android:layout_width="wrap_content"
                   android:layout_height="match_parent"
                   style="@style/tvStyle.Common.mid"
                   android:textColor="@color/TextColorGray"
@@ -67,7 +72,9 @@
                   android:textColor="@color/TextColorGray"
                   android:text="称谓"
                 />
-        <TextView android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/e1_self_gender_edit"
+            android:layout_width="wrap_content"
                   android:layout_height="match_parent"
                   style="@style/tvStyle.Common.mid"
                   android:textColor="@color/TextColorGray"

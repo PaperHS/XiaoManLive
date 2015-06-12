@@ -1,5 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.insthub.ecmobile.activity.Main2Activity">
@@ -7,11 +9,17 @@
     <include layout="@layout/common_toolbar"></include>
 
     <com.insthub.ecmobile.component.PagerSlidingTabStrip
-        android:id="@+id/main_indicator"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/xm_titlestripSize"
-        >
+    android:id="@+id/main_indicator"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/xm_titlestripSize"
+    >
     </com.insthub.ecmobile.component.PagerSlidingTabStrip>
+    <!--<com.external.viewpagerindicator.TabPageIndicator-->
+        <!--android:id="@+id/main_indicator"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/xm_titlestripSize"-->
+        <!--></com.external.viewpagerindicator.TabPageIndicator>-->
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -19,25 +27,24 @@
         <android.support.v4.view.ViewPager
             android:id="@+id/main_vierpager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            ></android.support.v4.view.ViewPager>
+            android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+
         <TextView
             android:id="@+id/main_shopcart_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/shopcart_bg"
-            android:text="2"
-            android:textSize="18sp"
-            android:textColor="@color/white"
-            android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_alignParentRight="true"
             android:layout_marginBottom="50dp"
-            android:padding="10dp"
-            android:gravity="center_vertical"
-            android:drawablePadding="10dp"
-
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:background="@drawable/shopcart_bg"
             android:drawableLeft="@drawable/shopping_cart_acc_cart_icon"
-            ></TextView>
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="2"
+            android:textColor="@color/white"
+
+            android:textSize="18sp"></TextView>
     </RelativeLayout>
 </LinearLayout>

@@ -151,6 +151,7 @@ d        <item name="android:splitMotionEvents">false</item>
         <!--   theme UI controls like checkboxes and text fields -->
         <item name="colorAccent">@color/white</item>
         <item name="android:actionBarSize">@dimen/xm_acitonbarsize</item>
+
     </style>
 
     <style name="DefaultAnim">

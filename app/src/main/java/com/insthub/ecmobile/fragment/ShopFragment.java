@@ -190,13 +190,12 @@ public class ShopFragment extends Fragment implements BusinessResponse {
         switch (mTheme) {
             case 0:
                 listAdapter = new B0_IndexAdapterNew(getActivity(), firstLvModel, new SearchModel(getActivity()));
-                adModel.fetchADs(supplier_id);
-                firstLvModel.fetchFirstRecom(supplier_id, 10, 0);
-                firstLvModel.fetchLvCategory(supplier_id);
+//                firstLvModel.fetchFirstRecom(supplier_id, 10, 0);
+//                firstLvModel.fetchLvCategory(supplier_id);
+                firstLvModel.fetchCatGoods(supplier_id);
                 break;
             case 1:
                 listAdapter = new B0_IndexAdapterNew(getActivity(), firstLvModel, new SearchModel(getActivity()));
-                adModel.fetchADs(supplier_id);
                 firstLvModel.fetchFirstRecom(supplier_id, 10, 0);
                 firstLvModel.fetchLvCategory(supplier_id);
                 break;
@@ -204,6 +203,7 @@ public class ShopFragment extends Fragment implements BusinessResponse {
                 break;
         }
 
+        adModel.fetchADs(1);
 //        if (mTitle.equals("富国超市")){
 //
 //        }else if (mTitle.equals("新马路菜市场")){

@@ -49,12 +49,14 @@ public class Main2Activity extends AppCompatActivity implements BusinessResponse
 
     @InjectView(R.id.toolbar)
     Toolbar toolbar;
-    @InjectView(R.id.main_indicator)
-    PagerSlidingTabStrip mainIndicator;
-    @InjectView(R.id.main_vierpager)
-    ViewPager mainVierpager;
+        @InjectView(R.id.main_indicator)
+        PagerSlidingTabStrip mainIndicator;
     TextView titleAddress;
     ImageView titlePerson;
+    @InjectView(R.id.main_vierpager)
+    ViewPager mainVierpager;
+//    @InjectView(R.id.main_indicator)
+//    TabPageIndicator mainIndicator;
     private List<ShopFragment> mShopFragments;
     private MainPageAdapter mainPageAdapter;
     private SharedPreferences shared;
@@ -114,17 +116,19 @@ public class Main2Activity extends AppCompatActivity implements BusinessResponse
     }
 
     private void init() {
-        EventBus.getDefault().register(this,"onAddressClick",AddressItemClickEvent.class);
+        EventBus.getDefault().register(this, "onAddressClick", AddressItemClickEvent.class);
         indexStoreModel = new IndexStoreModel(this);
         indexStoreModel.addResponseListener(this);
-        indexStoreModel.fetchStores(3429);
+        indexStoreModel.fetchStores(3430);
         mShopFragments = new ArrayList<>();
 
         mainPageAdapter = new MainPageAdapter(getSupportFragmentManager(), mShopFragments);
         mainVierpager.setAdapter(mainPageAdapter);
         mainIndicator.setIndicatorColorResource(R.color.text_red);
         mainIndicator.setTextSize(14);
+        mainIndicator.setShouldExpand(false);
 //        mainIndicator.setViewPager(mainVierpager);
+
         addressModel = new AddressModel(this);
         addressModel.addResponseListener(this);
 //        addressModel.getAddressList();
@@ -193,16 +197,19 @@ public class Main2Activity extends AppCompatActivity implements BusinessResponse
             }
         } else if (url.endsWith(ApiInterface.HOME_INDEX)) {
             for (HOMESTORE store : indexStoreModel.stores) {
-                ShopFragment fragment = ShopFragment.newInstance(store.suppliers_name, Integer.parseInt(store.theme),Integer.parseInt(store.suppliers_id));
+                ShopFragment fragment = ShopFragment.newInstance(store.suppliers_name, Integer.parseInt(store.theme), Integer.parseInt(store.suppliers_id));
                 mShopFragments.add(fragment);
             }
 //            mainPageAdapter.notifyDataSetChanged();
             mainPageAdapter.updateList(mShopFragments);
-//            mainVierpager.setAdapter(mainPageAdapter);
             mainIndicator.setViewPager(mainVierpager);
+//            mainIndicator.notifyDataSetChanged();
+//            mainVierpager.setAdapter(mainPageAdapter);
+
         }
     }
-    public void onAddressClick(AddressItemClickEvent event){
+
+    public void onAddressClick(AddressItemClickEvent event) {
         addressChoiceDialog.dismiss();
         titleAddress.setText(event.getPosition());
 //        getActivity().getActionBar().setTitle("送至："+event.getPosition());

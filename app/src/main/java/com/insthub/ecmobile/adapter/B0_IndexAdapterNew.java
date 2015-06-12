@@ -80,7 +80,7 @@ public class B0_IndexAdapterNew extends BeeBaseAdapter
     {
 
 //        int count = 3  + dataModel.categorygoodsList.size();
-        int count = 4;
+        int count = 3;
     	return count;
     }
     
@@ -109,12 +109,8 @@ public class B0_IndexAdapterNew extends BeeBaseAdapter
             return TYPE_SEARCH;
         }else if (position <2){
             return TYPE_NEWCATEGORY;
-        }else if (position<4) {
-            return TYPE_PRODUCTS;
-        }else {
-            return  TYPE_CATEGORYSELL;
         }
-
+        return TYPE_PRODUCTS;
     }
 
     @Override

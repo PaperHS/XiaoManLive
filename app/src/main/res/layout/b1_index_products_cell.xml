@@ -16,9 +16,9 @@
         android:id="@+id/cell_products_title"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-
+        android:visibility="gone"
         android:background="@drawable/ic_index_discount_title"
-        android:text="我爱打折"
+        android:text="小满推荐"
         android:textColor="@color/white"
         style="@style/tvStyle.Common.max"
         android:gravity="left|center_vertical"

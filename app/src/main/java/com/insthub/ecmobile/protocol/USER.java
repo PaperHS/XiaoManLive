@@ -1,12 +1,12 @@
 
 package com.insthub.ecmobile.protocol;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import com.external.activeandroid.Model;
 import com.external.activeandroid.annotation.Column;
 import com.external.activeandroid.annotation.Table;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 @Table(name = "USER")
 public class USER  extends Model
@@ -32,12 +32,14 @@ public class USER  extends Model
 
     @Column(name="user_money")
     public String user_money;
-//
-//    @Column(name="frozen_money")
-//    public String frozen_money;
+
+    @Column(name="frozen_money")
+    public String frozen_money;
 
     @Column(name="email")
     public String email;
+
+
 
     public void  fromJson(JSONObject jsonObject)  throws JSONException
     {
@@ -61,7 +63,7 @@ public class USER  extends Model
         this.rank_name = jsonObject.optString("rank_name");
         this.email=jsonObject.optString("email");
         this.user_money=jsonObject.optString("user_money");
-//        this.frozen_money=jsonObject.optString("frozen_money");
+        this.frozen_money=jsonObject.optString("frozen_money");
         return ;
     }
 
@@ -73,7 +75,7 @@ public class USER  extends Model
         localItemObject.put("id", id);
         localItemObject.put("rank_level", rank_level);
         localItemObject.put("user_money", user_money);
-//        localItemObject.put("frozen_money", frozen_money);
+        localItemObject.put("frozen_money", frozen_money);
         if(null != order_num)
         {
             localItemObject.put("order_num", order_num.toJson());

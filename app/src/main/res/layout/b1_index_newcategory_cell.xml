@@ -25,8 +25,8 @@
         android:layout_height="wrap_content"
         android:cacheColorHint="@color/grey"
         android:background="@color/grey"
-        android:verticalSpacing="1dp"
-        android:horizontalSpacing="1dp"
+        android:verticalSpacing="1px"
+        android:horizontalSpacing="1px"
         android:numColumns="2"
         ></com.insthub.ecmobile.component.CustomGridView>
 
