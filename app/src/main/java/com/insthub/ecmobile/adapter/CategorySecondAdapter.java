@@ -60,7 +60,7 @@ public class CategorySecondAdapter extends BaseAdapter {
         if (datalist.size()>position){
             SIMPLEGOODS simplegoods = (SIMPLEGOODS)datalist.get(position);
             viewHolder.mD0GoodsName.setText(simplegoods.name);
-            ImageLoader.getInstance().displayImage(simplegoods.img.url,viewHolder.mD0GoodsPic, EcmobileApp.options);
+            ImageLoader.getInstance().displayImage(simplegoods.goods_img,viewHolder.mD0GoodsPic, EcmobileApp.options);
             viewHolder.mD0GoodsPrice.setText(simplegoods.shop_price);
         }
         return convertView;

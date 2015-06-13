@@ -1,12 +1,12 @@
 
 package com.insthub.ecmobile.protocol;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import com.external.activeandroid.Model;
 import com.external.activeandroid.annotation.Column;
 import com.external.activeandroid.annotation.Table;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 @Table(name = "SIMPLEGOODS")
 public class SIMPLEGOODS  extends Model
@@ -26,6 +26,15 @@ public class SIMPLEGOODS  extends Model
 
      @Column(name = "img")
      public PHOTO   img;
+
+    @Column(name = "original_img")
+    public String original_img;
+
+    @Column(name = "thumb")
+    public String thumb;
+
+    @Column(name = "goods_img")
+    public String goods_img;
 
      @Column(name = "brief")
      public String brief;
@@ -58,7 +67,9 @@ public class SIMPLEGOODS  extends Model
      img.fromJson(jsonObject.optJSONObject("img"));
      this.img = img;
      this.brief = jsonObject.optString("brief");
-
+        this.goods_img = jsonObject.optString("goods_img");
+     this.thumb = jsonObject.optString("thumb");
+     this.original_img = jsonObject.optString("original_img");
      this.promote_price = jsonObject.optString("promote_price");
      this.goods_id=jsonObject.optString("goods_id");
      return ;
@@ -72,6 +83,9 @@ public class SIMPLEGOODS  extends Model
      localItemObject.put("shop_price", shop_price);
      localItemObject.put("market_price", market_price);
      localItemObject.put("name", name);
+     localItemObject.put("original_img", original_img);
+     localItemObject.put("thumb", thumb);
+     localItemObject.put("goods_img", goods_img);
      if(null!=img)
      {
        localItemObject.put("img", img.toJson());
